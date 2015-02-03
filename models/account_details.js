@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.AccountDetailsModel = Backbone.RelationalModel.extend({
+    var AccountDetailsModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "restaurants/account_details/"+this.restaurant_id;
@@ -74,5 +74,5 @@ function( _, $, Backbone)
             return response.payload;
         }
     });
-
+    return AccountDetailsModel;
 });

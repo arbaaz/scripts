@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.AssignmentModel = Backbone.Model.extend({
+    var AssignmentModel = Backbone.Model.extend({
 
         urlRoot: 'lead/restaurants',
 
@@ -26,5 +26,5 @@ function( _, $, Backbone)
             return response.assignment;
         }
     });
-
+    return AssignmentModel;
 });

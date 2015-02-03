@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-      dataEntryClient.Models.PointOfSaleModel = Backbone.Model.extend({
+  var PointOfSaleModel = Backbone.Model.extend({
 
         url:function(){
             return "/restaurant/restaurant_product/point_of_sale/"+this.restaurant_id;
@@ -37,4 +37,5 @@ function( _, $, Backbone)
         },
 
     });
+  return PointOfSaleModel;
 )();

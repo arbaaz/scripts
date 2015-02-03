@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.DeliveryareaModel = Backbone.Model.extend({
+    var DeliveryareaModel = Backbone.Model.extend({
 
         urlRoot: 'delivery_areas',
 
@@ -70,5 +70,5 @@ function( _, $, Backbone)
             return deliveryAreas;
         }
     });
-
+    return DeliveryareaModel;
 });

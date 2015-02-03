@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict'; 
-   dataEntryClient.Models.DishItemModel = Backbone.Model.extend({
+  var DishItemModel = Backbone.Model.extend({
     urlRoot: 'dishes',
     initialize: function() {
     },
@@ -18,4 +18,5 @@ function( _, $, Backbone)
       
     },
   });
+  return DishItemModel;
 });

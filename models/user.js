@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.UserModel = Backbone.Model.extend({
+  var UserModel = Backbone.Model.extend({
 
         initialize: function () {
           //console.log("initializing user");
@@ -71,5 +71,5 @@ function( _, $, Backbone)
           window.global_observer.trigger('header_changed');
         }
     });
-
+  return UserModel;
 });

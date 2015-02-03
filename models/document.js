@@ -5,7 +5,7 @@ dataEntryClient.Models = dataEntryClient.Models || {};
 (function () {
     'use strict';
 
-    dataEntryClient.Models.DocumentModel = Backbone.RelationalModel.extend({
+    var DocumentModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "restaurants/documents/"+this.id;
@@ -30,5 +30,5 @@ dataEntryClient.Models = dataEntryClient.Models || {};
             return response.payload;
         }
     });
-
+    return DocumentModel;
 })();

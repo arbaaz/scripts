@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict'; 
-   dataEntryClient.Models.PromotionModel = Backbone.Model.extend({
+  var PromotionModel = Backbone.Model.extend({
     save: function(attributes, options) {
       if(!this.id) {
         options = _.defaults((options || {}), {url: "/restaurant/global_promotions/create"});
@@ -30,4 +30,5 @@ function( _, $, Backbone)
       console.log("validating the promotion..");
     },
   });
+  return PromotionModel;
 });

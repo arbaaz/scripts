@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.StatusLogsModel = Backbone.RelationalModel.extend({
+    var StatusLogsModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "restaurants/"+this.id+"/status_update_logs";
@@ -44,5 +44,5 @@ function( _, $, Backbone)
             return response.payload;
         }
     });
-
+    return StatusLogsModel;
 });

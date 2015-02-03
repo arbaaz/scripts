@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.RestaurantClosingReasonModel = Backbone.Model.extend({
+  var RestaurantClosingReasonModel = Backbone.Model.extend({
 
         urlRoot: 'restaurant-closing-reason',
 
@@ -16,5 +16,5 @@ function( _, $, Backbone)
 
         }
     });
-
+  return RestaurantClosingReasonModel;
 });

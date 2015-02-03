@@ -8,8 +8,9 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';    
-    dataEntryClient.Models.TaggingModel = Backbone.Model.extend({
+  var TaggingModel = Backbone.Model.extend({
         initialize: function() {
         }
     });
+  return TaggingModel;
 )();

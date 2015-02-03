@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Models.RestaurantModel = Backbone.RelationalModel.extend({
+  var RestaurantModel = Backbone.RelationalModel.extend({
 
     urlRoot: 'restaurants',
 
@@ -177,5 +177,5 @@ function( _, $, Backbone)
       return response.payload;
     }
   });
-
+  return RestaurantModel;
 });

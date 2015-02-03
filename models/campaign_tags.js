@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-	dataEntryClient.Models.CampaignTagsModel = Backbone.Model.extend({
+  var CampaignTagsModel = Backbone.Model.extend({
 		url: function() {
 			return "restaurants/campaign_tags/"+this.restaurant_id;
 		},
@@ -17,4 +17,5 @@ function( _, $, Backbone)
 			this.restaurant_id = options.id;
 		}
 	});
+  return CampaignTagsModel;
 });

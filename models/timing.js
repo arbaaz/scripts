@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.TimingModel = Backbone.RelationalModel.extend({
+    var TimingModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "timings/"+this.id;
@@ -99,5 +99,5 @@ function( _, $, Backbone)
 
         
     });
-
+    return TimingModel;
 });

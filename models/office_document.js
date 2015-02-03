@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.OfficeDocumentModel = Backbone.RelationalModel.extend({
+  var OfficeDocumentModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "restaurants/office_doc/"+this.restaurant_id;
@@ -64,5 +64,5 @@ function( _, $, Backbone)
             return response.payload;
         }
     });
-
+  return OfficeDocumentModel;
 });

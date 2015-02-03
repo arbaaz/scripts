@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict'; 
-   dataEntryClient.Models.DishTypeTagModel = Backbone.Model.extend({
+  var DishTypeTagModel = Backbone.Model.extend({
 
     urlRoot: 'items/items_dish_type_tags',
     
@@ -20,4 +20,5 @@ function( _, $, Backbone)
      
     },
   });
+  return DishTypeTagModel;
 });

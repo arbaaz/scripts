@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.MiscellaneousModel = Backbone.RelationalModel.extend({
+  var MiscellaneousModel = Backbone.RelationalModel.extend({
 
         url: function(){
             return "restaurants/miscellaneous/"+this.restaurant_id;
@@ -55,5 +55,5 @@ function( _, $, Backbone)
             return response.payload;
         }
     });
-
+  return MiscellaneousModel;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-	dataEntryClient.Models.FulfilmentModel = Backbone.Model.extend({
+  var FulfilmentModel = Backbone.Model.extend({
 		url: function() {
 			return "restaurants/fulfilment/"+this.restaurant_id;
 		},
@@ -21,4 +21,5 @@ function( _, $, Backbone)
 			this.restaurant_id = options.id;
 		}
 	});
+  return FulfilmentModel;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Models.SessionManager = Backbone.Model.extend({
+  var SessionManager = Backbone.Model.extend({
 
         get_session: function() {
           //return $.cookie('session_token');
@@ -42,5 +42,5 @@ function( _, $, Backbone)
           }
         }
     });
-
+  return SessionManager;
 });

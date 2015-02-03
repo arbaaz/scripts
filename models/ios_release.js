@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Models.IOSReleaseModel = Backbone.Model.extend({
+  var IOSReleaseModel = Backbone.Model.extend({
     save: function(attributes, options) {
       if(!this.id) {
         options = _.defaults((options || {}), {url: "/user/admin/ios_releases"});
@@ -30,4 +30,5 @@ function( _, $, Backbone)
       
     },
   });
+  return IOSReleaseModel;
 });

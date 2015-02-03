@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Models.UpdateStatusModel = Backbone.RelationalModel.extend({
+  var UpdateStatusModel = Backbone.RelationalModel.extend({
 
     urlRoot: 'restaurants',
 
@@ -56,5 +56,5 @@ function( _, $, Backbone)
       //return response.payload;
     }
   });
-
+  return UpdateStatusModel;
 });
