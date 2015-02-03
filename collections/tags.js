@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-      dataEntryClient.Collections.TagsCollection = Backbone.Collection.extend({
+    var TagsCollection = Backbone.Collection.extend({
 
         model: dataEntryClient.Models.TagsModel,
         url: function() {
@@ -23,5 +23,5 @@ function( _, $, Backbone)
             return response.tags;
         }
     });
-
+    return TagsCollection;
 });

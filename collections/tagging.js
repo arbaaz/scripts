@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-      dataEntryClient.Collections.TaggingCollection = Backbone.Collection.extend({
+    var TaggingCollection = Backbone.Collection.extend({
         initialize: function(options) {
             this.options = options;
         },
@@ -34,5 +34,5 @@ function( _, $, Backbone)
             return Backbone.sync('update', this, options);
         }
     });
-
+    return TaggingCollection;
 });

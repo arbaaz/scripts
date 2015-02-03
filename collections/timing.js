@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 
-    dataEntryClient.Collections.TimingCollection = Backbone.Collection.extend({
+  var TimingCollection = Backbone.Collection.extend({
 
         url: function(){
             return "timings/"+this.id;
@@ -29,5 +29,5 @@ function( _, $, Backbone)
         }
 
     });
-
+  return TimingCollection;
 });

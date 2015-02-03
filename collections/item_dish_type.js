@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Collections.ItemDishTypeCollection = Backbone.Collection.extend({
+  var ItemDishTypeCollection = Backbone.Collection.extend({
     model: dataEntryClient.Models.ItemDishTypeModel,
     url: 'items',
     initialize: function(options) {
@@ -45,4 +45,5 @@ function( _, $, Backbone)
       }
     }
     });
+  return ItemDishTypeCollection;
 });

@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 
-  dataEntryClient.Collections.MenuCategorizationCollection = Backbone.Collection.extend({
+  var MenuCategorizationCollection = Backbone.Collection.extend({
 
     //url: '/word_dictionaries/verify',
     url : '/fetch_tags', 
@@ -23,5 +23,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return MenuCategorizationCollection;
 });

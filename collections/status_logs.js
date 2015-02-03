@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 
-  dataEntryClient.Collections.StatusLogsCollection = Backbone.Collection.extend({
+  var StatusLogsCollection = Backbone.Collection.extend({
 
     model: dataEntryClient.Models.StatusLogsModel,
     url: function(){
@@ -27,5 +27,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return StatusLogsCollection;
 });

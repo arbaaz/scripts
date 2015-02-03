@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Collections.ReleaseCollection = Backbone.Collection.extend({
+    var ReleaseCollection = Backbone.Collection.extend({
     model: dataEntryClient.Models.ReleaseModel,
     url: '/user/admin/android_releases',
     initialize: function() {
@@ -16,5 +16,5 @@ function( _, $, Backbone)
     
 
   });
-
+    return ReleaseCollection;
 })();

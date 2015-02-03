@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 
-  dataEntryClient.Collections.SpellCheckCollection = Backbone.Collection.extend({
+  var SpellCheckCollection = Backbone.Collection.extend({
 
     url: '/word_dictionaries/verify',
     // model: dataEntryClient.Models.DeliveryareaModel,
@@ -23,5 +23,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return SpellCheckCollection;
 });

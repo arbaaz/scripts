@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Collections.DocumentCollection = Backbone.Collection.extend({
+  var DocumentCollection = Backbone.Collection.extend({
 
     url: function(){
       return 'restaurants/documents/'+this.id;
@@ -26,5 +26,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return DocumentCollection;
 });

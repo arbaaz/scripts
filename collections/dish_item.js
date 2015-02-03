@@ -8,12 +8,12 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Collections.DishItemCollection = Backbone.Collection.extend({
+  var DishItemCollection = Backbone.Collection.extend({
     model: dataEntryClient.Models.DishItemModel,
     url: 'dishes',
     initialize: function() {
         
     },
   });
-
+  return DishItemCollection;
 });

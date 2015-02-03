@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 
-  dataEntryClient.Collections.RestaurantCollection = Backbone.Collection.extend({
+  var RestaurantCollection = Backbone.Collection.extend({
 
     model: dataEntryClient.Models.RestaurantModel,
     url: 'restaurants',
@@ -24,5 +24,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return RestaurantCollection;
 });

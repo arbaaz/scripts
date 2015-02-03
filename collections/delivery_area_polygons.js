@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
 'use strict';
-  dataEntryClient.Collections.DeliveryAreaPolygonsCollection = Backbone.Collection.extend({
+  var DeliveryAreaPolygonsCollection = Backbone.Collection.extend({
 
     //model: dataEntryClient.Models.StatusLogsModel,
     url: function(){
@@ -28,5 +28,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return DeliveryAreaPolygonsCollection;
 });

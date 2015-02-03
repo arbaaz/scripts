@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Collections.PromotionCollection = Backbone.Collection.extend({
+  var PromotionCollection = Backbone.Collection.extend({
     model: dataEntryClient.Models.PromotionModel,
     url: '/restaurant/global_promotions/index',
     initialize: function() {
@@ -19,5 +19,5 @@ function( _, $, Backbone)
   	}
 
   });
-
+  return PromotionCollection;
 });

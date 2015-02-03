@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-      dataEntryClient.Collections.SearchDeliveryAreasCollection = Backbone.Collection.extend({
+    var SearchDeliveryAreasCollection = Backbone.Collection.extend({
 
         // model: dataEntryClient.Models.NameModel,
         url: function() {
@@ -24,5 +24,5 @@ function( _, $, Backbone)
         }
         
     });
-
+    return SearchDeliveryAreasCollection;
 });
