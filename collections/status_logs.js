@@ -1,31 +1,30 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
 
-  var StatusLogsCollection = Backbone.Collection.extend({
+  ],
+  function (_, $, Backbone) {
+    'use strict';
 
-    model: dataEntryClient.Models.StatusLogsModel,
-    url: function(){
-      return 'restaurants/'+this.id+'/status_update_logs'; 
-    },
+    var StatusLogsCollection = Backbone.Collection.extend({
 
-    initialize: function(options) {
-      this.id = options.id;
-      console.log("initializing status logs Collections!");
-    },
+      model: dataEntryClient.Models.StatusLogsModel,
+      url: function () {
+        return 'restaurants/' + this.id + '/status_update_logs';
+      },
 
-    parse: function(response) {
-      console.log(response);
-      return response.payload;
-    }
+      initialize: function (options) {
+        this.id = options.id;
+        console.log("initializing status logs Collections!");
+      },
 
+      parse: function (response) {
+        console.log(response);
+        return response.payload;
+      }
+
+    });
+    return StatusLogsCollection;
   });
-  return StatusLogsCollection;
-});

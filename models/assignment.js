@@ -1,30 +1,28 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
+
+  ],
+  function (_, $, Backbone) {
+    'use strict';
     var AssignmentModel = Backbone.Model.extend({
 
-        urlRoot: 'lead/restaurants',
+      urlRoot: 'lead/restaurants',
 
-        initialize: function() {
-        },
+      initialize: function () {
+      },
 
-        defaults: {
-        },
+      defaults: {},
 
-        validate: function(attrs, options) {
-        },
+      validate: function (attrs, options) {
+      },
 
-        parse: function(response, options)  {
-            if (options.collection) return response;
-            return response.assignment;
-        }
+      parse: function (response, options) {
+        if (options.collection) return response;
+        return response.assignment;
+      }
     });
     return AssignmentModel;
-});
+  });

@@ -1,48 +1,51 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
-  var ChoiceEntryView = Backbone.View.extend({
+
+  ],
+  function (_, $, Backbone) {
+    'use strict';
+    var ChoiceEntryView = Backbone.View.extend({
 
       el: '#page',
       template: JST['app/scripts/templates/menu_entry/choice_entry.ejs'],
 
       initialize: function (options) {
-      	this.options = options;
+        this.options = options;
       },
 
-      render: function(options) {
-      	global_observer.trigger("header_changed", {'restaurant_id' : this.options.restaurant_id, 'user_type':"outsource", 'active_tab' : 'choices'});
-      	this.choices = new dataEntryClient.Collections.ChoiceCollection({restaurant_id: this.options.restaurant_id});
+      render: function (options) {
+        global_observer.trigger("header_changed", {
+          'restaurant_id': this.options.restaurant_id,
+          'user_type': "outsource",
+          'active_tab': 'choices'
+        });
+        this.choices = new dataEntryClient.Collections.ChoiceCollection({restaurant_id: this.options.restaurant_id});
         var that = this;
-      	close_sidebar();
-      	that.choices.fetch ({
-      		success: function(data, response) {
-      			var temp = that.template({
-      				choices: data.models,
+        close_sidebar();
+        that.choices.fetch({
+          success: function (data, response) {
+            var temp = that.template({
+              choices: data.models,
               restaurant_id: data.restaurant_id,
               restaurant_name: response.meta.restaurant_name
-      			});
-      			that.$el.html(temp);
-      			that.loadPlugins();
-      			stop_loading();
+            });
+            that.$el.html(temp);
+            that.loadPlugins();
+            stop_loading();
 
-      			if (that.success) {
-              generate_alert(true,"Saved successfully");
+            if (that.success) {
+              generate_alert(true, "Saved successfully");
             }
 
-      			return that;
-      		},
-        	error: function(data, response, error) {
-          	stop_loading();
-          	generate_alert(false,$.parseJSON(response.responseText).message);
-        	}
+            return that;
+          },
+          error: function (data, response, error) {
+            stop_loading();
+            generate_alert(false, $.parseJSON(response.responseText).message);
+          }
         });
       },
       events: {
@@ -51,19 +54,19 @@ function( _, $, Backbone)
         'click .delete_choice': 'delete_choice',
         'click .delete_option': 'delete_option',
         'click .save': 'save_all',
-        'keyup .listen_change' : 'attribute_changed',
-        'change .listen_change' : 'attribute_changed',
+        'keyup .listen_change': 'attribute_changed',
+        'change .listen_change': 'attribute_changed',
         'focusin .editing': 'editing',
         'focusout .editing': 'edited'
-    	},
+      },
 
-      loadPlugins: function() {
-        _.each(this.choices.models, function(choice) {
+      loadPlugins: function () {
+        _.each(this.choices.models, function (choice) {
           choice.listenTo(choice.get('options'), 'add', function () {
             choice.changed.options = choice.get("options");
           });
 
-          _.each(choice.get('options').models, function(option) {
+          _.each(choice.get('options').models, function (option) {
             option.listenTo(option, 'change', function () {
               choice.changed.options = choice.get("options");
             });
@@ -144,7 +147,7 @@ function( _, $, Backbone)
 
         if (confirm == true) {
           if (choice_id.split("_")[0] != "new") {
-            var choice = dataEntryClient.Models.Choice.find({ id : choice_id });
+            var choice = dataEntryClient.Models.Choice.find({id: choice_id});
             var that = this;
             choice.destroy({
               url: 'restaurants/' + restaurant_id + '/choice/' + choice_id,
@@ -161,7 +164,7 @@ function( _, $, Backbone)
               }
             });
           } else {
-            this.choices.remove({id : choice_id});
+            this.choices.remove({id: choice_id});
             $("#listing_options_" + i).remove();
             $("#choice_row_" + i).remove();
             $("#choice_hr_" + i).remove();
@@ -178,7 +181,11 @@ function( _, $, Backbone)
         var restaurant_id = $("#restaurant_id").val();
         var choice_id = $("#choice_id_" + i).val();
         var option_id = $("#option_id_" + index).val();
-        var choice = _.filter(this.choices.models, function(m) { if (m.id == choice_id) {return m} })[0];
+        var choice = _.filter(this.choices.models, function (m) {
+          if (m.id == choice_id) {
+            return m
+          }
+        })[0];
 
         if (choice.get('options').length == 1) {
           generate_alert(false, "Choice needs to have atleast one option!")
@@ -195,7 +202,7 @@ function( _, $, Backbone)
               return false;
             }
 
-            var option = dataEntryClient.Models.ChoiceOption.find({ id : option_id});
+            var option = dataEntryClient.Models.ChoiceOption.find({id: option_id});
             start_loading();
             option.destroy({url: 'restaurants/' + restaurant_id + '/option/' + option_id});
             stop_loading();
@@ -204,7 +211,7 @@ function( _, $, Backbone)
             });
             generate_alert(false, "Deleted");
           } else {
-            choice.get('options').remove({id : option_id});
+            choice.get('options').remove({id: option_id});
             $("#option_row_" + index).remove();
           }
         }
@@ -214,14 +221,14 @@ function( _, $, Backbone)
         e.preventDefault();
         var i = e.currentTarget.dataset.index;
         var id = e.currentTarget.id
-        $("#" + id).css('background','rgb(255, 247, 169)');
+        $("#" + id).css('background', 'rgb(255, 247, 169)');
       },
 
       edited: function (e) {
         e.preventDefault();
         var i = e.currentTarget.dataset.index;
         var id = e.currentTarget.id
-        $("#" + id).css('background','white');
+        $("#" + id).css('background', 'white');
       },
 
       attribute_changed: function (e) {
@@ -232,7 +239,11 @@ function( _, $, Backbone)
         var string = info.slice();
 
         var choice_id = $('#choice_id_' + index[0]).val();
-        var choice = _.filter(this.choices.models, function(m) { if (m.id == choice_id) {return m} })[0]
+        var choice = _.filter(this.choices.models, function (m) {
+          if (m.id == choice_id) {
+            return m
+          }
+        })[0]
 
         if ((_.contains([9, 16, 17], e.keyCode)) || (e.ctrlKey) || (e.shiftKey) || (e.altKey)) {
           return false;
@@ -245,32 +256,32 @@ function( _, $, Backbone)
           (choice.get(string) === field) ? true : choice.set(string, field);
         } else if (info[0] == "option") {
           var option_id = $('#option_id_' + index[0] + '_' + index[1]).val();
-          var option = choice.get('options').find({ id: option_id });
-          
+          var option = choice.get('options').find({id: option_id});
+
           string.shift();
           string.pop();
           string.pop();
           string = string.join('_');
 
           switch (info[1]) {
-          case 'name':
-          case 'max':
-          case 'price':
-          case 'veg':
-            (option.get(string) === field) ? true : option.set(string, field);
-            break;
-          case 'default':
-            var defaults = (choice.get('defaults') == undefined) ? [] : choice.get('defaults');
+            case 'name':
+            case 'max':
+            case 'price':
+            case 'veg':
+              (option.get(string) === field) ? true : option.set(string, field);
+              break;
+            case 'default':
+              var defaults = (choice.get('defaults') == undefined) ? [] : choice.get('defaults');
 
-            if ($("#option_default_" + index[0] + '_' + index[1]).is(":checked") == true) {
-              defaults.push(option.id);
-            } else if (!_.isEmpty(defaults)) {
-              defaults = _.without(defaults, option.id);
-            }
+              if ($("#option_default_" + index[0] + '_' + index[1]).is(":checked") == true) {
+                defaults.push(option.id);
+              } else if (!_.isEmpty(defaults)) {
+                defaults = _.without(defaults, option.id);
+              }
 
-            choice.set('defaults', $.unique(defaults));
-            choice.changed.options = choice.get("options");
-            break;
+              choice.set('defaults', $.unique(defaults));
+              choice.changed.options = choice.get("options");
+              break;
           }
         }
       },
@@ -306,5 +317,5 @@ function( _, $, Backbone)
         });
       }
     });
-  return ChoiceEntryView;
-});
+    return ChoiceEntryView;
+  });

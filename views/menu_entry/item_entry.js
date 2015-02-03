@@ -1,14 +1,13 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
-  var ItemEntryView = Backbone.View.extend({
+
+  ],
+  function (_, $, Backbone) {
+    'use strict';
+    var ItemEntryView = Backbone.View.extend({
 
       el: '#page',
       template: JST['app/scripts/templates/menu_entry/item_entry.ejs'],
@@ -19,7 +18,11 @@ function( _, $, Backbone)
         // _.bindAll(this, 'on_keypress');
         // $(document).bind('keydown', _.debounce(this.on_keypress, 200));
 
-        global_observer.trigger("header_changed", {'restaurant_id' : this.options.restaurant_id, 'user_type':"outsource", 'active_tab' : 'items'});
+        global_observer.trigger("header_changed", {
+          'restaurant_id': this.options.restaurant_id,
+          'user_type': "outsource",
+          'active_tab': 'items'
+        });
       },
 
       render: function (options) {
@@ -35,39 +38,39 @@ function( _, $, Backbone)
         close_sidebar();
         start_loading();
 
-        $.when (
-          that.items.fetch ({})
+        $.when(
+          that.items.fetch({})
         ).then(function (items_arg) {
-          that.item_sizes.reset(items_arg.payload_items.sizes);
-          that.choices.reset(items_arg.payload_choices);
-          that.timings.reset(items_arg.payload_timings);
-          that.map = items_arg.map;
-          console.log('rendering...');
+            that.item_sizes.reset(items_arg.payload_items.sizes);
+            that.choices.reset(items_arg.payload_choices);
+            that.timings.reset(items_arg.payload_timings);
+            that.map = items_arg.map;
+            console.log('rendering...');
 
-          if (_.isEmpty(that.timings.models)) {
-            stop_loading();
-            generate_alert(false, "No timings found! Please add timings before proceeding.");
-            return false;
-          } else if (check_timings_permission) {
-            var temp = that.template({
-              items: that.items.models,
-              restaurant_id: that.items.restaurant_id,
-              restaurant_name: items_arg.meta.restaurant_name,
-              choices_list: that.choices.models,
-              timings_list: that.timings.models,
-              map: items_arg.map
-            });
+            if (_.isEmpty(that.timings.models)) {
+              stop_loading();
+              generate_alert(false, "No timings found! Please add timings before proceeding.");
+              return false;
+            } else if (check_timings_permission) {
+              var temp = that.template({
+                items: that.items.models,
+                restaurant_id: that.items.restaurant_id,
+                restaurant_name: items_arg.meta.restaurant_name,
+                choices_list: that.choices.models,
+                timings_list: that.timings.models,
+                map: items_arg.map
+              });
 
-            that.$el.html(temp);
-            that.load_plugins();
-            stop_loading();
-          }
-        }, function (response) {
-          generate_alert(false, $.parseJSON(response.responseText).message);
-        })
+              that.$el.html(temp);
+              that.load_plugins();
+              stop_loading();
+            }
+          }, function (response) {
+            generate_alert(false, $.parseJSON(response.responseText).message);
+          })
       },
 
-      load_plugins: function() {
+      load_plugins: function () {
         this.items.assign_events(this.items.models);
       },
 
@@ -84,8 +87,8 @@ function( _, $, Backbone)
         'click .add_price': 'add_price',
         'click .delete_price': 'delete_price',
         // change events on attributes
-        'keyup .listen_change' : 'attribute_changed',
-        'change .listen_change' : 'attribute_changed',
+        'keyup .listen_change': 'attribute_changed',
+        'change .listen_change': 'attribute_changed',
         'click .save_items': 'save_items',
         'click .in_display_mode': 'edit'
       },
@@ -94,10 +97,10 @@ function( _, $, Backbone)
         var i = parseInt($('#item_count').val());
         var item_id = 'new_' + i;
         var item = dataEntryClient.Models.Item.findOrCreate({id: item_id});
-        
+
         var size = dataEntryClient.Models.ItemSize.findOrCreate({id: ('new_' + i + '_0')});
         size.set({size: window.collections.size_lists.NONE, choices: {}});
-        
+
         var price = dataEntryClient.Models.ItemPrice.findOrCreate({id: ("new_" + i + "_0_0")});
         price.set({price: 0, timing_id: 'ALL'});
 
@@ -120,7 +123,7 @@ function( _, $, Backbone)
           is_item_price_variable: false,
           edit_mode: true
         });
-        
+
         $(".listing_items").append(html);
         this.assign_selects(i, 0);
         $('#item_count').val(i + 1);
@@ -139,14 +142,18 @@ function( _, $, Backbone)
 
         if (confirm == true) {
           if (item_id.split('_')[0] != "new") {
-            var item = _.filter(this.items.models, function(m) { if (m.id == item_id) {return m} })[0];
+            var item = _.filter(this.items.models, function (m) {
+              if (m.id == item_id) {
+                return m
+              }
+            })[0];
             item.destroy();
             // this.render({
             //   restaurant_id: restaurant_id
             // });
             generate_alert(false, "Deleted");
           } else {
-            this.items.remove({id : item_id});
+            this.items.remove({id: item_id});
             $("#listing_sizes_" + i).remove();
           }
           $("#item_row_" + i).remove();
@@ -160,7 +167,11 @@ function( _, $, Backbone)
         var j = parseInt($('#size_count_' + i).val());
 
         var item_id = $("#item_id_" + i).val();
-        var item = _.filter(this.items.models, function(m) { if (m.id == item_id) {return m} })[0];
+        var item = _.filter(this.items.models, function (m) {
+          if (m.id == item_id) {
+            return m
+          }
+        })[0];
 
         var size = dataEntryClient.Models.ItemSize.findOrCreate({id: ('new_' + i + '_' + j)});
         size.set({size: window.collections.size_lists["NONE"], choices: {}});
@@ -185,7 +196,7 @@ function( _, $, Backbone)
           map: this.map,
           edit_mode: true
         });
-        
+
         $("#size_count_" + i).val(j + 1);
         $("#listing_sizes_" + i).append(html);
         this.assign_selects(i, j);
@@ -207,7 +218,9 @@ function( _, $, Backbone)
         if (confirm == true) {
           if (size_id.split('_')[0] != "new") {
             // validations
-            var item = _.filter(this.items.models, function(m) { return m.id == item_id })[0];
+            var item = _.filter(this.items.models, function (m) {
+              return m.id == item_id
+            })[0];
             var message = item.validate_sizes(size_collection);
             if (message != "") {
               generate_alert(false, message);
@@ -221,7 +234,7 @@ function( _, $, Backbone)
             // });
             generate_alert(false, "Deleted");
           }
-          size_collection.remove({id : size_id});
+          size_collection.remove({id: size_id});
           $("#size_tile_" + index).remove();
         }
       },
@@ -233,14 +246,16 @@ function( _, $, Backbone)
         var k = parseInt($("#price_count_" + index).val());
 
         var item_id = $("#item_id_" + i).val();
-        var item = _.filter(this.items.models, function(m) { return m.id == item_id })[0];
+        var item = _.filter(this.items.models, function (m) {
+          return m.id == item_id
+        })[0];
 
         var size_id = $("#size_id_" + i + "_" + j).val();
         var size = dataEntryClient.Models.ItemSize.find({id: size_id});
 
         var price = dataEntryClient.Models.ItemPrice.findOrCreate({id: ("new_" + index + '_' + k)});
         price.set({price: 0, timing_id: 'ALL'});
-        
+
         // assign evets
         item.assign_events(item, size, price);
         size.get('prices').add(price);
@@ -293,7 +308,7 @@ function( _, $, Backbone)
             // });
             generate_alert(false, "Deleted");
           }
-          price_collection.remove({id : price_id});
+          price_collection.remove({id: price_id});
           $("#price_row_" + index).remove();
         }
       },
@@ -309,7 +324,9 @@ function( _, $, Backbone)
           return false;
         }
 
-        var item = _.filter(this.items.models, function(m) { return m.id == item_id; })[0]
+        var item = _.filter(this.items.models, function (m) {
+          return m.id == item_id;
+        })[0]
         switch (info[1]) {
           case 'name':
           case 'description':
@@ -323,18 +340,19 @@ function( _, $, Backbone)
           case 'size':
           case 'choices':
             var size_id = $("#size_id_" + info[2] + "_" + info[3]).val();
-            var size = item.get('sizes').find({ id: size_id});
+            var size = item.get('sizes').find({id: size_id});
             (size.get(field) === value) ? true : size.set(field, value);
             break;
           case 'price':
           case 'timings':
             var size_id = $("#size_id_" + info[2] + "_" + info[3]).val();
-            var size = item.get('sizes').find({ id: size_id});
+            var size = item.get('sizes').find({id: size_id});
             var price_id = $("#price_id_" + info[2] + "_" + info[3] + "_" + info[4]).val();
-            var price = size.get('prices').find({id : price_id});
+            var price = size.get('prices').find({id: price_id});
             (price.get(field) === value) ? true : price.set(field, value);
             break;
-          default: break;
+          default:
+            break;
         }
       },
 
@@ -344,7 +362,7 @@ function( _, $, Backbone)
 
         start_loading();
         this.items.save({
-          success: function(response) {
+          success: function (response) {
             stop_loading();
 
             that.render({
@@ -353,8 +371,8 @@ function( _, $, Backbone)
             generate_alert(true, response.message);
           },
 
-          error: function(response, error) {
-          stop_loading();
+          error: function (response, error) {
+            stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
@@ -403,7 +421,11 @@ function( _, $, Backbone)
       edit: function (e) {
         var i = parseInt(e.currentTarget.dataset.index);
         var item_id = e.currentTarget.dataset.item;
-        var item = _.filter(this.items.models, function(m) { if (m.id == item_id) {return m} })[0];
+        var item = _.filter(this.items.models, function (m) {
+          if (m.id == item_id) {
+            return m
+          }
+        })[0];
         var that = this;
 
         var html = partial('partials_item', {
@@ -422,8 +444,10 @@ function( _, $, Backbone)
 
         $('#' + e.currentTarget.id).removeClass('in_display_mode');
         $('#listing_item_' + i).html(html);
-        _.each(item.get('sizes').models, function (size, j) { that.assign_selects(i, j) });
+        _.each(item.get('sizes').models, function (size, j) {
+          that.assign_selects(i, j)
+        });
       }
     });
-  return ItemEntryView;
-});
+    return ItemEntryView;
+  });

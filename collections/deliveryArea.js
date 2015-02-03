@@ -1,26 +1,25 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
-  var DeliveryareaCollection = Backbone.Collection.extend({
 
-    url: 'delivery_areas',
-    model: dataEntryClient.Models.DeliveryareaModel,
+  ],
+  function (_, $, Backbone) {
+    'use strict';
+    var DeliveryareaCollection = Backbone.Collection.extend({
 
-    initialize: function() {
-      console.log("initializing delivery_areas Collections!");
-    },
+      url: 'delivery_areas',
+      model: dataEntryClient.Models.DeliveryareaModel,
 
-    parse: function(response) {
-      return response.payload;
-    }
+      initialize: function () {
+        console.log("initializing delivery_areas Collections!");
+      },
 
+      parse: function (response) {
+        return response.payload;
+      }
+
+    });
+    return DeliveryareaCollection;
   });
-  return DeliveryareaCollection;
-});

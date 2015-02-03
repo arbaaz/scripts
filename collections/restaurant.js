@@ -1,28 +1,27 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
 
-  var RestaurantCollection = Backbone.Collection.extend({
+  ],
+  function (_, $, Backbone) {
+    'use strict';
 
-    model: dataEntryClient.Models.RestaurantModel,
-    url: 'restaurants',
+    var RestaurantCollection = Backbone.Collection.extend({
 
-    initialize: function() {
-      console.log("initializing restaurants Collections!");
-    },
+      model: dataEntryClient.Models.RestaurantModel,
+      url: 'restaurants',
 
-    parse: function(response) {       
-      this.meta = response.meta;   
-      return response.payload;
-    }
+      initialize: function () {
+        console.log("initializing restaurants Collections!");
+      },
 
+      parse: function (response) {
+        this.meta = response.meta;
+        return response.payload;
+      }
+
+    });
+    return RestaurantCollection;
   });
-  return RestaurantCollection;
-});

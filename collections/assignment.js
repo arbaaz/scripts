@@ -1,24 +1,22 @@
-define([       
+define([
 
     'underscore',
     'jquery',
-    'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
+    'backbone'
+  ],
+  function (_, $, Backbone) {
     'use strict';
     var AssignmentCollection = Backbone.Collection.extend({
 
-        model: dataEntryClient.Models.AssignmentModel,
-        url: 'lead/restaurants',
+      model: dataEntryClient.Models.AssignmentModel,
+      url: 'lead/restaurants',
 
-        parse: function(payload) {
-        	this.total = payload.total;
-        	this.query = payload.query;
-          return payload.assignments;
-        }
+      parse: function (payload) {
+        this.total = payload.total;
+        this.query = payload.query;
+        return payload.assignments;
+      }
 
     });
 
-});
+  });

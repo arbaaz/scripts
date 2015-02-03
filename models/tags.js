@@ -1,19 +1,18 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
-  var TagsModel = Backbone.Model.extend({
 
-        urlRoot: 'tags',
+  ],
+  function (_, $, Backbone) {
+    'use strict';
+    var TagsModel = Backbone.Model.extend({
 
-        initialize: function() {
-        }
+      urlRoot: 'tags',
+
+      initialize: function () {
+      }
     });
-  return TagsModel;
-});
+    return TagsModel;
+  });

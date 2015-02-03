@@ -1,33 +1,32 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
 
-  var TimingCollection = Backbone.Collection.extend({
+  ],
+  function (_, $, Backbone) {
+    'use strict';
 
-        url: function(){
-            return "timings/"+this.id;
-        },
+    var TimingCollection = Backbone.Collection.extend({
 
-        model: dataEntryClient.Models.TimingModel,
+      url: function () {
+        return "timings/" + this.id;
+      },
 
-        initialize: function(options) {
-          this.id = options.id
-          console.log("intializing timing collections");
-        },
-        comparator: function( collection ) {
-          return( collection.get( 'name' ) );
-        },
-        parse: function(response) {
-          return response.payload;
-        }
+      model: dataEntryClient.Models.TimingModel,
+
+      initialize: function (options) {
+        this.id = options.id
+        console.log("intializing timing collections");
+      },
+      comparator: function (collection) {
+        return ( collection.get('name') );
+      },
+      parse: function (response) {
+        return response.payload;
+      }
 
     });
-  return TimingCollection;
-});
+    return TimingCollection;
+  });

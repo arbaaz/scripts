@@ -3,32 +3,31 @@
 dataEntryClient.Models = dataEntryClient.Models || {};
 
 (function () {
-    'use strict';
+  'use strict';
 
-    var DocumentModel = Backbone.RelationalModel.extend({
+  var DocumentModel = Backbone.RelationalModel.extend({
 
-        url: function(){
-            return "restaurants/documents/"+this.id;
-        },
+    url: function () {
+      return "restaurants/documents/" + this.id;
+    },
 
-        initialize: function(options) {
-            this.id = options.id;
-        },
+    initialize: function (options) {
+      this.id = options.id;
+    },
 
-        defaults: {
-        },
+    defaults: {},
 
-        validate: function(attrs, options) {
-        },
+    validate: function (attrs, options) {
+    },
 
-        buildObj: function(obj) {            
-                      
-        },
+    buildObj: function (obj) {
 
-        parse: function(response, options)  {
-            if (options == undefined) return response;
-            return response.payload;
-        }
-    });
-    return DocumentModel;
+    },
+
+    parse: function (response, options) {
+      if (options == undefined) return response;
+      return response.payload;
+    }
+  });
+  return DocumentModel;
 })();

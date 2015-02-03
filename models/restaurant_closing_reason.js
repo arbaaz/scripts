@@ -1,20 +1,19 @@
-define([       
+define([
 
     'underscore',
     'jquery',
     'backbone',
-    
-],
-function( _, $, Backbone)
-{ 
-  'use strict';
-  var RestaurantClosingReasonModel = Backbone.Model.extend({
 
-        urlRoot: 'restaurant-closing-reason',
+  ],
+  function (_, $, Backbone) {
+    'use strict';
+    var RestaurantClosingReasonModel = Backbone.Model.extend({
 
-        initialize: function() {
+      urlRoot: 'restaurant-closing-reason',
 
-        }
+      initialize: function () {
+
+      }
     });
-  return RestaurantClosingReasonModel;
-});
+    return RestaurantClosingReasonModel;
+  });
