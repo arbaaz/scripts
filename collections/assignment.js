@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
     'use strict';
-    dataEntryClient.Collections.AssignmentCollection = Backbone.Collection.extend({
+    var AssignmentCollection = Backbone.Collection.extend({
 
         model: dataEntryClient.Models.AssignmentModel,
         url: 'lead/restaurants',
