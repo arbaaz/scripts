@@ -1,0 +1,111 @@
+    <button type="button" class="navbar-toggle hr-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="fa fa-bars"></span>
+    </button>
+
+    <!--logo start-->
+    <div class="brand ">        
+        <% var roles = _.collect(window.user.get_roles(), function(x){ return x['name'] });
+          if(_.contains(roles, "Outsource Data Entry Agent")){ %>
+            <a href="#outsource/agent" class="logo clearfix">
+          <% } 
+          else if(_.contains(roles, "Outsource Data Entry Head")){ %>
+            <a href="#outsource/head" class="logo clearfix">
+          <% }
+          else{ %>
+            <a href="#dashboard" class="logo clearfix">
+          <%}
+        %>  
+            <img src="/owl.png" class="img-responsive logo-fix pull-left"/><p>TinyOwl Central</p>
+        </a>
+        <div <% if(active_tab == "profile"){ %>class="sidebar-toggle-box"<% }else{ %> class="sidebar-toggle-box hidden" <% } %>>
+            <div class="fa fa-bars"></div>
+        </div>
+    </div>
+    <!--logo end-->
+
+    <div class="horizontal-menu navbar-collapse collapse ">
+        <ul class="nav nav-pills">
+            <% if(active_tab != "dashboard"){ %>
+            <li <% if(active_tab == null){ %>class="active"<% } %>>
+                <% if(_.contains(roles, "Outsource Data Entry Agent")){ %>
+                    <a href="#outsource/agent">Home</a>
+                  <% } 
+                  else if(_.contains(roles, "Outsource Data Entry Head")){ %>
+                    <a href="#outsource/head">Home</a>
+                  <% }
+                  else{ %>
+                    <a href="#restaurants">Home</a>
+                  <%}
+                %>                
+            </li>
+            <% } %>
+            <% if(restaurant_id != undefined && restaurant_id != null) { %>
+            <li <% if(active_tab == "profile"){ %>class="active"<% } %>>
+              <a href="#restaurants/<%= restaurant_id %>/profile">
+                Edit Profile
+              </a>
+            </li>
+            <li <% if(active_tab == "items"){ %>class="active"<% } %>>
+              <% if(_.contains(roles, "Outsource Data Entry Agent")){ %>
+                <a href="#restaurants/<%= restaurant_id %>/items">
+                  Items
+                </a>
+              <% } else { %> 
+                <a href="/restaurant/crm/restaurants/<%= restaurant_id %>/menu_items">
+                  Edit Menu
+                </a>
+              <%}%>
+            </li>
+            <li <% if(active_tab == "choices"){ %>class="active"<% } %>>
+             <% if(_.contains(roles, "Outsource Data Entry Agent")){ %>
+                <a href="#restaurants/<%= restaurant_id %>/choices">
+                  Choices
+                </a>
+              <% } else { %> 
+                <a href="/restaurant/crm/restaurants/<%= restaurant_id %>/menu_choices">
+                  Edit Choices
+                </a>
+              <%}%>
+            </li>
+            <% } %>  
+        </ul>
+    </div>
+
+    <!-- bucketadmin profile dropdown code start -->
+    <div class="top-nav clearfix">
+        <ul class="nav pull-right top-menu">
+          <a href="#faqs" class="btn btn-info btn-sm pull-left" style="margin-right:5px;"><i class="fa fa-info-circle"></i> FAQs </a>
+          
+            <!-- user login dropdown start-->
+            <% if(profile != null){ %>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" data-bypass>
+                        <!--<img alt="" src="images/avatar1_small.jpg">-->
+                        <% if(profile != null){ %>
+                            <% if(typeof profile.avatar != "undefined" && profile.avatar.success) {%>
+                              <img class="header-avatar-img" src="<%= profile.avatar.sthumb %>">
+                            <% } %>
+                            <div class="header-username-wrapper">
+                              <span class="username"><%=profile.name || profile.email%></span>
+                            </div>
+                        <% } %>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <% if(profile != null){ %>
+                            <li><a id="logout"><i class="fa fa-ban fa-fw"></i> Log Out</a></li>
+                            <li><a id="change-password" href="#changepassword"><i class="fa fa-key"></i> Change Password</a></li>
+                            <li><a id="edit-profile" href="#editprofile"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+
+                        <% } %>                    
+                    </ul>
+                </li>
+            <% }else{ %> 
+                <a href="#login" class="btn btn-primary btn-sm pull-left"> Login </a>
+            <% } %>
+            <!-- user login dropdown end -->
+        </ul>
+    </div>
+    <!-- bucketadmin profile dropdown code end -->
+
+

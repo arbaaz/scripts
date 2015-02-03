@@ -1,0 +1,26 @@
+<tr tabindex='1' data-id="<%=item.get('id')%>"> 
+  <td class="col-lg-1">
+    <%= item.get('name') %>
+    <br>
+  <span class="small text-muted">Sizes: <%= item.get('sizes').join(',')%></span>
+  </td>
+  <td class="col-lg-1">
+    <%= item.get('desc') %>
+  </td>
+  <td class="col-lg-1">
+    <i title='Edit' alt='Edit' class="fa  fa-check-square-o fa-lg js_done"></i>
+    <i title='Copy' alt='Copy' class="fa fa-copy fa-lg js_copy"></i>
+    <i title='Paste'alt='Paste' class="fa fa-paste fa-lg js_paste"></i>
+  </td>
+  <!-- for each tagtype -->
+  <% _.each(tag_types,function(tag_type){ %>
+  <td class="col-lg-1">
+    <select type="text" required class="js_tag_select form-control" data-tag-type='<%=tag_type%>' multiple="multiple">
+      <% _.each(tags.get(tag_type),function(tag){ %>
+      <option value="<%=tag%>"><%=tag%></option>
+      <% }) %>
+    </select>   
+  </td> 
+  <!--end of for  -->
+  <% }) %>
+</tr>

@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="<%if(typeof position ==="undefined"){%>
+    				<%="col-xs-12 pull-right"%>
+    			<%}else if(position=="right"){%>
+    				<%="col-xs-10 profile-adjust pull-right"%>
+				<%}else if(position=="center"){%>
+					<%="col-xs-6 col-xs-offset-3"%>
+				<%}else{%>
+					<%="col-xs-12 text-center"%>
+				<%}%>
+				">
+        <div id="shadow" class="panel">
+            <div class="panel-body">                
+				<% if(success){%>
+					<%= partial('partials_alertSuccess', {
+				        message:message_text
+				  	}) %>
+				<% }else{ %>
+					<%= partial('partials_alertDanger', {
+				        message:message_text
+				  	}) %>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</div>

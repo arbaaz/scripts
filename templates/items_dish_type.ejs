@@ -1,0 +1,68 @@
+<!--  menu progress bar dish type  -->
+<div id="top_navigation" class="row" >
+</div>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <section class="panel">
+        <div class="panel-body">                        
+            <div class="row">    
+              <div class="col-lg-9">
+                <h2>Dish Type</h2>
+              </div>
+              <div class="col-lg-3"> 
+                <div class="col-lg-6"> 
+                  <button class="btn btn-primary pull-right save" ><i class="fa fa-floppy-o"></i> save</button> 
+                </div>
+                <div class="col-lg-6"> 
+                  <a class="btn btn-primary pull-right next" href="#menu_timeline/<%=restaurant_id%>/item_tags" <% if(next_disabled) { %> disabled <% } %> ><i class="fa fa-sign-out"  ></i> Next</a>   
+                </div>
+              </div>    
+            </div>                
+        </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table  table-hover general-table">
+                  <thead>
+                      <tr>
+                          <th >Name</th>
+                          <th>Description</th>
+                          <th>Dish Type</th>
+                      </tr>
+                  </thead>
+                  <tbody class="searchable">
+                    <% _.each(items, function(item, i) { %>                                     
+                      <tr > 
+                        <td class="col-lg-1">
+                            <%= item.get("name") %>
+                        </td>
+                        <td class="col-lg-3">
+                            <p class="text-info">
+                            <%= item.get("description") %>
+                          </p>                                  
+                        </td>
+                        <td class="col-lg-3">
+                          <div class="btn-group" role="group-<%= item.get('id') %>" aria-label="<%= item.get('id') %>">
+                            <button type="button" id="veg-<%= item.get('id') %>" data-id="<%= item.get('id') %>" <% if(item.get("veg_type")=="VEG" ) { %>class="btn btn-success veg"<%} else { %> class="btn btn-white veg" <%}  %>  >Veg</button>
+
+                            <button type="button" id="nonveg-<%= item.get('id') %>" data-id="<%= item.get('id') %>" <% if(item.get("veg_type")=="NON_VEG" ) { %>class="btn btn-danger nonveg"<%} else { %> class="btn btn-white nonveg" <%}  %>  >Non-Veg</button>
+                            
+                            <button type="button" id="egg-<%= item.get('id') %>" data-id="<%= item.get('id') %>" <% if(item.get("veg_type")=="EGG" ) { %>class="btn btn-warning egg"<%} else { %> class="btn btn-white egg" <%}  %> >Egg</button>
+                            
+                            <button type="button" id="jain-<%= item.get('id') %>" data-id="<%= item.get('id') %>" <% if(item.get("veg_type")=="JAIN") { %>class="btn btn-info jain"<%} else { %> class="btn btn-white jain" <%}  %> >Jain</button>
+                            
+                            <button type="button" id="neutral-<%= item.get('id') %>" data-id="<%= item.get('id') %>" <% if(item.get("veg_type")=="NEUTRAL" ) { %>class="btn btn-default neutral"<%} else { %> class="btn btn-white neutral" <%}  %> >Neutral</button>
+
+                          </div>
+                        </td>
+                                
+                      </tr>
+                    <% }); %>                                                 
+                  </tbody>
+                </table>                
+              </div>
+            </div>
+            <hr/>
+    </section>
+  </div>
+</div>
+

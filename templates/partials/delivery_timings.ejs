@@ -1,0 +1,15 @@
+<tr id="timing_row_<%= i %>_<%= j %>">
+  <input type="hidden" id="timing_id_<%= i %>_<%= j %>" name="timing_id_<%= i %>_<%= j %>" value="<%= id %>">
+  <td><label>Timings</label></td>
+  <td><label>Start:</label></td>
+  <td>
+    <input type="text" class="form-control input-sm timing_start_input" name="timing_start_<%= i %>_<%= j %>" id="timing_start_<%= i %>_<%= j %>" placeholder="Start" value="<%= start_time %>" required>
+  </td>
+  <td><label>End:</label></td>
+  <td>
+    <input type="text" class="form-control input-sm timing_end_input" name="timing_end_<%= i %>_<%= j %>" id="timing_end_<%= i %>_<%= j %>" placeholder="End" value="<%= end_time %>" required>
+  </td>
+  <td>
+    <button type="button" class="btn btn-danger btn-sm delete_timing" id="delete_timing_<%= i %>_<%= j %>" data-index="<%= i %>_<%= j %>"><i class="fa fa-times"></i></button>
+  </td>
+</tr>

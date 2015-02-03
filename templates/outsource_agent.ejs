@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-xs-12">
+    <section class="panel">
+      <div class="panel-body">
+        <h3>Restaurants</h3>
+        <hr/>
+        <div class="row">
+          <div class="col-xs-10">
+            <div class="input-group">
+              <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>
+              <input type="text" id="filter" class="form-control input-sm" placeholder="type here..." autocomplete="off">
+            </div>
+          </div>
+            <div class="col-xs-2 pull-right">
+              <a class="btn btn-success btn-sm" href="#/outsource/new"><i class="fa fa-plus-square"></i> Add a new Restaurant</a>
+            </div>                                
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table  table-hover general-table">
+              <thead>
+                  <tr>
+                      <th> # </th>
+                      <th>Name</th>
+                      <th class="hidden-phone">Last updated</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody class="searchable">
+                <% _.each(restaurants, function(restaurant, i) { %>                                     
+                  <tr>
+                    <td>
+                      <p class="text-info">
+                        <%= restaurant.get("form_id") %>
+                      </p>
+                    </td>
+                    <td>
+                        <a><% if (restaurant.get("name") != null) { %><%= restaurant.get("name").substring(0,25) %><% } %></a><br/>
+                        <p class="text-muted">
+                          <i class="fa fa-map-marker" style="color:#fa8564"></i> <% if(get_locality(restaurant.get("locality_id"))){%><%=get_locality(restaurant.get("locality_id"))%><%}else{%><%= "Could not fetch location"%><%} %>
+                        </p>                                    
+                    </td>
+                    <td class="hidden-phone"><span data-livestamp="<%= restaurant.get("updated_at") %>"></span></td>
+                    <td><%= get_status_span(restaurant.get("status")) %></td>
+                    <td>                                        
+                      <a class="btn btn-primary btn-sm" href="#/restaurants/<%= restaurant.id %>/profile"><i class="fa fa-edit"></i> Edit</a> 
+                      <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.id %>/choices"><i class="fa fa-check-square-o" target="_blank"></i> Choices</a>
+                      <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.id %>/items"><i class="fa fa-book" target="_blank"></i> Items</a>                                                                                                        
+                    </td>
+                    <td>
+                      <% if(get_status(restaurant.get('status')) != 'SUBMITTED') { %>
+                        <a class="btn btn-info btn-sm submit" href="javascript:void(0)" target="_blank" id="<%= restaurant.get('id') %>">Submit</a>
+                      <% } %>            
+                      <% if(get_status(restaurant.get('status')) == 'DIFF_ERROR') { %>
+                        <a class="btn btn-info btn-sm " href="/central/app/index.html#diff/<%= restaurant.id %>/<%= restaurant.get('diff_restaurant_id') %>" target="_blank">Error Report </a>
+                      <% } %>                                             
+                    </td>
+                  </tr>
+                <% }); %>                                                 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

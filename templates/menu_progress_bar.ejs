@@ -1,0 +1,23 @@
+<!-- Menu progress bar  -->
+<% if(progress){ %>
+	<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-body" style="padding-bottom: 0px;">
+				    <ul class="breadcrumbs-alt">
+				        <li>
+				            <a <% if(_.findWhere(progress,{state:"spell_check"}).status==1) { %> href="#menu_timeline/<%=restaurant_id%>/spell_check"  class="current" <% } else { %>  <% } %>>Spell Check</a>
+				        </li>
+				        <li>
+				             <a <% if(_.findWhere(progress,{state:"dish_type_tags"}).status==1) {  %> href="#menu_timeline/<%=restaurant_id%>/dish_type_tags" class="current"<% } else { %>  <% } %>>Dish Type</a>
+				        </li>
+				        <li>
+				            <a <% if(_.findWhere(progress,{state:"item_tags"}).status==1) {  %> href="#menu_timeline/<%=restaurant_id%>/item_tags" class="current" <% } else { %>  <% } %>>Item tag</a>
+				        </li>
+				        <li>
+				            <a <% if(_.findWhere(progress,{state:"categorization"}).status==1) {  %> href="#menu_timeline/<%=restaurant_id%>/categorization" class="current"<% } %>>Categorization</a>
+				        </li>
+				    </ul>
+				</div>
+		</div>
+	</div>
+<%}%> 

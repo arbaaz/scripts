@@ -1,0 +1,54 @@
+<h2 class="to_center">Account Details</h2>
+
+<div class="form-group">
+  <!-- render select type: bank_id -->
+  <%= partial('partials_markupSelect', {
+  	id: "bank_id",
+  	label: "Bank",
+  	collection: collection,
+  	name: "restaurant[bank_account_attributes][bank_id]",
+  	bank: bank,
+  	value: bank.bank_id
+  }) %>
+
+  <!-- render the text type for: branch -->
+  <%= partial('partials_markupText', {
+  	id: "branch",
+  	placeholder: "Branch",
+  	label: "Branch",
+  	value: bank.branch,
+  	required: false,
+  	name: "restaurant[bank_account_attributes][branch]"
+  }) %>
+
+  <!-- render the text type for: account_name -->
+  <%= partial('partials_markupText', {
+  	id: "account_name",
+  	placeholder: "Account Name",
+  	label: "Account Name",
+  	value: bank.account_name,
+  	required: true,
+  	name: "restaurant[bank_account_attributes][account_name]"
+  }) %>
+
+  <!-- render the text type for: account_number -->
+  <%= partial('partials_markupText', {
+  	id: "account_number",
+  	placeholder: "Account Number",
+  	label: "Account Number",
+  	value: bank.account_number,
+  	required: false,
+  	name: "restaurant[bank_account_attributes][account_number]"
+  }) %>
+
+  <!-- render the text type for: ifsc -->
+  <%= partial('partials_markupText', {
+  	id: "ifsc",
+  	placeholder: "IFSC",
+  	label: "IFSC Code",
+  	value: bank.ifsc,
+  	required: false,
+  	name: "restaurant[bank_account_attributes][ifsc]"
+  }) %>
+
+</div>

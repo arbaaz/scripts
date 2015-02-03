@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-9">
+            <h2>Item Tagging</h2>
+          </div>
+          <div class="col-lg-3">
+            <div class="col-lg-6">
+              <button id='save' class="btn btn-primary pull-right save" ><i class="fa fa-floppy-o"></i> save</button>
+            </div>
+            <div class="col-lg-6">
+              <a class="btn btn-primary pull-right next" id='js_next' disabled href="#menu_timeline/<%=restaurant_id%>/categorization"><i class="fa fa-sign-out"  ></i> Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table table-hover general-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Action</th>
+                 <%_.each(tag_types,function(x){%>
+                 <th><%=x.tag_type%></th>
+                 <%})%>
+              </tr>
+            </thead>
+            <tbody class="searchable" id="itemViews">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <hr>
+    </section>
+  </div>
+</div>
+<style>
+.tag-remove{
+  padding: 2px;
+}
+.select2-container-multi .select2-choices .select2-search-choice {
+line-height: 1;
+border-radius: 0px;
+font-size: 12px;
+}
+tr:focus{
+  color:black;
+  outline: 3px solid #3366FF;
+  outline-offset: -3px;
+}
+.tags-ul>li{
+  margin-top: 1px;
+}
+ul.tags-ul li span {
+  color:black;
+  border-radius: 5px;
+  padding: 0 2px;
+}
+.tr-color{
+  background-color: #58D3F7;
+  color:black;
+}
+.tr-color:hover{
+  color:black;
+}
+.open>.dropdown-menu{
+height: 200px;
+overflow-y: scroll;
+}
+.select2-container{
+width: 90%!important;
+}
+</style>

@@ -1,0 +1,13 @@
+<div class="form-group">
+	<div class="col-xs-1 visible-xs"></div>
+	<label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"><%= label %></label>
+
+	<div class="col-md-6 col-sm-6 col-xs-6">
+		<select name="<%= name %>" id="<%= id %>" class="form-inline-element input-sm">
+			<option></option>
+			<% _.each(representatives, function(representative) { %>
+				<option value="<%= representative[1] %>" "<% if (value == representative[1]) { %>" selected "<% } %>"><%= representative[0] %></option>
+			<% }); %>
+		</select>
+	</div>
+</div>

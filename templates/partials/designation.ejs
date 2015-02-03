@@ -1,0 +1,100 @@
+<div id="designation_row_<%= index %>">
+	<div class="form-group" >
+		<div class="col-xs-1 visible-xs"></div>
+		<label for="designation" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"><i class="fa fa-user"></i>      * Designation</label>
+	    <div class="col-md-2 col-sm-2 col-xs-2">
+	    	<input type="hidden" name="id_<%= index %>" value="<%= (who != 'undefined') ? who.id : 'new' %>">
+	    	<select name="designation_<%= index %>" id="designation_<%= index %>" class="form-inline-element input-sm designation">
+				<option>other</option>
+				<% _.each(designations, function(designation) { %>
+				<option value="<%= designation %>" "<% if (designation == who.designation) { %>" selected "<% } %>"><%= designation %></option>
+				<% }); %>
+			</select>
+	    </div>
+	    <div class="col-md-3 col-sm-3 col-xs-3">
+			<input type="text" class="form-control input-sm <% if ((who != 'undefined') && ((who.designation == 'OWNER') || (who.designation == 'MANAGER') || (who.designation == 'GENERAL MANAGER'))) { %> hidden <% } %>" name="designation_text_<%= index %>" id="designation_<%= index %>_text" value="<%= (who != 'undefined') ? who.designation : '' %>" placeholder="Designation">
+	    </div>
+		<div class="col-md-1 col-sm-1 col-xs-1">
+			<button class="btn btn-danger btn-sm row_delete label-sm pull-right" data-delete="<%= index %>">X</button>
+		</div>
+	</div>
+
+	<%= partial('partials_markupText', {
+	    id: "name_"+index ,
+	    placeholder: "Name of the Person",
+	    label: "Name of the Person",
+	    name: "name_"+index,
+	    value:(who != 'undefined') ? who.name : "" ,
+	    required:false
+	}) %>
+
+	<div class="form-group">
+    <div class="col-xs-1 visible-xs"></div>
+    <label class="col-sm-4 col-xs-4 control-label">Point of contact ?</label>
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <div class="checkbox">
+      	<input type="checkbox" name="designation_is_poc_<%= index %>" <% if (who.is_poc) { %> checked="true" <% } %>>
+      </div>
+		</div>
+  </div>
+
+	<%= partial('partials_markupText', {
+	    id: "email_" + index ,
+	    placeholder: "Email",
+	    label: "Email",
+	    name: "email_"+index,
+	    value:(who != 'undefined') ? who.email : "" ,
+	    required:false,
+	    type:"email"
+	}) %>
+
+
+	<div class="form-group">
+      	<div class="col-xs-1 visible-xs"></div>
+    	<label class="col-sm-4 col-xs-4 control-label">Email Verified?</label>
+    	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+	      <div class="checkbox">
+	        <input type="checkbox" name="designation_is_verified_<%= index %>" <% if (who.is_verified) { %> checked="true" <% } %>>
+	      </div>
+    	</div>
+    </div>
+    <div class="form-group">
+    	<div class="col-xs-1 visible-xs"></div>
+    	<label class="col-sm-4 col-xs-4 control-label">Email for order forwarding?</label>
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+	      <div class="checkbox">
+	      	<input type="checkbox" name="designation_order_forwarding_<%= index %>" <% if (who.order_forwarding) { %> checked="true" <% } %>>
+	      </div>
+		</div>
+    </div>
+    <br>
+	
+	 <div class="form-group">
+		<input type="hidden" name="contacts_<%= index %>_contact_numbers_count" value="<%= (who != 'undefined' && who.contact_numbers) ? who.contact_numbers.length : 0 %>">
+		<% if (who != 'undefined') { %>
+			<% _.each(who.contact_numbers, function(contact_number, i) { %>
+				<%= partial('partials_contactNumber', {
+					id: contact_number._id,
+					markup_hidden_name: "contacts_" + index + "_contact_numbers_attributes_" + i + "_id",
+					markup_hidden_index: "contacts_" + index + "_contact_numbers_attributes_" + i,
+					markup_select_name: "contacts_" + index + "_contact_numbers_attributes_" + i + "_number_type",
+					markup_input_name: "contacts_" + index + "_contact_numbers_attributes_" + i + "_number",
+					markup_to_delete: "contacts_" + index+ "_contact_numbers_attributes_" + i + "_delete",
+					i: i,
+					number: (contact_number.number == 0) ? "" : contact_number.number,
+					contact_number_types: contact_number_types,
+					number_type: contact_number.number_type,
+					sms: false,
+          is_present_on_counter: false,
+          is_smartphone: false,
+          is_verified: false
+				}) %>
+			<% }) %>
+		<% } %>
+		<div class="hidden-xs">
+			<button type="button" class="btn btn-info btn-sm add_new_btn" data-whois="contacts_<%= index %>">Add new Phone Number</button>
+		</div>
+		<input type="hidden" name="contacts_<%= index %>_delete" id="contacts_<%= index %>_delete" value="false">
+	</div>
+</div>
+</br>

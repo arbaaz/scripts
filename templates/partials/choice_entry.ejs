@@ -1,0 +1,75 @@
+<div class="row choice_row" id="choice_row_<%= i %>">
+	<input type="hidden" id="choice_id_<%= i %>" value="<%= id %>">
+	<div class="col-xs-1"><br><strong id="sr_num_<%= i %>"><%= sr_num %></strong></div>
+	<br>
+	<div class="col-xs-5">
+
+		<div class="form-group">
+	    <label class="col-xs-4 control-label label-sm">Name</label>
+	    <div class="col-xs-8">
+	    	<input class="form-control input-sm col-xs-12 choice_name editing listen_change" id="choice_name_<%= i %>" data-index="<%= i %>" type="text" value="<%= (name) ? name : '' %>" placeholder="Name">
+	    </div>
+	  </div>
+	  <br>
+
+	  <div class="form-group">
+	  	<label class="col-xs-4 control-label label-sm">Label</label>
+	    <div class="col-xs-8">
+	    	<input class="form-control input-sm col-xs-12 choice_label editing listen_change" id="choice_label_<%= i %>" data-index="<%= i %>" type="text" value="<%= (label) ? label : '' %>" placeholder="Label">
+	    </div>
+	  </div>
+	  <br>
+
+	  <div class="form-group">
+	    <label class="col-xs-4 control-label label-sm">Restaurant Label</label>
+	    <div class="col-xs-8">
+	    	<input class="form-control input-sm col-xs-12 choice_label_for_restaurant editing listen_change" id="choice_label_for_restaurant_<%= i %>" data-index="<%= i %>" placeholder="Restaurant label" type="text" value="<%= (label_for_restaurant) ? label_for_restaurant : '' %>">
+	    </div>
+	  </div>
+	  <br>
+
+	  <div class="form-group">
+	  	<label class="col-xs-4 control-label label-sm">Min | Max</label>
+	    <div class="col-xs-4">
+	    	<input class="form-control input-sm col-xs-12 choice_min editing listen_change" id="choice_min_<%= i %>" data-index="<%= i %>" placeholder="Min" type="number" min="0" value="<%= (_.isNumber(min)) ? min : '' %>">
+	    </div>
+	    <!-- <div class="col-xs-2"></div> -->
+	    <div class="col-xs-4">
+	    	<input class="form-control input-sm col-xs-12 choice_max editing listen_change" id="choice_max_<%= i %>" data-index="<%= i %>" placeholder="Max" type="number" min="1" value="<%= (_.isNumber(max)) ? max : '' %>">
+	    </div>
+	  </div>
+	  <br>
+
+    <div class="form-group">
+    	<label class="col-xs-4 control-label label-sm">Description</label>
+	    <div class="col-xs-8">
+	      <textarea rows="3" cols="100" style="resize: none;" class="form-control input-sm choice_description editing listen_change" data-index="<%= i %>" placeholder="Description" id="choice_description_<%= i %>"><%= (description) ? description : '' %></textarea>
+	    </div>
+	  </div>
+  </div>
+
+	<div class="col-xs-1">
+		<button class="btn btn-info btn-sm add_option" id="add_option_<%= i %>" data-index="<%= i %>"><i class="fa fa-plus-square"></i> Option</button>
+		<br><br>
+		<a class="btn btn-danger btn-sm delete_choice" data-index="<%= i %>" id="delete_choice_<%= i %>"><i class="fa fa-trash-o"></i> Choice</a>
+	</div>
+
+	<div class="col-xs-5" id="listing_options_<%= i %>">
+		<input type="hidden" id="last_options_index_<%= i %>" value="<%= (_.isEmpty(options)) ? 0 : options.length %>">
+		<% if (!_.isEmpty(options)) { %>
+			<% $.each(options, function (j, option) { %>
+				<%= partial("partials_choice_option", {
+					id: option.get('id'),
+					name: option.get('name'),
+					veg_type: option.get('veg_type'),
+					max_number: option.get('max_number'),
+					price: option.get('price'),
+					default_check: ((_.filter(defaults, function(d) { if (d == option.get('id')) { return true; } })).length > 0) ? true : false,
+					j: j,
+					i: i
+				}) %>
+			<% }) %>
+		<% } %>
+	</div>
+</div>
+<hr id="choice_hr_<%= i %>">

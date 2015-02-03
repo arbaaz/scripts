@@ -1,0 +1,44 @@
+<div class="modal fade" id="item_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close item_modal_close" data-dismiss="modal" aria-hidden="true" title="Close">&times;</button>
+        <h4 class="modal-title" id="item_modal_label">Edit Item
+        <span id="edit_item_name"></span>
+        <span id="form_errors" style="display:inline-block; text-align:center;"></span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <!-- modal body -->
+        <form class="item-modal-form" id="edit_item_form">
+            <div class="item_form">
+                <label for="item_input_name">Item Name: </label>
+                <input class="item_input_name" name="item_name" placeholder="Item name.." value="<%= item.get('name') %>">
+                <br />
+                <div style="margin-top:9px;">
+                    <label for="description">Description: </label>
+                    <textarea rows="2" cols="50" class="item_desc" id="description" style="width: 65%;" placeholder="Item description.."><%= item.get('description') %></textarea>
+                </div>
+                <div style="margin-top:9px;">
+                    <label for="item_veg_type">Dish Type: </label>
+                    <select name='veg_type' class='item_input_veg_type' id="item_veg_type">
+                        <% _.each(get_collections().veg_types, function(value, key){ %>
+                            <option value="<%= key %>" <% if(key == item.get('veg_type')){ %> selected=selected<%} %>><%= key.replace("_", " ") %></option>
+                        <% }) %>
+                    </select>
+                    <button class='add_size btn btn-info'>Add Size</button>
+                </div>
+            </div>
+
+            <div id="item_modal_sizes">
+            </div>
+        </form><!-- end of form body -->
+      </div>
+      <div class="modal-footer">
+        <div id="notification_save"></div>
+        <button type="button" class="btn btn-primary save_item" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-default item_modal_close" data-dismiss="modal">Close</button>
+    </div>
+    </div>
+  </div>
+</div>

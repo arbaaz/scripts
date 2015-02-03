@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel">
+      <div class="panel-body">
+        <section id="alerts"></section>
+        <h3 class="to_center">  <% if(promotion) { %> Update Promotion  <% }%> <% if(!promotion) { %> Create new Promotion  <% }%> </h3>
+        <hr/>
+        <form role="form" class="form-horizontal" id="promotion_form" method="POST">
+          <!-- render the text type for: form_id -->
+          <%= partial('partials_markupText', {
+            id: "name",
+            placeholder: "Enter name of the promotion",
+            label: "Name",
+            name: "name",
+            value: promotion ? promotion.name : "" ,
+            required: true
+          }) %>
+          <!-- render the text type for: form_id -->
+          <%= partial('partials_markupText', {
+            id: "description",
+            placeholder: "Enter description",
+            label: "Description",
+            name: "description",
+            value: promotion ? promotion.description : "",
+            required: false
+          }) %>
+          <%= partial('partials_markupDate', {
+            id1: "start_date",
+            id2:"start_time",
+            label: "Start Date",
+            name: "start_date",
+            value1: promotion ? getDate(promotion.valid_from) : "",
+            value2: promotion ? getTime(promotion.valid_from) : "",
+            required: true
+          }) %>
+          <%= partial('partials_markupDate', {
+            id1: "end_date",
+            id2:"end_time",  
+            label: "End Date",
+            name: "end_date",
+            value1: promotion ? getDate(promotion.valid_till) : "",
+            value2: promotion ? getTime(promotion.valid_till) : "",
+            required: true
+          }) %>
+          <%= partial('partials_markupText', {
+            id: "priority",
+            placeholder: "Enter priority of the promotion",
+            label: "Priority",
+            name: "priority",
+            value: promotion ? promotion.priority : 1,
+            required: false
+          }) %>
+
+
+          <div class="form-group">
+            <div class="col-xs-1 visible-xs"></div>
+            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Promotion type</label>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <select class="form-control col-md-6" id="type" name="promotion_type">
+                <option value="-1" selected> --Select-- </option>                  
+                  <% _.each(window.collections.promotion_type,function(i,promo_type,j){%>
+                    <option value="<%=i%>" "<% if(promotion) { if (promotion.promotion_type == i) { %>" selected "<% } } %>" ><%=promo_type%></option>
+                  <%});%>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-1 visible-xs"></div>
+              <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Status</label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <select class="form-control col-md-6" id="status" name="status">
+                  <option value="-1" selected> --Select-- </option>                       
+                    <% _.each(window.collections.status,function(i,stat,j){%>
+                      <%if(i==2 || i==3){ %>
+                        <option value="<%=i%>" "<% if(promotion) { if (promotion.status == i) { %>" selected "<% } } %>" ><%=stat%></option>
+                      <% } %>
+                    <%});%>
+                </select> 
+              </div>
+          </div>
+
+          <%if(promotion && !_.isEmpty(promotion.promotion_banner_url)) { %>
+           <div class="form-group">
+            <div class="col-xs-1 visible-xs"></div>
+            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Promotion Image</label>
+            <div class="col-md-6 col-sm-6 col-xs-6"> 
+              <img id="promo_image" src="<%= promotion.promotion_banner_url+"?"+ new Date().getTime()/1000 %>" style="width:200px; height:100px;">
+            </div>
+          </div>
+          <% } %>
+
+          <div class="form-group" id="restaurants">
+            <div class="col-xs-1 visible-xs"></div>
+            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"> * Restaurants</label>
+            <div class="col-md-8 col-sm-8 col-xs-8">
+              <select id="virtual-restaurants" name="restaurant_ids" multiple>
+                <% _.each(virtual_restaurants, function(virtual_restaurant){ %>
+                  <% if(promotion && _.contains(promotion.restaurant_ids, virtual_restaurant.id)){ %>
+                    <option value="<%= virtual_restaurant.id %>" selected><%= virtual_restaurant.name %> <%= "(" %>   <%= virtual_restaurant.form_id %>    <%= ")" %> 
+                    </option>
+                  <% }else{ %>
+                    <option value="<%= virtual_restaurant.id %>"><%= virtual_restaurant.name %>  <%= "(" %>   <%= virtual_restaurant.form_id %>    <%= ")" %>  
+                    </option>
+                  <% } %>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+
+          <div id="item_space"></div>
+  
+          <div class="form-group" id="banners">
+            <div class="col-xs-1 visible-xs"></div>   
+            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"> * Banner</label>
+              <input type="file" name="banner" id="banner" class="input-sm col-md-8 col-sm-8 col-xs-8">
+               <button class="btn btn btn-success" id="delete_banner_button" style="margin-left:213px; font-size: 10px;"> Delete Banner</button>
+            </div>
+          </div>
+          <hr/>
+          <div class="to_center">
+            <% if(promotion){ %>
+            <input type="submit" class="btn btn btn-success edit_promotion submit-form" value="Update"></input>
+            <% } %>
+            <% if(promotion==null){ %>
+            <input type="submit" class="btn btn btn-success submit-form" id="create_new_button" value="Create"></input>
+            <% } %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

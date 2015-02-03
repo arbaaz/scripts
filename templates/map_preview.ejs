@@ -1,0 +1,39 @@
+<div id="top_navigation">
+</div>
+
+<div class="row hidden-xs" id="map_loader" style="opacity:1;zoom:0">
+  <div class="col-xs-12">
+    <div class="panel">
+      <div class="panel-body clearfix">
+        <div class='row'>
+          <div class='col-sm-4'>
+              <h4 class="pull-left"> Delivery Areas <span id="polygon_name" class="small"></span></h4>
+          </div>
+          <div class='col-sm-3'>
+             <div class="btn-group pull-right">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                 Heat Map <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li id="delivery_time"><a>Delivery Time</a></li>
+                <li id="minimum_order"><a>Minimum Order amount</a></li>
+                <li class="hidden" id="normal_view"><a>Back to normal View</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+              <button class="btn btn-warning btn-sm pull-right show_all" id="on">Show All</button>
+          </div>
+          <div class='col-sm-2'>
+              <a class="btn btn-danger btn-sm pull-right" id="close_locality_group_preview" href="#restaurants/<%= id %>/deliveryArea"><i class="fa fa-times"></i> Close Map Preview </a>      
+          </div>
+        </div>
+        
+        
+        <div id="map-canvas">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

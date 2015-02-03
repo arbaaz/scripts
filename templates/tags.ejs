@@ -1,0 +1,36 @@
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-4 col-lg-offset-2 col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control"  autofocus="autofocus" placeholder="Enter Tag" required="true" id="newTag"  name="tag">
+      <div class="input-group-btn">
+        <select name="type" class="form-control"  id="tagType">
+          <option value="0" selected>Type</option>
+          <%_.each(tag_type,function(item){%>
+          <option value="<%=item.value%>"><%=item.tag_type%></option>
+          <%})%>
+        </select>
+        <button class="btn btn-success js-tag-add" type="button">Add Tag</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+     <%_.each(tag_type,function(item){%>
+          <div class="col-lg-2 col-md-2"><h3><%=item.tag_type%></h3>
+             <%var tag_model = collection.where({tag_type:item.value})%>
+             <ul>
+               <%_.each(tag_model,function(model){%>
+               <li><%=model.get('tag')%>
+                 <i data-id="<%=model.get('id')%>" class="fa fa-pencil-square-o js-tag-edit"></i>
+                 <i data-id="<%=model.get('id')%>" class="fa fa-times  js-tag-delete"></i>
+               </li>
+               <%})%>
+             </ul>
+          </div><!-- col-lg-2 -->
+    <%})%>
+</div>
+
+
+

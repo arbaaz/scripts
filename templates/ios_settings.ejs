@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-body">
+        <form role="form" class="form-horizontal" id="ios_settings_form" method="POST">
+          <div class="form-group">
+            <div class="col-md-2 col-md-offset-9">
+              <a class="btn btn-info btn-sm" href="#ios-releases"> Ios Releases <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1">
+              <label for="current_version" class="control-label">App Version</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control input-sm" name="current_version" id="ios_versions">
+              <% _.each(ios_settings.versions,function(version) { %>
+                <option value= "<%=version%>" <%= current_version== version ? 'selected' : '' %> ><%=version%></option>
+              <%}); %>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1">
+              <label for="IOS_PROCESS_DISPLAY_STRINGS" class="control-label">Process Display Strings</label>
+            </div>
+            <div class="col-md-6">
+              <input type="hidden" name="PROCESS_DISPLAY_STRINGS" value="off">
+              <input type="checkbox" class="form-control input-sm" name="PROCESS_DISPLAY_STRINGS" <% if(ios_settings.PROCESS_DISPLAY_STRINGS=="true"){%> <%= "checked" %> <% }%> >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1">
+              <label for="IOS_FORCE_VERIFY_NEW_USERS" class="control-label">Force Verify New Users</label>
+            </div>
+            <div class="col-md-6">
+              <input type="hidden" name="FORCE_VERIFY_NEW_USERS" value="off">
+              <input type="checkbox" class="form-control input-sm" name="FORCE_VERIFY_NEW_USERS"  <% if(ios_settings.FORCE_VERIFY_NEW_USERS=="true"){%> <%= "checked" %> <% }%>  >
+            </div>
+          </div>
+          <hr/>
+          <div class="to_center">
+            <button type="Create" class="btn btn btn-success" id="edit_ios_settings">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

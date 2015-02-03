@@ -1,0 +1,57 @@
+
+
+
+<div class="form-group">
+	<hr>
+	<div class="col-md-1 col-sm-1 hidden-xs">
+		<div style="padding-left: 25px;">
+			<button class="btn btn-danger btn-sm row_delete label-sm" data-delete="<%= index %>">X</button>
+		</div>
+	</div>
+	<div class="col-md-2 col-sm-3 col-xs-3">
+		<div class="col-xs-12">
+			<input type="hidden" name="id_<%= index %>" value="new">
+			<select name="designation_<%= index %>" id="designation_<%= index %>" class="form-inline-element input-sm designation">
+				<option selected>other</option>
+				<% if (names.length > 0) { %>
+					<% _.each(names.split(","), function(person) { %>
+						<option value="<%= person %>"><%= person %></option>
+					<% }); %>
+				<% } %>
+			</select>
+			<div style="width: 147px; margin-top: 15px;">
+				<input type="text" class="form-control input-sm" name="designation_text_<%= index %>" id="designation_<%= index %>_text" value="" placeholder="Enter designation">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-3 col-xs-4">
+		<div class="col-xs-12">
+			<input type="text" class="form-control input-sm" name="name_<%= index %>" id="name_<%= index %>" placeholder="Name of the Person" value="">
+		</div>
+	</div>
+	<div class="col-md-6 col-sm-5 col-xs-3 label-sm">
+		<input type="hidden" name="contacts_<%= index %>_contact_numbers_count" value="1">
+
+		<div class="col-xs-12">
+			<%= partial('partials_contactNumber', {
+				id: "new",
+				markup_hidden_name: "contacts_" + index + "_contact_numbers_attributes_" + 0 + "_id",
+				markup_hidden_index: "contacts_" + index + "_contact_numbers_attributes_" + 0,
+				markup_select_name: "contacts_" + index + "_contact_numbers_attributes_" + 0 + "_number_type",
+				markup_input_name: "contacts_" + index + "_contact_numbers_attributes_" + 0 + "_number",
+				markup_to_delete: "contacts_" + index + "_contact_numbers_attributes_" + 0 + "_delete",
+				i: 0,
+				number: "",
+				contact_number_types: contact_number_types,
+				number_type: "",
+				sms: false,
+        is_present_on_counter: false,
+        is_smartphone: false,
+        is_verified: false
+			}) %>
+			<button type="button" class="btn btn-info btn-sm add_new_btn" data-whois="contacts_<%= index %>">Add new Phone Number</button>
+		</div>
+	</div>
+	<input type="hidden" name="contacts_<%= index %>_delete" id="contacts_<%= index %>_delete" value="false">
+	<input type="hidden" name="row_counter" id="row_counter" value="<%= (counter + 1) %>">
+</div>

@@ -1,0 +1,92 @@
+<div id="top_navigation">
+</div>
+
+<div class="row">
+  <!-- form component -->
+  <div class="col-xs-12"  id="delivery_area_list">
+
+    <div class="panel">
+      <div class="panel-body">
+      <a type="button" class="btn btn-white btn-sm pull-right preview_locality_group hidden-xs" disabled data-index = "" href="#restaurant/<%= restaurant.id%>/map_preview" target="_blank">
+        <i class="fa fa-map-marker" style="color:#fa8564" ></i> Map Preview 
+      </a>
+      <h3 class="to_center">Delivery Areas</h3>
+      <hr>
+      
+        <form accept-charset="UTF-8" class="form-horizontal" id="delivery_area_form" method="post" enctype="multipart/form-data">
+
+          <input type="hidden" value="<%= restaurant.get('id') %>" name="id" id="id">
+
+          <input type="hidden" name="delivery_area_count" value="<%= deliveryAreas.length %>">
+          <div class="form-group">
+            <label for="locality_filter" class="col-md-3 control-label" style="padding-top:2px">Select a locality: </label>
+            <div class="col-md-8">
+              <select name="locality_filter" id="locality_filter" class="" >
+                <option value="" selected="selected"></option>
+                <% _.each(window.collections.localities, function(locality) { %>
+                  <% if(!locality.parent_id){ %>
+                    <option value="<%= locality.id %>"><%= locality.name %></option>
+                  <% } %>
+                <% }) %>
+              </select>
+              &nbsp;
+          
+              <button type="button" class="btn btn-danger btn-sm" id="clear_filter"><i class="fa fa-times"></i> Clear</button>
+            </div>
+            <br/><br/>
+            <div>
+              <label class="col-md-3 control-label" style="padding-top:2px">Selected localities: </label>
+              <div id="locality_tags" class="col-md-8">
+                <% _.each(window.collections.localities, function(locality, i) { %>
+                  <% if (tags[locality.id] != undefined) { %>
+                    <span class="label label-primary" style="background: #1fb5ad; margin-right: 2px;" id="selected_locality_<%= locality.id %>"><%= locality.name %>: <span class="badge" id="selected_badge_<%= locality.id %>" style="background: #1fb5ad; padding-top: 2px; margin-left: 2px;"><%= tags[locality.id] %></span></span>
+                    <% total += 1 %>
+                  <% } %>
+                  <% if (total == deliveryAreas.length) { return false } %>
+                <% }) %>
+                <span class="label label-primary pull-right" style="background: #1fb5ad;" id="total_localities">Total : <span class="badge" id="total_badge" style="background: #1fb5ad; padding-top: 2px; margin-left: 2px;"><%= deliveryAreas.length %></span></span>
+              </div>
+            </div>
+
+            
+          </div>
+          <hr/>
+      <table class="table table-hover delivery_area_table">
+
+        <thead>
+          <th class="" >Sub-Locality</th>
+          <th class="delivery_time">Min Delivery Amount</th>
+          <th class="delivery_time">Delivery Charges</th>
+          <th class="delivery_time">Delivery Time Non Rush Hours (In minutes)</th>
+          <th class="delivery_time">Delivery Time Rush hours (In minutes)</th>
+          <th class="delivery_time">Express?</th>
+        </thead>
+
+        <tbody>
+          <% _.each(deliveryAreas, function(deliveryArea, i) { %>
+            <%= partial('partials_deliveryArea', {
+              i: i,
+              deliveryArea: deliveryArea,
+              localities: window.collections.groups,
+              group_map: group_map
+            }) %>
+          <% }) %>
+        </tbody>
+
+      </table>
+
+          <br>
+
+          <button type="button" class="btn btn-info btn-sm add_delivery_area"><i class="fa fa-plus"></i> Add Delivery Area</button>
+
+          <div class="submit_div">
+            <input type="submit" class="btn btn-primary" value="Save Changes" id="save_changes_locality">
+          </div>
+
+
+        </form>
+        
+      </div>
+    </div><!-- end well -->
+  </div>
+</div><!-- end row -->

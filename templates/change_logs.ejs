@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-body">
+        <% _.each(change_logs, function(change_log){ %>
+          <div class="row">
+            <div class="col-sm-1 terques-bg white" style="padding:30px 15px;">
+              <h4><%=change_log.get("change_type")%></h4>
+            </div>
+            <div class="col-sm-11">
+              <i class="fa fa-user"></i> <%=change_log.get("user_name")%>              
+              <span class="muted"><%=timeConverter(change_log.get("changed_at"))%></span>
+              <br/>
+              <div class="well">
+                <%_.each(change_log.get("change_logs"), function(log){ %>
+                  From <code><%=log[0]?log[0]:"None"%></code> to <code><%=log[1]%></code>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+          <hr/>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>

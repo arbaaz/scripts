@@ -1,0 +1,37 @@
+<!-- Modal for category description -->
+<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="Close">&times;</button>
+        <h4 class="modal-title" id="myCategoryModalLabel">
+          <span></span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div style="margin-top:9px;">
+                <label for="name_title">Name: </label>
+                <input id="category_name" value="<%= category.get('name') %>" />
+            </div>
+            <div style="margin-top:9px;">
+                <label for="description_title">Description: </label>
+                <textarea rows="4" cols="50" class="item_desc" id="category_description"><%= category.get('description') %></textarea>
+            </div>
+        </form>
+  
+        <form>
+            <div style="margin-top:9px;">
+                <label for="menu_items_count">Items Count: </label>
+                <input type="number" class="item_desc" id="menu_items_count" style="width: 65%;" value="<%= category.get('items_count') %>">
+            </div>
+        </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary modal_category_save" data-dismiss="modal" >Save Changes</button>
+        <button type="button" class="btn btn-default modal_category_close" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

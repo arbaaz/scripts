@@ -1,0 +1,7 @@
+<div class="form-group">
+  <div class="col-xs-1 visible-xs"></div>
+	<label for="<%= id %>" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"><%= required ? "* " : ""%><%= label %></label>
+	<div class="col-md-6 col-sm-6 col-xs-6">
+	  <input <% if(typeof(type) != "undefined") { %> type="<%= type %>"<% } else { %> type="text" <% } %> class="form-control input-sm" name="<%= name %>" id="<%= id %>" placeholder="<%= placeholder %>" <% if(value != "") { %> value="<%= value %>" <% } %> <%= required ? "required" : ""%><% if(typeof(pattern) != "undefined") { %> pattern="<%= pattern %>"<% } %> <% if(typeof(title) != "undefined") { %> title="<%= title %>"<% } %>>
+	</div>
+</div>

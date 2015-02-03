@@ -1,0 +1,323 @@
+
+<!-- restaurant diff report for infinx -->
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <div class="panel-body">                         
+            <div class="row">             
+                <div class="col-lg-3">
+                    <h4> Restaurant Diff </h4>
+                </div>                          
+            </div>
+        </div>
+    </section>
+  </div>
+</div>
+<% if(Object.keys(diff_restaurant).length == 0 && diff_timings.length == 0 && diff_menu_items.length == 0  && diff_choices.length ==0) {%>
+    <div class="row">             
+        <div class="col-lg-3">
+          <h5> No diff found. </h5>
+        </div>                          
+    </div>
+<% }%>
+<div class="row">
+  <div >
+  </div>
+  <% if(Object.keys(diff_restaurant).length > 0) {%>
+    <div class="col-md-2 tile" >
+      <div class="panel">
+        <span class="label label-danger pull-right">Profile</span><br/>
+        <div class="panel-body">
+          <div class="top-stats-panel">
+            <table class="table  general-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody class="searchable">
+                <tr>
+                  <td style="color:red">
+                    <%= diff_restaurant["Name"] %>
+                  </td>
+                </tr>
+              </tbody>
+            </table> 
+          </div>
+        </div>
+      </div>
+  </div>
+  <% } %>
+
+  <% if(diff_timings.length>0) {%>
+    <div class="col-md-3 tile" >
+      <div class="panel">
+        <span class="label label-danger pull-right">Timings</span><br/>
+        <div class="panel-body">
+          <div class="top-stats-panel">
+             <%if(diff_timings[0].ERROR) { %>
+              <span style="color:red">Timing <%= diff_timings[0].ERROR %></span>
+            <% } else { %>
+              <table class="table  general-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Start</th>
+                    <th>End</th>
+                  </tr>
+                </thead>
+                <tbody class="searchable">
+                  <% _.each(diff_timings, function(timing){ %>
+                    <tr>
+                      <%if(timing.compare_on_error) { %>
+                        <td style="color:red">
+                           <%= timing["Name"] %> 
+                        </td>
+                      <%} else{ %>
+                        <td>
+                           <%= timing["Name"] %> 
+                        </td>
+                      <% }%>
+                      <td style="color:red">
+                        <%= timing["Start"] ? to_hours(timing["Start"]) : "" %> 
+                      </td>
+                      <td style="color:red">
+                        <%= timing["End"] ? to_hours(timing["End"]) : "" %> 
+                      </td>
+                    </tr>
+                    <%}); %>
+                </tbody>
+              </table>
+            <% } %>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% } %>
+
+<% if(diff_choices.length>0) { %>
+    <div class="col-md-9 tile" >
+      <div class="panel">
+        <span class="label label-danger pull-right">Choices</span><br/>
+        <div class="panel-body">
+          <div class="top-stats-panel">
+            <%if(diff_choices[0].ERROR) { %>
+              <span style="color:red">Choice <%= diff_choices[0].ERROR %></span>
+            <% } else { %>
+                <table class="table  general-table">
+                  <thead>
+                    <tr>
+                      <th>Label</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Min</th>
+                      <th>Max</th>
+                      <th>Label for restaurant</th>
+                      <th>Defaults</th>
+                      <th>Choice Options</th>
+                    </tr>
+                  </thead>
+                  <tbody class="searchable">
+                <% _.each(diff_choices, function(choice){ %>
+                  <tr>
+                      <%if(choice.compare_on_error) { %>
+                        <td style="color:red">
+                           <%= choice["Label"] %> 
+                        </td>
+                      <%} else{ %>
+                        <td>
+                           <%= choice["Label"] %> 
+                        </td>
+                      <% }%>
+                      <td style="color:red">
+                        <%= choice["Name"] %> 
+                      </td>
+                      <td style="color:red">
+                        <%= choice["Description"] %> 
+                      </td>
+                      <td style="color:red">
+                        <%= choice["Min"] %> 
+                      </td>
+                      <td style="color:red">
+                        <%= choice["Max"] %> 
+                      </td>
+                      <td style="color:red">
+                        <%= choice["Label for restaurant"] %> 
+                      </td>
+                      <td style="color:red">
+                        <% if(choice["Defaults"] && choice["Defaults"].length==0) { %>
+                          Default mismatched
+                        <% } else {%>
+                        <%= choice["Defaults"] %> 
+                        <% }%>
+                      </td>
+                      <td>
+                        <%if(choice["Choice Options"] && choice["Choice Options"][0].ERROR) {  %>
+                          <span style="color:red">Choices <%= choice["Choice Options"][0].ERROR %></span>
+                        <% } else if(choice["Choice Options"]){ %>
+                          <table class="table general-table">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Max</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% _.each(choice["Choice Options"],function(option) { %> 
+                              <tr>
+                                <% if(option["compare_on_error"]) {%>
+                                  <td style="color:red">
+                                    <%= option["Name"] %>
+                                  </td>
+                                <% }  else {%>
+                                  <td>
+                                    <%= option["Name"] %>
+                                  </td>
+                                <% }%>
+                                <td style="color:red">
+                                  <% if(option["Veg type"] == "") { %>
+                                    Type mismatched
+                                  <% } else {%>
+                                  <%= option["Veg type"] %> 
+                                  <%}%>
+                                </td>
+                                <td style="color:red">
+                                  <%= option["Max number"] %> 
+                                </td>
+                                <td style="color:red">
+                                  <%= option["Price"] %> 
+                                </td>
+                              <% }); %>
+                            </tr>
+                            </tbody>
+                          </table>
+                        <% } %>
+                      </td>
+                  </tr>             
+                <%}); %>
+                </tbody>
+              </table>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+ 
+  <% if(diff_menu_items.length>0) { %>
+    <div class="col-md-6 tile" >
+      <div class="panel">
+        <span class="label label-danger pull-right">Menu Items</span><br/>
+        <div class="panel-body">
+          <div class="top-stats-panel">
+            <%if(diff_menu_items[0].ERROR) { %>
+              <span style="color:red">Item <%= diff_menu_items[0].ERROR %></span>
+            <% } else { %>
+                <table class="table general-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>APS/APC</th>
+                      <th>Size</th>
+                    </tr>
+                  </thead>
+                  <tbody class="searchable">
+                <% _.each(diff_menu_items, function(menu_item){ %>
+                  <tr>
+                      <%if(menu_item.compare_on_error) { %>
+                        <td style="color:red">
+                           <%= menu_item["Name"] %> 
+                        </td>
+                      <%} else{ %>
+                        <td>
+                          <%= menu_item["Name"] %> 
+                        </td>
+                      <% }%>
+                    </td>
+                    <td style="color:red">
+                      <% if(menu_item["Description"] == "") { %>
+                        Description missing
+                      <% } else {%>
+                        <%= menu_item["Description"] %> 
+                      <%}%>
+                    </td>
+                    <td style="color:red">
+                     <%= menu_item["APS/APC"] %>
+                    </td>
+                    <td>
+                      <%if(menu_item["Item Sizes"] && menu_item["Item Sizes"][0].ERROR) {  %>
+                        <span style="color:red">Sizes <%= menu_item["Item Sizes"][0].ERROR %></span>
+                      <% } else if(menu_item["Item Sizes"]){ %>
+                        <table class="table general-table">
+                          <thead>
+                            <tr>
+                              <th>Size</th>
+                              <th>Choice</th>
+                              <th>Choice Label</th>
+                              <th>Prices</th>
+                            </tr>
+                          </thead>
+                          <tbody class="searchable">
+                            <% _.each(menu_item["Item Sizes"],function(size) { %> 
+                              <tr>
+                                <% if(size["compare_on_error"]) {%>
+                                  <td style="color:red">
+                                    <%= size["Size"] %>
+                                  </td>
+                                <% }  else {%>
+                                  <td>
+                                    <%= size["Size"] %>
+                                  </td>
+                                <% }%>
+
+                                <td style="color:red">
+                                  <% if(size["Choices"] == "") { %>
+                                    Choice mismatched
+                                  <% } else {%>
+                                    <%= size["Choices"] %> 
+                                  <%}%>
+                                </td>
+                                <td style="color:red">
+                                  <% if(size["Choice Label"] == "") { %>
+                                    Choice mismatched
+                                  <% } else {%>
+                                    <%= size["Choice Label"] %> 
+                                  <%}%>
+                                </td>
+                                <td>
+                                  <%if(size["Item Prices"] && size["Item Prices"][0].ERROR) { %>
+                                    <span style="color:red">Prices <%= size["Item Prices"][0].ERROR %></span>
+                                  <% } else {%>
+                                  <% _.each(size["Item Prices"],function(price) { %> 
+                                    <%if(price.compare_on_error) { %>
+                                      <span style="color:red">
+                                        <li> <%= price["Timing"] %> </li>
+                                      </span>
+                                    <%} else{ %>
+                                      <li><span style="color:red"><%= price["Price"] %></span> => <%= price["Timing"] %> </li>
+                                    <% }%>
+                                  <% });%>
+                                  </span>
+                                  <% } %>
+                                </td>
+                              </tr>
+                           <% });%>
+                           </tbody>
+                          </table>
+                        <%}%>
+                    </td>
+                  </tr>             
+                <%}); %>
+                </tbody>
+              </table>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

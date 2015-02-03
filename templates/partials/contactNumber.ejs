@@ -1,0 +1,57 @@
+<div class="form-group">
+	<div class="col-xs-1 visible-xs"></div>
+	<label class="col-md-4 col-sm-4 col-xs-3 control-label label-sm"><% if(sms) {%><i class="fa fa-phone fa-lg"> </i><% }%> Tel No.</label>
+
+	<div class="col-md-8 col-sm-8 col-xs-8">
+		<input type="hidden" name="<%= markup_hidden_name %>" value="<%= id %>">
+
+		<input type="hidden" name="<%= markup_hidden_index %>" value="<%= i %>">
+
+		<select name="<%= markup_select_name %>" class="form-inline-element input-sm">
+			<% _.each(contact_number_types, function(contact_number_type) { %>
+				<option <% if (number_type == contact_number_type[1]) { %>selected <% } %> value="<%= contact_number_type[0] %>"><%= contact_number_type[1] %></option>
+			<% }); %>
+		</select>
+
+		<input type="text" class="form-control input-sm display-inline" name="<%= markup_input_name %>" placeholder="Tel No." value="<%= number %>" pattern="0|([0-9]{10})" title="Phone number should be 10 digits, like 9920734295 or 2288888888, Else you can leave it empty">
+
+		<input type="hidden" name="<%= markup_to_delete %>" value="false">
+
+		<a class="btn btn-danger btn-sm to_delete hidden-xs" data-delete-name="<%= markup_to_delete %>" data-delete-input="<%= markup_input_name %>">
+			<strong>x</strong>
+		</a>
+	</div>
+</div>
+<% if(sms) { %>
+    <!-- Phone checks -->
+    <div id="sms_checks_<%= i %>">
+    	<div class="row">
+        <div class="col-xs-1 visible-xs"></div>
+          <label class="col-sm-4 col-xs-4 control-label">Smart phone? </label>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="checkbox">
+              <input type="checkbox" name="phone_numbers_for_sms_contact_numbers_<%= i %>_is_smart_phone" <% if (is_smartphone) { %> checked="true" <% } %>>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-xs-1 visible-xs"></div>
+            <label class="col-sm-4 col-xs-4 control-label">Present on counter? </label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="checkbox">
+                    <input type="checkbox" name="phone_numbers_for_sms_contact_numbers_<%= i %>_is_present_on_counter" <% if (is_present_on_counter) { %> checked="true" <% } %>>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-1 visible-xs"></div>
+            <label class="col-sm-4 col-xs-4 control-label">Verified? </label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="checkbox">
+                    <input type="checkbox" name="phone_numbers_for_sms_contact_numbers_<%= i %>_is_verified" <% if (is_verified) { %> checked="true" <% } %>>
+                </div>
+            </div>
+        </div>
+      </div>
+  </br>
+<%}%>

@@ -1,0 +1,217 @@
+ <div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <div class="panel-body"> 
+          <section id="alerts"></section>                           
+            <div class="row">             
+                <div class="col-lg-5">
+                  <h4> Profile Logs   <%= " for "  %>  <%= restaurant ? restaurant.name : "" %> <%= restaurant ? "(" + restaurant.form_id + ")" : "" %>  </h4>
+                </div>     
+            </div>
+            <hr/>
+                <div class="row">             
+                  <div class="col-xs-12 text-center">
+                    <p class="lead stats">
+                          <span> Total Logs: <span class=""><strong><%= total ? total : 0 %></strong></span>
+                    </p>
+                    <ul class="pagination pagination-sm">
+                      <% var page_num = page;
+                        var start_page = (page_num-7 > 0)? page_num -7 : 1; 
+                        var total_pages = parseInt(total/10) + 1;
+                        var max_pages = _.min([start_page + 15, total_pages]);
+                        %>
+
+                      <li><a id="1" class="page_number">First</a></li>
+                      <li><a id="previous" class="page_number">«</a></li>
+                      <%
+                        for(j=start_page;j<=max_pages;j++){ %>
+                          <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>  
+                      <% } %> 
+                                  
+                      <li><a id="next" class="page_number">»</a></li>
+                      <li><a id="<%=total_pages %>" class="page_number">Last</a></li>
+                      <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+                      <input type="hidden" value="<%= total_pages %>" id="total_page_num" >
+                    </ul>
+                    
+                    <h5> 10 Logs per page </h5>
+                  </div>
+                </div>
+                <hr/>
+                <% if(!versions) { %>
+                <h6 class="red">
+                     No logs to display.
+                </h6>
+                <% } %>
+            
+            <% _.each(versions, function(version, i) { %>  
+              <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 well">
+                  <h5> <%= version.vtype +'D' %> 
+                        <%= version.depth %> : <%= version.meta.version_identifier  %>
+                  </h5>
+                  <h6 class="red">
+                        DATED: <%= version.created_at.split('T').join('  ') %> 
+                  </h6>
+                  <% if(version.vtype === "UPDATE") { %>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <table class="table  table-hover general-table">
+                          <thead>
+                            <tr>
+                              <th>Item</th>
+                              <th>Old value</th>
+                              <th>New value</th>
+                            </tr>
+                          </thead>
+                          <tbody class="searchable">
+                         <% _.each(version.diff,function(v,k,diff){ %>
+                              <tr> 
+                                <td class="col-lg-4">
+                                  <p class="text-info">
+                                  <%= k %>
+                                  </p>
+                                </td>
+                                <td class="col-lg-4">
+                                    <% if(typeof(v[0])==='object') { %>
+                                      <% _.each(v[0],function(item){ %>
+                                        <div >
+                                          <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th class="col-lg-6">Item</th>
+                                                <th class="col-lg-6">Value</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% _.each(item,function(value,key,item){ %>
+                                                  <%if(key != 'Id') {%>
+                                                    <tr>
+                                                      <td>
+                                                        <%= key %>
+                                                      </td>
+                                                      <td>
+                                                        <% if(typeof(value)==='object'){%>
+                                                          <% _.each(value,function(item){ %>
+                                                                <div >
+                                                                  <table class="table">
+                                                                    <thead>
+                                                                      <tr>
+                                                                        <th class="col-lg-6">Item</th>
+                                                                        <th class="col-lg-6">Value</th>
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <% _.each(item,function(value,key){ %>
+                                                                        <% if(key != 'Id') {%>
+                                                                          <tr>
+                                                                            <td>
+                                                                              <%= key %>
+                                                                            </td>
+                                                                            <td><p class="text-danger">
+                                                                              <%= value %></p>
+                                                                            </td>
+                                                                            </td>
+                                                                          </tr>
+                                                                          <%}%>
+                                                                        <%})%>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </div>
+                                                              <%})%>
+                                                          <%} else {%><p class="text-danger">
+                                                            <%= value %></p>
+                                                          <% } %>
+                                                        </td>
+                                                      </tr>
+                                                    <%}%>
+                                                <%})%>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      <%})%>
+                                    <%} else { %><p class="text-danger">
+                                    <%= v[0] %></p>
+                                    <% } %>
+                                </td>
+                                <td class="col-lg-4">
+                                  <% if(typeof(v[1])==='object') { %>
+                                      <% _.each(v[1],function(item){ %>
+                                        <div >
+                                          <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th class="col-lg-6">Item</th>
+                                                <th class="col-lg-6">Value</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% _.each(item,function(value,key){ %>
+                                                <% if(key != 'Id') {%>
+                                                  <tr>
+                                                    <td>
+                                                      <%= key %>
+                                                    </td>
+                                                    <td>
+                                                      <% if(typeof(value)==='object'){%>
+                                                            <% _.each(value,function(item){ %>
+                                                              <div >
+                                                                <table class="table">
+                                                                  <thead>
+                                                                    <tr>
+                                                                      <th class="col-lg-6">Item</th>
+                                                                      <th class="col-lg-6">Value</th>
+                                                                    </tr>
+                                                                  </thead>
+                                                                  <tbody>
+                                                                      <% _.each(item,function(value,key){ %>
+                                                                        <% if(key != 'Id') {%>
+                                                                        <tr>
+                                                                          <td>
+                                                                            <%= key %>
+                                                                          </td>
+                                                                          <td><p class="text-danger">
+                                                                            <%= value %></p>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <%}%>
+                                                                      <%})%>
+                                                                  </tbody>
+                                                                </table>
+                                                              </div>
+                                                            <%})%>
+                                                      <%} else {%><p class="text-danger">
+                                                        <%= value %></p>
+                                                      <% } %>
+                                                    </td>
+                                                  </tr>
+                                                  <% } %>
+                                                <%})%>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      <%})%>
+                                    <%} else { %><p class="text-danger">
+                                    <%= v[1] %></p>
+                                    <% } %>                                
+                                </td>
+                              </tr> 
+                            <%}) %>                                           
+                          </tbody>
+                        </table>                
+                      </div>
+                    </div>
+                  <% } %>
+                  <h6 class="col-lg-8 pull-right">
+                  </br>
+                        Edit made by: <i class="fa fa-user"> <%=version.user_name %></i>
+                  </h6>
+                </div>
+              </div>
+            <% }); %>
+            <hr/>
+        </div>
+    </section>
+  </div>
+</div>
+

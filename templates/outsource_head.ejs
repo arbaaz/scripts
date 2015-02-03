@@ -1,0 +1,129 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel">
+      <div class="panel-body">
+        <h2 class="to_center">Assignments to Agents        
+        </h2>
+        <hr/>
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon btn-primary">Filter</span>
+          <input id="filter" type="text" class="form-control" placeholder="Type here..." value="<%=meta.query%>">
+        </div>
+        <br />
+        <div class="row">             
+          <div class="col-sm-12 text-center">
+            <p class="lead stats">
+              <span> Total: <%=meta.total %></span>                
+            </p>
+            <ul class="pagination pagination-sm">
+              <li><a id="1" class="page_number">First</a></li>
+              <li><a id="previous" class="page_number">«</a></li>
+              <% var page_num = meta.page?meta.page:1;
+                for(i=1,j=1;i<=meta.total; i+=20,j++){ %>
+                <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>  
+              <% } %> 
+              <% if(meta.total==0){%><li class="active"><a class="page_number" id="1">1</a></li><% } %>                 
+              <li><a id="next" class="page_number">»</a></li>
+              <li><a id="<%=j-1%>" class="page_number">Last</a></li>
+              <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+              <input type="hidden" value="<%=j-1%>" id="total_page_num" >
+            </ul>
+            <h5> 20 Restaurants per page </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table general-table" id="index_table">        
+              <thead>
+                  <tr>
+                      <th> # </th>
+                      <th>Name</th>
+                      <th>Agent(s)</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody class="searchable">
+                <% _.each(restaurants, function(restaurant) { %>
+                  <tr class="<% if(restaurant.get("diff_count") > 1) { %>second_diff<% } %>">
+                    <td>  
+                      <%= restaurant.get("form_id") %>
+                    </td>
+                    <td>
+                      <p class="lead"><%= restaurant.get("restaurant_name") %>
+                      <span class="small"># Diff till now : <%= restaurant.get("diff_count") %></span></p>
+                    </td>
+                    <td>
+                      <div class="agents">
+                        <form id="diff_<%= restaurant.get("form_id") %>">
+                        <% _.each(restaurant.get("agents"), function(agent) { %>
+                          <%= get_status_span(agent.status) %>&nbsp;&nbsp;                            
+                          <i class="fa fa-user"></i>&nbsp; <%= agent.name %>&nbsp;&nbsp;&nbsp;                            
+                          <input type="checkbox" value="<%= agent.restaurant_id %>" id="<%= restaurant.get("form_id") %>_<%= agent.restaurant_id %>">
+                          <br/><br/>
+                        <% }) %>
+                        </form>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="">
+                        <a class="btn btn-primary btn-sm diff" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>">Diff</a>
+                        &nbsp;
+                        <a class="btn btn-success btn-sm activate" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>">Completed</a>
+                        &nbsp;
+                        <a class="btn btn-success btn-sm send_diff" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>">Send Diff Report</a>
+                        &nbsp;
+                        <% if(window.user.get_company().toLowerCase() == "tinyowl") { %>
+                        <a class="btn btn-success btn-sm export" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>" data-overwrite="false">Export</a>
+                        &nbsp;
+                        <% } %>
+                        <!-- <a class="btn btn-info" href="#/assignments/<%= restaurant.get("form_id") %>">Edit</a> -->
+                      </p>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">             
+          <div class="col-sm-12 text-center">
+            <p class="lead stats">
+              <span> Total: <%=meta.total %></span>                
+            </p>
+            <ul class="pagination pagination-sm">
+              <li><a id="1" class="page_number">First</a></li>
+              <li><a id="previous" class="page_number">«</a></li>
+              <% var page_num = meta.page?meta.page:1;
+                for(i=1,j=1;i<=meta.total; i+=20,j++){ %>
+                <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>  
+              <% } %> 
+              <% if(meta.total==0){%><li class="active"><a class="page_number" id="1">1</a></li><% } %>                 
+              <li><a id="next" class="page_number">»</a></li>
+              <li><a id="<%=j-1%>" class="page_number">Last</a></li>
+              <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+              <input type="hidden" value="<%=j-1%>" id="total_page_num" >
+            </ul>
+            <h5> 20 Restaurants per page </h5>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+</div><!-- end row -->
+
+<div class="modal fade" style="width: 500px; height: 300px; margin-left: 400px;" id="overwriteModal" role="dialog" aria-labelledby="overwriteModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4>The restaurant with the Form-id already exists!</h4>
+  </div>
+  <div class="modal-body" style="background-color: rgb(250, 250, 250);">
+    <h6>Do you want to overwrite it's menu?</h6>
+    <hr/>
+    <div>
+      <input class="export_restaurant_id" type="hidden" value="">
+      <button class="btn btn-success btn-sm export" data-overwrite="true">Overwrite and Export</button>
+      <button class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

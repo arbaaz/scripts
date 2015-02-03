@@ -1,0 +1,5 @@
+  <table id="item_modal_sizes_treetable" class="treetable">
+      <% _.each(item.get('item_sizes').models, function(size){ %>
+          <%= partial('partials_item_size', {size: size, choices: choices, timings: timings}) %>
+      <% }) %>
+  </table>

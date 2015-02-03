@@ -1,0 +1,307 @@
+<div class="row" id="filters_affix">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-body">                        
+        <div class="row">             
+          <div class="col-sm-12 col-md-12 col-lg-12">
+               <div class="row">
+                    <div class="col-sm-3">
+                         <div class="input-group">
+                              <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>
+                              <input type="text" id="filter" class="form-control input-sm" placeholder="Type here and hit ENTER to search" autocomplete="off" value="<%=get_url_parameter("search")%>">
+                         </div>
+                    </div>
+
+                    <div class="col-sm-2 hidden-xs">
+                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="<%=get_url_parameter("locality_id")?get_locality(get_url_parameter("locality_id")):''%>">
+
+                    </div>
+
+                      <div class="col-sm-2 hidden-xs">
+                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="<%=get_url_parameter("delivers_in")?get_locality_group(get_url_parameter("delivers_in")):''%>">
+                    </div>
+
+                    <div class="col-sm-5 hidden-xs">
+                         <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>
+                          <% _.each(window.collections.cuisines, function(cuisine) { %>
+                            <option <%if ( get_url_parameter("cuisine_ids") && check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
+                          <% }) %>
+                        </select>
+                    </div>
+                    
+                  </div>
+
+               <br class="hidden-xs">
+
+               <div class="row">
+                    <div class="col-sm-2 hidden-xs">
+                         <div class="input-group input-group-sm">
+                              <span class="input-group-addon btn-primary"><i class="fa fa-phone"></i> Call as a user</span>
+                              <select class="form-control" id="call_as_user_filter">
+                                  <option value="YES" <%if(get_url_parameter("call_as_user") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(get_url_parameter("call_as_user") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(get_url_parameter("call_as_user") == null){%><%="selected"%><%}%>>Both</option>
+                              </select>
+                         </div>
+                    </div>
+
+                    <div class="col-sm-2 hidden-xs">      
+                         <div class="input-group input-group-sm">
+                              <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>
+                              <select class="form-control" id="status_filter">
+                                   <option value="-1" selected> All </option>
+                                    <% _.each(window.collections.status,function(i,stat,j){%>
+                                      <%if(i<4 || i==11){%>
+                                        <option value="<%=i%>" <%if(get_url_parameter("status")==i){%><%="selected"%><% } %>><%=stat%></option>
+                                      <% } %>
+                                    <%});%>
+                              </select>
+                         </div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                         <div class="input-group input-group-sm">
+                              <span class="input-group-addon btn-primary"><i class="fa fa-picture-o"></i> Logo </span>
+                              <select class="form-control" id="has_logo_filter">
+                                  <option value="YES" <%if(get_url_parameter("has_logo") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(get_url_parameter("has_logo") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(get_url_parameter("has_logo") == null){%><%="selected"%><%}%>>Both</option>
+                              </select>
+                         </div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                         <div class="input-group input-group-sm">
+                              <span class="input-group-addon btn-primary"><i class="fa fa-gavel"></i> Push Changes</span>
+                              <select class="form-control" id="has_changes_filter">
+                                  <option value="YES" <%if(get_url_parameter("has_changes") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(get_url_parameter("has_changes") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(get_url_parameter("has_changes") == null){%><%="selected"%><%}%>>Both</option>
+                              </select>
+                         </div>
+                    </div>
+
+                    <div class="col-sm-1">
+                      <button class="btn btn-primary btn-sm" id="clear_filters"><i class="fa fa-times"></i> Filters</button>
+                    </div>
+                    <div class="col-sm-1 dropdown">
+                       <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-plus-square"></i>
+                            Add
+                            <span class="caret"></span>
+                       </button>
+                       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/new"><i class="fa fa-plus-square"></i> New Restaurant</a></li>
+                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/new/virtual"><i class="fa fa-plus-square"></i> New Virtual Restaurant</a></li>
+                       </ul>
+                    </div>
+                    <div class="col-sm-1 dropdown">
+                         <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-file-text"></i>
+                              View
+                              <span class="caret"></span>
+                         </button>
+                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/deleted"><i class="fa fa-file-text"></i> Deleted Restaurants </a></li>
+                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/invisible"><i class="fa fa-file-text"></i> Invisible Restaurants</a></li>
+                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/virtual"><i class="fa fa-file-text"></i> Virtual Restaurants </a></li>
+                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#promotions"><i class="fa fa-file-text"></i> Promotions </a></li>
+                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/tags"><i class="fa fa-pencil-square-o"></i></i> Item Tags </a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#dish_type_tags"><i class="fa fa-pencil-square-o"></i> Dish Type Tags</a></li>
+                         </ul>
+                    </div>
+
+                    <div class="col-sm-1">
+                      <button class="btn btn-info btn-sm" id="dump"><i class="fa fa-download"></i> Dump</button>
+                    </div>
+                    <div id="dump_content" class="col-sm-5 hidden">
+                       <h3 class="text-center" style="margin-top:10px;margin-bottom:10px;">
+                            <i class="fa fa-file-text-o"></i> Dump
+                       </h3>
+                       <hr/>
+                       <div class="row">
+                            <div class="col-sm-8 text-center">
+                                 <p>Address:</p> 
+                            </div>
+                             <div class="col-sm-4">
+                                 <input type="checkbox" id="address" checked>
+                             </div>
+                       </div>
+                       <div class="row">
+                            <div class="col-sm-8 text-center">
+                                 <p>Contact Details:</p> 
+                            </div>
+                       <div class="col-sm-4">
+                            <input type="checkbox" id="contact_info" checked>
+                       </div>
+                       </div>
+                       <div class="row">
+                            <div class="col-sm-8 text-center">
+                                 <p>Payment Details:</p> 
+                            </div>
+                            <div class="col-sm-4">
+                                 <input type="checkbox" id="payment_details" checked>
+                            </div>
+                       </div>
+                       <div class="row">
+                            <div class="col-sm-8 text-center">
+                                 <p>Other Info:</p> 
+                            </div>
+                            <div class="col-sm-4">
+                                 <input type="checkbox" id="other_info" checked>
+                            </div>
+                       </div>
+                       <hr/>
+                       <div class="text-center">
+                            <button class="btn btn-primary btn-sm dump_request" id="dump_request"> <i class="fa fa-download"></i> Download</button>
+                            <button class="btn btn-default btn-sm" id="close_dump"><i class="fa fa-times"></i> Close </button>
+                       </div>
+                    </div>
+               </div>    
+          </div>             
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <p class="lead stats">
+                  <span> Total: <span class=""><strong><%=meta.total %></strong></span> | </span>
+                  <span class="<%if(get_url_parameter("status")!=2 && get_url_parameter("status")!=null){%><%="hide"%><%}%>"> Active: <span class="text-success"><strong><%=meta.active%>&nbsp;</strong></span></span>
+                  <span class="<%if(get_url_parameter("status")!=3 && get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="inactive">Inactive: <span class="text-warning"><strong><%=meta.inactive%>&nbsp;</strong></span></span>
+                  <span class="<%if(get_url_parameter("status")!=1 && get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="new">New: <span class="text-info"><strong><%=meta.new%></strong></span></span>
+            </p>
+              <ul class="pagination pagination-sm">
+                <% var page_num = get_url_parameter("page")? get_url_parameter("page"):1;
+                  var start_page = (page_num-7 > 0)? page_num -7 : 1;
+                  var total_pages = parseInt(meta.total/20) + 1;
+                  var max_pages = _.min([start_page + 15, total_pages]);
+                  %>
+
+                <li><a id="1" class="page_number">First</a></li>
+                <li><a id="previous" class="page_number">«</a></li>
+                <%
+                  for(j=start_page;j<=max_pages;j++){ %>
+                    <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>
+                <% } %>
+
+                <li><a id="next" class="page_number">»</a></li>
+                <li><a id="<%=total_pages %>" class="page_number">Last</a></li>
+                <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+                <input type="hidden" value="<%= total_pages %>" id="total_page_num" >
+              </ul>
+              <h5> 20 Restaurants per page </h5>
+            </div>
+          </div>
+          <hr/>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class=""> # </th>
+                        <th class="hidden-xs"></th>
+                        <th>Name</th>
+                        <th class="hidden-xs">Last updated</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                        <th class="hidden-xs">Menu</th>
+                        <th class="hidden-xs"><a class="hover-link" href="#restaurant/bulk_update"><i class="fa fa-check-square"></i> <span >Bulk update</span></a> </th>
+                    </tr>
+                </thead>
+                <tbody class="searchable">
+                  <% _.each(restaurants, function(restaurant, i) { %>
+                    <tr>
+                      <td class="">
+                        <p class="text-info">
+                          <%= restaurant.get("form_id") %>
+                        </p>
+                      </td>
+                      <td class="hidden-xs">
+                        <%if(restaurant.get("logo")){%>
+                          <span class="thumbnail_loader "><i class="fa fa-2x fa-circle-o-notch fa-spin"></i></span>
+                          <img src="<%=restaurant.get("logo")+"?"+ new Date().getTime()%>" width="60" class="logo_thumbnail hidden"/>
+                        <%}%>
+                      </td>
+                      <td>
+                          <a href="#restaurants/<%= restaurant.get("id") %>/profile"><% if (restaurant.get("name") != null) { %><%= restaurant.get("name").substring(0,40) %><% } %></a><br/>
+                          <p class="text-muted">
+                            <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=get_locality(restaurant.get("locality_id"))%>
+                          </p>
+                      </td>
+                      <td class="hidden-xs"><span data-livestamp="<%= restaurant.get("updated_at") %>"></span></td>
+
+                      <td><span  class= 'js-status' data-toggle='popover' title='Reason' data-content="<%=restaurant.get('inactive_reason')%>" ><%= get_status_span(restaurant.get("status")) %></span></td>     
+                      <td>                                        
+                        <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.get("id") %>/profile"><i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span></a> 
+                        <a class="btn btn-primary btn-sm hidden-xs" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_items"><i class="fa fa-list"></i> Menu</a>
+                        <a class="btn btn-primary btn-sm hidden-xs" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_choices"><i class="fa fa-check-square-o"></i> Choices</a>
+                        <!-- <a class="btn btn-primary btn-sm hidden-xs" href="#restaurants/<%= restaurant.id %>/choices"><i class="fa fa-check-square-o"></i> Choices BETA</a>
+                        <a class="btn btn-primary btn-sm hidden-xs" href="#restaurants/<%= restaurant.id %>/items"><i class="fa fa-book"></i> Items BETA</a> -->
+                        <div class="btn-group hidden-xs">
+                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button"> <span class="caret"></span></button>
+                            <ul role="menu" class="dropdown-menu">
+                                <%if(restaurant.get("status")){ %>
+                                  <li class="<%= (restaurant.get('has_menu_categories') ? '_disabled' : '')%>" id="copy_restaurant">
+                                    <a class="copy_anchor" href="#restaurants/<%=restaurant.get("id")%>/copy"><i class="fa fa-copy"></i> Copy</a>
+                                    <input type="hidden" class="copy_id" value="<%=restaurant.get("id")%>">
+                                  </li>
+                                  <li id="copy_timings">
+                                    <a class="copy_timings_anchor"><i class="fa fa-clock-o"></i> Copy Timings</a>
+                                    <input type="hidden" class="copy_timings_id" value="<%=restaurant.get("id")%>">
+                                  </li>
+                                  <li id="menu_dump">
+                                    <a class="menu_dump_anchor"><i class="fa fa-download"></i> Download Menu</a>
+                                    <input type="hidden" class="menu_dump_id" value="<%=restaurant.get("id")%>">
+                                  </li>
+                                <% } %>
+                                <li class="divider"></li>
+                                  <li id="delete_restaurant">
+                                    <a class="delete_anchor"><i class="fa fa-times"></i> Delete</a>
+                                    <input type="hidden" class="delete_id" value="<%=restaurant.get("id")%>">
+                                  </li>
+                                <%if(restaurant.get("status")){ %>
+                                  <li id="invisible_restaurant">
+                                    <a class="invisible_anchor"><i class="fa fa-unlink"></i> Invisible</a>
+                                    <input type="hidden" class="invisible_id" value="<%=restaurant.get("id")%>">
+                                  </li>
+                                <% } %>
+                                <li id="get_logs">
+
+                                    <a  href="#restaurants/<%=restaurant.get("id")%>/logs" data-restaurant-id="<%=restaurant.get('id')%>"><i class="fa fa-file"></i> Logs </a>
+                                </li>
+                                <!-- <li id="get_menu">
+                                    <a  href="#menu_timeline/<%=restaurant.get("id")%>/dish_type_tags" data-restaurant-id="<%=restaurant.get('id')%>"><i class="fa fa-file"></i> Menu </a>-->
+
+                                </li>
+
+                                <li class="<%= (restaurant.get('has_items') ? '_disabled' : '')%>">
+                                    <a  href="<%= get_menu_timeline_url(restaurant.get('id'),restaurant.get('menu_progress_bar')) %>" data-restaurant-id="<%=restaurant.get('id')%>"><i class="fa fa-file"></i> Menu Timeline </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                      </td>
+                      <td class="hidden-xs">
+                        <% if(restaurant.get("menu_stash")){ %>
+                          <button type="button" class="btn btn-warning btn-sm push_menu"> Push Changes </button>
+                          <input type="hidden" class="push_menu_id" value="<%=restaurant.get("id")%>">
+                        <% } %>
+                      </td>
+                      <td class="hidden-xs">
+                        <a class="btn btn-info btn-sm" href="#restaurants/<%= restaurant.get("id") %>/update_status"><i class="fa fa-refresh"></i> Update status</a>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr/>
+
+      </div>
+    </div>
+  </div>
+</div>

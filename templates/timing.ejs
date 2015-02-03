@@ -1,0 +1,64 @@
+<div id="top_navigation">
+</div>
+
+<div class="row">
+  <!-- form component -->
+  <div class="col-xs-12">
+
+    <div class="panel">
+      <div class="panel-body">
+      <section id="alerts"></section> 
+      <h2 class="to_center">Timings</h2>
+      <hr>
+      <div class="row">
+        <form accept-charset="UTF-8" class="form-inline" id="timing_form" method="post" enctype="multipart/form-data">
+
+          <input type="hidden" value="<%= restaurant.get('id') %>" name="id" id="restaurant_id">
+          <input type="hidden" name="timing_count" value="<%= timings.length %>">
+          <table class="table  table-hover general-table" id="timing-table">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Start Time
+                </th>
+                <th>
+                  End Time
+                </th>
+                <th>
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+          </hr>
+
+
+          <% _.each(timings, function(timing, i) { %>
+
+            <%= partial("partials_timing", {
+              i: i,
+              timing: timing
+            }) %>
+
+          <% }) %>
+        </table>
+
+          <button type="button" class="btn btn-info btn-sm add_timing">Add Timing</button>
+
+          <div class="submit_div">
+            <input type="submit" class="btn btn-primary" value="Save Changes" id="save_changes_timings">
+          </div>
+
+        </form>
+      </div>
+      </div>
+    </div><!-- end well -->
+  </div>
+
+</div><!-- end row -->

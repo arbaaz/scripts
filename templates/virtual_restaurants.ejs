@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <div class="panel-body"> 
+          <section id="alerts"></section>                           
+            <div class="row">             
+                <div class="col-lg-2">
+                    <div class="input-group hide">
+                        <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>
+                        <input type="text" id="filter" class="form-control input-sm" placeholder="type here and hit ENTER to search" autocomplete="off" value="<%=meta.search%>">
+                    </div>
+                    <h4> Virtual Restaurants </h4>
+                </div>
+                <div class="col-lg-4">
+                    <a class="btn btn-success btn-sm" href="#restaurants/new/virtual"><i class="fa fa-plus-square"></i> Add a new Virtual Restaurant</a>
+                </div>
+                <span class="pull-right">
+                  <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>&nbsp;&nbsp;
+                </span>                                
+            </div>
+            <hr/>
+            <div class="row">               
+                <p class="lead text-center"><span> Total: <%=meta.total %> </p>
+            </div>&nbsp;
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <ul class="pagination pagination-sm">
+                  <li><a id="1" class="page_number">First</a></li>
+                  <li><a id="previous" class="page_number">«</a></li>
+                  <% var page_num = meta.page?meta.page:1;
+                    for(i=1,j=1;i<=meta.total; i+=20,j++){ %>
+                    <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>  
+                  <% } %> 
+                  <% if(meta.total==0){%><li class="active"><a class="page_number" id="1">1</a></li><% } %>                 
+                  <li><a id="next" class="page_number">»</a></li>
+                  <li><a id="<%=j-1%>" class="page_number">Last</a></li>
+                  <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+                  <input type="hidden" value="<%=j-1%>" id="total_page_num" >
+                </ul>
+                <h5> 20 Restaurants per page </h5>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table  table-hover general-table">
+                  <thead>
+                      <tr>
+                          <th> # </th>
+                          <th class="hidden-xs"></th>
+                          <th>Name</th>
+                          <th class="hidden-phone">Last updated</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                          <th class="hidden-xs">Menu</th> 
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody class="searchable">
+                    <% _.each(restaurants, function(restaurant, i) { %>                                     
+                      <tr data-locality="<%=restaurant.get("locality_id")%>" data-status="<%= get_status(restaurant.get("status")) %>" data-call="<%=restaurant.get("call_as_user")? 'YES':'NO' %>"> 
+                        <td>
+                          <p class="text-info">
+                            <%= restaurant.get("form_id") %>
+                          </p>
+                        </td>
+                        <td class="hidden-xs">
+                        <%if(restaurant.get("logo")){%>
+                          <span class="thumbnail_loader "><i class="fa fa-2x fa-circle-o-notch fa-spin"></i></span>
+                          <img src="<%=restaurant.get("logo")+"?"+ new Date().getTime()%>" width="60" class="logo_thumbnail hidden"/>
+                        <%}%>
+                        </td>
+                        <td>
+                            <a><% if (restaurant.get("name") != null) { %><%= restaurant.get("name").substring(0,25) %><% } %></a><br/>
+                            <p class="text-muted">
+                              <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=get_locality(restaurant.get("locality_id"))%>
+                            </p>                                   
+                        </td>
+                        <td class="hidden-phone"><span data-livestamp="<%= restaurant.get("updated_at") %>"></span></td>
+                        <td><%= get_status_span(restaurant.get("status")) %></td>     
+                        <td>                                        
+                          <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.get("id") %>/profile" ><i class="fa fa-edit"></i> Edit</a> 
+                          <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_items" target="_blank"><i class="fa fa-list"></i> Menu</a>
+                          <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_choices" target="_blank"><i class="fa fa-check-square-o"></i> Choices</a>
+                          <div class="btn-group">
+                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" > <span class="caret"></span></button>
+                              <ul role="menu" class="dropdown-menu">
+                                <li id="menu_dump">
+                                  <a class="menu_dump_anchor"><i class="fa fa-download"></i> Download Menu</a>
+                                  <input type="hidden" class="menu_dump_id" value="<%=restaurant.get("id")%>">
+                                </li>                          
+                              </ul>
+                          </div>                                        
+                        </td>
+                        <td class="hidden-xs">
+                          <% if(restaurant.get("menu_stash")){ %>
+                            <button type="button" class="btn btn-warning btn-sm push_menu"> Push Changes </button>
+                            <input type="hidden" class="push_menu_id" value="<%=restaurant.get("id")%>">
+                          <% } %>
+                        </td>
+                      </tr>
+                    <% }); %>                                                 
+                  </tbody>
+                </table>                
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <ul class="pagination pagination-sm">
+                  <li><a id="1" class="page_number">First</a></li>
+                  <li><a id="previous" class="page_number">«</a></li>
+                  <% var page_num = meta.page?meta.page:1;
+                    for(i=1,j=1;i<=meta.total; i+=20,j++){ %>
+                    <li <%if(page_num==j){%>class="active"<%}%>><a class="page_number" id="<%=j%>"><%=j%></a></li>  
+                  <% } %> 
+                  <% if(meta.total==0){%><li class="active"><a class="page_number" id="1">1</a></li><% } %>                 
+                  <li><a id="next" class="page_number">»</a></li>
+                  <li><a id="<%=j-1%>" class="page_number">Last</a></li>
+                  <input type="hidden" value="<%=page_num%>" id="current_page_num" >
+                  <input type="hidden" value="<%=j-1%>" id="total_page_num" >
+                </ul>
+                <h5> 20 Restaurants per page </h5>
+              </div>
+            </div>
+            
+        </div>
+    </section>
+  </div>
+</div>
+

@@ -1,0 +1,205 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-body">
+        <form role="form" class="form-horizontal" id="global_settings_form" method="POST">
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="GOOGLE_API_KEY" class="control-label">Google Api Key</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="GOOGLE_API_KEY" id="google_api_key" value ="<%=global_settings.GOOGLE_API_KEY %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="GEOCODE_PARAMS" class="control-label">Geocode Params</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="GEOCODE_PARAMS" value ="<%=global_settings.GEOCODE_PARAMS %>" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="HOME_PAGE_DISPLAY_ORDER" class="control-label">Home Page Display Order</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="HOME_PAGE_DISPLAY_ORDER" value ="<%=global_settings.HOME_PAGE_DISPLAY_ORDER %>" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="DEFAULT_RESTAURANT_SORTING_CRITERIA" class="control-label">Default Restaurant Sorting Criteria</label>
+            </div>
+            <div class="ccol-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="DEFAULT_RESTAURANT_SORTING_CRITERIA" id="default_restaurant_sorting_criteria" value = "<%= global_settings.DEFAULT_RESTAURANT_SORTING_CRITERIA%>"required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="AGGR_RESTAURANT_SORTING_CRITERIA" class="control-label">Aggregate Restaurant Sort Criteria</label>
+            </div>
+            <div class="ccol-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="AGGR_RESTAURANT_SORTING_CRITERIA" id="aggr_restaurant_sorting_criteria" value = "<%= global_settings.AGGR_RESTAURANT_SORTING_CRITERIA%>"required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="HARD_CLOSED_TIMINGS" class="control-label">Hard Closed Timings</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type= "hidden" name="HARD_CLOSED_TIMINGS" value = "off" >
+              <input type="checkbox" class="form-control input-sm" name="HARD_CLOSED_TIMINGS" id="hard_closed_timings" <% if(global_settings.HARD_CLOSED_TIMINGS=="true"){%> <%= "checked" %> <% }%> >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="HARD_CLOSED_TIMINGS_START" class="control-label">Hard Closed Timings Start</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="HARD_CLOSED_TIMINGS_START" id="HARD_CLOSED_TIMINGS_START" value="<%= global_settings.HARD_CLOSED_TIMINGS_START%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="HARD_CLOSED_TIMINGS_END" class="control-label">Hard Closed Timings End</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="HARD_CLOSED_TIMINGS_END" id="HARD_CLOSED_TIMINGS_END" value="<%= global_settings.HARD_CLOSED_TIMINGS_END%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="APPLY_RUSH_HOUR_TIMINGS" class="control-label">Apply Rush Hour Timings</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type= "hidden" name="APPLY_RUSH_HOUR_TIMINGS" value = "off" >
+              <input type="checkbox" class="form-control input-sm" name="APPLY_RUSH_HOUR_TIMINGS" id="apply_rush_hour_timings" <% if(global_settings.APPLY_RUSH_HOUR_TIMINGS=="true"){%> <%= "checked" %> <% }%>  >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="RUSH_HOUR_TIMINGS" class="control-label">Rush Hour Timings</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="RUSH_HOUR_TIMINGS" id="rush_hour_timings" required value="<%= global_settings.RUSH_HOUR_TIMINGS%>" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="MIN_OF_MIN_DELIVERY_AMOUNT" class="control-label">Min of Min Delivery Amount</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="MIN_OF_MIN_DELIVERY_AMOUNT" id="min_of_min_delivery_amount" value="<%= global_settings.MIN_OF_MIN_DELIVERY_AMOUNT%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="MAX_OF_MIN_DELIVERY_AMOUNT" class="control-label">Max of Min Delivery Amount</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="MAX_OF_MIN_DELIVERY_AMOUNT" id="max_of_min_delivery_amount" value="<%= global_settings.MAX_OF_MIN_DELIVERY_AMOUNT%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="MIN_OF_DELIVERY_TIME" class="control-label">Min of Delivery Time</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="MIN_OF_DELIVERY_TIME" id="min_of_delivery_time" value="<%= global_settings.MIN_OF_DELIVERY_TIME%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="MAX_OF_DELIVERY_TIME" class="control-label">Max of Delivery Time</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="MAX_OF_DELIVERY_TIME" id="max_of_delivery_time" value="<%= global_settings.MAX_OF_DELIVERY_TIME%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible visible">
+              <label for="COD_ALLOWED_IN_GIFTS" class="control-label">COD allowed in gifts</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type= "hidden" name="COD_ALLOWED_IN_GIFTS" value = "off" >
+              <input type="checkbox" class="form-control input-sm" name="COD_ALLOWED_IN_GIFTS" id="cod_allowed_in_gifts" <% if(global_settings.COD_ALLOWED_IN_GIFTS=="true"){%> <%= "checked" %> <% }%> >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="DELIVERY_TIME_DELAY" class="control-label">Delivery Time Delay</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="DELIVERY_TIME_DELAY" id="delivery_time_delay" value="<%= global_settings.DELIVERY_TIME_DELAY%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="ORDER_TIMER_REFRESH_TIME" class="control-label">Order Timer Refresh Time</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="ORDER_TIMER_REFRESH_TIME"  value="<%= global_settings.ORDER_TIMER_REFRESH_TIME%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="TRACK_BUTTON_ACTIVATION_TIME" class="control-label">Track Button Activation</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="TRACK_BUTTON_ACTIVATION_TIME" value="<%= global_settings.TRACK_BUTTON_ACTIVATION_TIME%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="ORDER_DISPLAY_LIMIT" class="control-label">Order Display Limit</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="ORDER_DISPLAY_LIMIT" value="<%= global_settings.ORDER_DISPLAY_LIMIT%>" required >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="ORDER_DISPLAY_EXPIRY_TIME" class="control-label">Order Display Expiry Time</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="ORDER_DISPLAY_EXPIRY_TIME" value="<%= global_settings.ORDER_DISPLAY_EXPIRY_TIME%>" required >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="ORDER_STATUS_UPDATE_FREQ" class="control-label">Order Status Update Freq</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="ORDER_STATUS_UPDATE_FREQ" value="<%= global_settings.ORDER_STATUS_UPDATE_FREQ%>" required >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="COINS_MAX_PERCENT" class="control-label">Coins Max Percentage</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="COINS_MAX_PERCENT" value="<%= global_settings.COINS_MAX_PERCENT%>" required >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 visible">
+              <label for="COINS_MAX_AMOUNT" class="control-label">Coins Max Amount</label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input type="text" class="form-control input-sm" name="COINS_MAX_AMOUNT" value="<%= global_settings.COINS_MAX_AMOUNT%>" required >
+            </div>
+          </div>
+
+          <hr/>
+          <div class="to_center">
+            <button type="Create" class="btn btn btn-success" id="edit_global_settings">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

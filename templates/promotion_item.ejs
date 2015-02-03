@@ -1,0 +1,14 @@
+<div class="form-group" id="item">
+  <div class="col-xs-1 visible-xs"></div>
+ <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"> * Item</label>
+  <div class="col-md-8 col-sm-8 col-xs-8">
+    <select id="items" name="items" multiple>
+      <% _.each(items, function(item) {%>
+        <option value="<%= item.id %>"><%= item.name %></option>
+        <% if(item.id == current_item) { %>
+          <option value="<%= item.id %>" selected><%= item.name %></option>
+        <% } %>
+      <% }) %>
+    </select>
+  </div>
+</div>

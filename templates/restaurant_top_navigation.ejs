@@ -1,0 +1,53 @@
+<% if(restaurant.get("name")){ %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel">
+        <div class="panel-body">
+          <span class="text-info hidden-xs">#<%=restaurant.get("form_id")%></span>
+          <span class="hidden-xs">&nbsp;&nbsp;</span>
+          <%=get_status_span(restaurant.get("status"))%>
+          <span>&nbsp;&nbsp;</span>
+          <span class="lead"> <%=restaurant.get("name")%></span>
+          <span class="hidden-xs">&nbsp;&nbsp;</span>
+          <span class="hidden-xs"> <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=get_locality(restaurant.get("locality_id"))%></span>
+          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="<%=restaurant.get("status")%>"></span>
+          <span class="pull-right">
+            <% if(menu_stash){ %>
+                          <button type="button" class="btn btn-warning btn-sm push_menu"> Push Changes </button>
+                          <input type="hidden" class="push_menu_id" value="<%=restaurant.get("id")%>">
+            <% } %> 
+            <% if (restaurant.get("status") != get_status_id("VIRTUAL")) { %>
+              <a class="btn btn-info btn-sm hidden-xs" href="#restaurants/<%=restaurant.get('id')%>/update_status"><i class="fa fa-refresh"></i> Update Status</a>
+            <% } %>
+            <a class="btn btn-primary btn-sm " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="logModal" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 900px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="Close">&times;</button>
+          <h4 class="modal-title" id="logModalLabel">Logs for
+            <span id="log_name"></span>
+            <span id="form_errors" style="display:inline-block; text-align:center;"></span>
+          </h4>
+        </div>
+        <div class="modal-body">
+          <!-- modal body -->
+          <div id="log_panel">
+          </div>
+          <!-- end of form body -->
+        </div>
+        <div class="modal-footer">
+          <div id="notification_save"></div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal  -->
+<% } %>

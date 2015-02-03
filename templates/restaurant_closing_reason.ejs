@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <th>Reason</th>
+    <th>Message on the App</th>
+  </thead>
+  <tbody>
+    <% _.each(reasons,function(item){%>
+    <tr>
+      <td><%=item.get('reason')%></td>
+      <td><%=item.get('message_app')%></td>
+    </tr>
+    <%});%>
+  </tbody>
+</table>
+<button class="btn btn-success">Add</button>
+<!-- table>thead>th{Reason}+th{Message on the App}^tbody>tr>td*2 -->

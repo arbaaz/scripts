@@ -1,0 +1,132 @@
+<div class="panel">
+    <div class="panel-body"> 
+    	<ul class="nav nav-pills" role="tablist" id="myTab">
+			  <li class="active"><a href="#recent" role="tab">Recent</a></li>
+			  <li><a href="#history" role="tab">Complete Logs</a></li>			  
+			</ul>     
+			<hr/> 
+			<div class="tab-content">
+			  <div class="tab-pane fade in active" id="recent">					  	
+					<% _.each(status_logs, function(status_log, i) { %>
+						<% if(status_log.get("scheduled_update")){%>
+							<% if(status_log.get("scheduled_update").status == 1){%>
+								<div class="activity-desk scheduled">
+			        		<span class="alert-icon pull-left bg-terques"><i class="fa fa-calendar"></i></span>				<span class="label label-primary pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>			        		
+	                <h3 class="terques">
+	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% }else{ %>
+	                		Scheduled Reminder!
+	                	<% } %>
+	                	<span class="small"> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%></span> </h3><hr class="terques"/>
+	                <h2 class="terques"><i class="fa fa-clock-o"></i> <%= timeConverter(status_log.get("scheduled_update").scheduled_at) %> | <span class="small"><span data-livestamp="<%= status_log.get("created_at") %>"></span></span></h2>
+	                <button type="button" class="btn btn-danger btn-xs pull-right js_cancel_schedule" data-id="<%=status_log.get("scheduled_update").id%>"><i class="fa fa-times"></i> Cancel</button> 	      
+	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+				         <input type="hidden" value="<%=status_log.get("scheduled_update").id%>" id="schedule_id"> 
+	              </div>
+			        	<hr/>
+			        <% } %>  
+		     		<% } %>
+		   		<% }); %>
+		   		<% _.each(_.filter(status_logs, function(status_log,i){ if(i<2) return status_log; }), function(status_log, i) { %>
+						<% if(status_log.get("scheduled_update")){%>
+			        <% if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ %>
+			        	<div class="activity-desk">
+			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
+									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <p>
+	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% }else{ %>
+	                		Scheduled Reminder!
+	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> 
+	                </p>
+	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+	              </div>			        	
+			        <% } %>	
+			        <% if(status_log.get("scheduled_update").status == 3){ %>
+			        	<div class="activity-desk">
+			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
+									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <p>
+	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% }else{ %>
+	                		Scheduled Reminder!
+	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> 
+	                </p>
+	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+	              </div>			        	
+			        <% } %>		        
+						<% } %>
+
+						<% if (status_log.get("previous_status") != status_log.get("new_status") && status_log.get("new_status")){%>
+							<div class="activity-desk">
+								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>
+								<span class="label label-success pull-right">COMPLETED</span>
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+              </div>
+						<% } %>			
+					<% }); %>
+				</div>
+				<div class="tab-pane fade" id="history">
+					<% _.each(status_logs, function(status_log, i) { %>
+						<% if(status_log.get("scheduled_update")){%>							
+			        <% if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ %>
+			        	<div class="activity-desk">
+			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
+									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <p>
+	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% }else{ %>
+	                		Scheduled Reminder!
+	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%>
+	                </p>
+	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+	              </div>				        	
+			        <% } %>
+			        <% if(status_log.get("scheduled_update").status == 3){ %>
+			        	<div class="activity-desk">
+			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
+									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <p>Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+	              </div>			        	
+			        <% } %>
+						<% } %>
+
+						<% if (status_log.get("previous_status") != status_log.get("new_status") && status_log.get("new_status")){%>
+							<div class="activity-desk">
+								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
+								<span class="label label-success pull-right">COMPLETED</span>
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+              </div>
+						<% } %>
+
+						<% if (status_log.get("new_status") == null) {%>
+							<div class="activity-desk">
+								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
+								<span class="label label-success pull-right">Comment</span>
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
+              </div>
+						<% } %>
+
+
+		   		<% }); %>
+				</div>
+			</div>
+					
+       
+    </div>
+  </div>

@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <div class="panel-body"> 
+          <section id="alerts"></section>                           
+            <div class="row">             
+                <div class="col-lg-1">
+            
+                    <h4> Promotions </h4>
+                </div>
+                <div class="col-lg-4" style="padding-top:2px;">
+                    <a class="btn btn-success btn-sm" href="#promotions/new" id="add_new"><i class="fa fa-plus-square"></i> Add a new Promotion</a>
+           
+                </div>
+                  
+                <span class="pull-right">
+                  <a class="btn btn-primary " href="#restaurants" ><i class="fa fa-cutlery"></i> Restaurants</a>&nbsp;&nbsp;
+                </span>   
+
+                <span class="pull-right">
+                  <a class="btn btn-primary " href="#restaurants/virtual" ><i class="fa fa-cutlery"></i> Virtual Restaurants </a>&nbsp;&nbsp;
+                </span>                             
+            </div>
+            <hr/>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table  table-hover general-table">
+                  <thead>
+                      <tr>
+                          <th >Name</th>
+                          <th>Description</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Type</th>
+                          <th>Status</th>
+                          <th>Restaurants</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody class="searchable">
+                    <% _.each(promotions, function(promotion, i) { %>                                     
+                      <tr id='<%= promotion.get('id') %>'> 
+                        <td>
+                          <p class="text-info">
+                            <%= promotion.get("name") %>
+                          </p>
+                        </td>
+                        <td>
+                            <p class="text-info">
+                            <%= promotion.get("description") %>
+                          </p>                                  
+                        </td>
+                        
+                        <td>
+                            <p class="text-info">
+                            <%= getDate(promotion.get("valid_from")) %>  <%= getTime(promotion.get("valid_from")) %>
+                          </p>                                  
+                        </td>
+                        <td>
+                            <p class="text-info">
+                            <%= getDate(promotion.get("valid_till")) %>  <%= getTime(promotion.get("valid_till")) %>
+                          </p>                                  
+                        </td>
+                        <td>
+                            <p class="text-info">
+                            <%= promotion.get("promotion_type") %>
+                          </p>                                  
+                        </td>
+
+                        <td>
+                            <p class="text-info">
+                            <%= get_status_span(promotion.get("status")) %>
+                          </p>                                  
+                        </td>
+
+                         <td>
+                            <p class="text-info">
+                             
+                              <a class="btn btn-info btn-sm" style="width:200px" data-toggle="collapse" data-target="#promotion_<%= promotion.get('id') %>"><i class="fa fa-file-text"></i> View Restaurants </a>
+
+
+                              <div id="promotion_<%= promotion.get('id') %>" class="collapse">
+                                <ul class="list-group" style="width:200px;">
+                                  <% _.each(promotion && promotion.get('restaurants'), function(restaurant){ %>
+                                    <li class="list-group-item"><%= restaurant.restaurant_name  %>  <%= "(" %>   <%= restaurant.restaurant_form_id %>    <%= ")" %></li>
+                                  <% }) %>
+                                </ul>
+                              </div>
+                           </p>                                  
+                        </td>
+                        
+                           
+                        <td>  
+                        <p class="text-info">
+                          <a class="btn btn-primary btn-sm" href="#promotions/edit/<%= promotion.get('id') %>" id="<%= promotion.get('id') %>" ><i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span></a> 
+                          <a class="btn btn-danger btn-sm hidden-xs delete"   id="<%= promotion.get('id') %>"><i class="fa fa-trash-o fa-fw"></i> Delete</a>
+                        </p>                                      
+                                                                
+                        </td>                       
+                      </tr>
+                    <% }); %>                                                 
+                  </tbody>
+                </table>                
+              </div>
+            </div>
+            <hr/>
+            
+            
+        </div>
+    </section>
+  </div>
+</div>
+

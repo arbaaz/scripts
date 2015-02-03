@@ -1,0 +1,55 @@
+<div class="row option_row" style="background-color: rgba(237, 237, 237, 0.55);" id="option_row_<%= i %>_<%= j %>">
+	<input type="hidden" id="option_id_<%= i %>_<%= j %>" value="<%= id %>">
+	<br>
+	<div class="col-xs-1"><i class="fa fa-spoon fa-2x"></i></div>
+	
+	<div class="col-xs-11">
+		<div class="row">
+			<div class="form-group">
+				<label class="col-xs-2 control-label label-sm">Name</label>
+				<div class="col-xs-7">
+					<input class="form-control input-sm col-xs-12 editing listen_change" type="text" data-index="<%= i %>_<%= j %>" placeholder="Name" id="option_name_<%= i %>_<%= j %>" value="<%= name %>">
+				</div>
+				<div class="col-xs-1">
+					<a class="btn btn-danger btn-sm delete_option" data-index="<%= i %>_<%= j %>" id="delete_option_<%= i %>_<%= j %>"><i class="fa fa-trash-o"></i></a>
+				</div>
+				<div class="col-xs-2"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="col-xs-2 control-label label-sm">Max</label>
+				<div class="col-xs-3">
+					<input type="number" class="form-control input-sm editing listen_change" data-index="<%= i %>_<%= j %>" placeholder="Max Number" min="0" id="option_max_number_<%= i %>_<%= j %>" value="<%= max_number %>">
+				</div>
+				<div class="col-xs-1">
+					<i class="fa fa-inr" style="margin-top: 9px;"></i>
+				</div>
+				<div class="col-xs-3">
+					<input type="number" class="form-control input-sm editing listen_change" data-index="<%= i %>_<%= j %>" placeholder="Price" min="0" step="any" id="option_price_<%= i %>_<%= j %>" value="<%= price %>">
+				</div>
+				<div class="col-xs-3"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="col-xs-2 control-label label-sm">Type</label>
+				<div class="col-xs-3">
+					<select class="option_type editing listen_change" id="option_veg_type_<%= i %>_<%= j %>" data-index="<%= i %>_<%= j %>">
+						<% $.each(window.collections.veg_types, function (type) { %>
+							<option value="<%= type %>" <% if (type == veg_type) { %> selected <% } %>><%= (type == "NON_VEG") ? "NON VEG" : type %></option>
+						<% }) %>
+					</select>
+				</div>
+				<div class="col-xs-1">
+					<i class="fa fa-thumb-tack"></i>
+				</div>
+				<div class="col-xs-3">
+					<input type="checkbox" class="option_default listen_change" id="option_default_<%= i %>_<%= j %>" data-index="<%= i %>_<%= j %>" <% if (default_check) { %> checked <% } %>>
+				</div>
+				<div class="col-xs-3"></div>
+			</div>
+		</div>
+		<br>
+	</div>
+</div>

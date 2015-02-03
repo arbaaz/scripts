@@ -1,0 +1,54 @@
+<div id="top_navigation">
+</div>
+
+<div class="row">
+  <!-- form component -->
+  <div class="col-xs-12">
+
+    <div class="panel">
+      <div class="panel-body">
+      	<section id="alerts"></section> 
+      	<h2 class="to_center">Edit: Fulfilment</h2>
+      	<hr>
+      	<div class="row">
+        	<form class="form-horizontal" id="" enctype="multipart/form-data">
+            <div class="form-group">
+              <!-- <label for="limit_on_orders" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">LIMIT OF ORDERS</label> -->
+              
+              <!-- <input id="limit_of_orders" type="text" class="form-control input-sm" value="<%=limit_of_orders%>"> -->
+
+
+              <%= partial('partials_markupNumber', {
+                id: "limit_of_orders",
+                placeholder: "Number of owners",
+                label: "LIMIT OF ORDERS",
+                name: "no_of_owners",
+                value: limit_of_orders,
+                required: false,
+                pattern: "/^[0-9]*$/",
+                min: "0"
+              }) %>
+            </div>
+            <h2 class = "to_center">
+              Status Messages
+            </h2><br/>
+            <%for(var i=1; i<=length_messages; i++) {%>
+              <div class="form-group">
+                <label for="inactive" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"><%= Object.keys(obj)[i-1].toString().replace(/_/g, " ")%>
+                </label>
+                <div class = "col-md-6 col-sm-6 col-xs-6">
+                  <input col="30" rows="3" class="form-control input-sm" name="comments" id="text<%=i%>" placeholder="message" value="<%= obj[Object.keys(obj)[i-1]]%>"></input>
+                </div>
+               </div>
+             <%}%>
+             <div class = "col-md-6 col-sm-6 col-xs-6">
+             <br/>
+             <div class = "submit_div">
+             <button class="btn btn-primary" id="save_button">Save Changes</button>
+             </div>
+        	</form>
+      	</div>
+      </div>
+  	</div>
+  </div>
+</div>

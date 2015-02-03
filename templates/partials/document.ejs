@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="form-group">
+		<label for="docname" class="col-md-4 control-label">Name of the document</label>
+		<div class="col-md-6">
+		  <input type="text" class="form-control input-sm" name="docname_<%=i%>" id="docname_<%=i%>" placeholder="Enter the name of the document" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="doc" class="col-md-4 control-label">Upload file</label>
+		<div class="col-md-4">
+		  <input type="file" class="form-control input-sm" name="doc_<%=i%>" id="doc_<%=i%>" required>
+		</div>	
+		<div class="col-md-4">
+		  <button type="button" class="btn btn-primary btn-sm upload" id="<%=i%>"><i class="fa fa-upload"></i> Upload </button> 
+		</div>
+	</div>
+	<hr/>
+</div>

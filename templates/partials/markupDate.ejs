@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="control-label col-md-4"><%= required ? "* " : ""%><%= label %></label>
+      <div class="col-md-6">
+        <div class="input-group input-sm">
+          <span class="input-group-addon input-sm">on</span>
+          <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="form-control input-sm schedule_date" <%= required ? "required" : ""%> name="schedule_date" id="<%= id1 %>" placeholder="date" value="<%= value1 %>">
+          <span class="input-group-addon input-sm">at</span>
+          <input type="text" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="form-control input-sm schedule_time" <%= required ? "required" : ""%> name="schedule_time" id="<%= id2 %>" placeholder="time" value="<%= value2 %>">
+    </div>                        
+  </div>
+</div>   

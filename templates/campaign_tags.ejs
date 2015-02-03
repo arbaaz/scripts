@@ -1,0 +1,94 @@
+<div id="top_navigation">
+</div>
+
+<div class="row">
+  <!-- form component -->
+  <div class="col-xs-12">
+
+    <div class="panel">
+      <div class="panel-body">
+      	<section id="alerts"></section> 
+      	<h2 class="to_center">Edit: Campaign</h2>
+      	<hr>
+      	<div class="row">
+        	<form class="form-horizontal" id="" enctype="multipart/form-data">
+              <% for(var i=1; i<=length_tags; i++) {%>
+                        <div class="form-group">
+                            <label for="inactive" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"><%= Object.keys(obj)[i-1].toString().replace(/_/g, " ")%>
+                            </label>
+                            <div class = "col-md-6 col-sm-6 col-xs-6">
+                              <div class = "col-md-10 col-sm-10 col-xs-10">
+                                <input col="30" rows="3" class="form-control input-sm" name="comments" id="text<%=i%>" placeholder="message" value="<%= obj[Object.keys(obj)[i-1]]%>"></input>
+                              </div>
+                              <div class = "col-md-2 col-sm-2 col-xs-2">
+                                <input type="checkbox" id="check<%=i%>" >
+                              </div>
+                            </div>
+                        </div>
+              <%}%>
+                      <br/><br/><br/><br/>
+                      <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">
+                          NO PROMOCODE APPLICABLE (Except specified)
+                        </label>
+                        <div class = "col-md-6 col-sm-6 col-xs-6">
+                            <div class = "col-md-10 col-sm-10 col-xs-10">
+                              <input col="30" rows="3" class="form-control input-sm" name="comments" id="text_applicable_promo_message" placeholder="message" value="<%=text_applicable_promo_message.toString()%>"></input>
+                            </div>
+                            <div class = "col-md-2 col-sm-2 col-xs-2">
+                              <input type="checkbox" id="check_applicable_promo_message" >
+                            </div>
+                          </div>
+                      </div>
+                      <h2 class="to_center">AGENT</h2>
+                      <div class = "form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">
+                          Dedicated Agent? 
+                        </label>
+                        <div class = "col-md-6 col-sm-6 col-xs-6">
+                          <div class = "col-md-2 col-sm-2 col-xs-2">
+                            <input type="checkbox" id="check_dedicated_agent" >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">
+                          NAME: 
+                        </label>
+                        <div class = "col-md-6 col-sm-6 col-xs-6">
+                            <div class = "col-md-10 col-sm-10 col-xs-10">
+                              <input col="30" rows="3" class="form-control input-sm" name="name" id="text_agent_name" placeholder="name" value="<%=agent.name%>"></input>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">
+                          NUMBER: 
+                        </label>
+                        <div class = "col-md-6 col-sm-6 col-xs-6">
+                            <div class = "col-md-10 col-sm-10 col-xs-10">
+                              <input col="30" rows="3" class="form-control input-sm" name="number" id="text_agent_number" placeholder="number" value="<%=agent.number%>"></input>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- <div class = "form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">
+                          Dedicated Agent? 
+                        </label>
+                        <div class = "col-md-6 col-sm-6 col-xs-6">
+                          <div class = "col-md-2 col-sm-2 col-xs-2">
+                            <input type="checkbox" id="check_dedicated_agent" >
+                          </div>
+                        </div>
+                      </div> -->
+             <div class = "col-md-6 col-sm-6 col-xs-6">
+             <br/>
+             <div class = "submit_div">
+             <button class="btn btn-primary" id="save_button">Save Changes</button>
+             </div>
+        	</form>
+      	</div>
+      </div>
+  	</div>
+  </div>
+</div>

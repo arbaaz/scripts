@@ -1,0 +1,269 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-body">
+        <form role="form" class="form-horizontal" id="constant_variables_form" method="POST">
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="RESTAURANT_RUSH_TIME_SLAB" class="control-label">Restaurant Rush Time Slab</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="RESTAURANT_RUSH_TIME_SLAB" value ="<%= constant_variables.RESTAURANT_RUSH_TIME_SLAB%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="RESTAURANT_RUSH_ORDER_COUNT" class="control-label">Restaurant Rush Order Count</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="RESTAURANT_RUSH_ORDER_COUNT" value ="<%= constant_variables.RESTAURANT_RUSH_ORDER_COUNT%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="RESTAURANT_RUSH_ERROR_MESSAGE" class="control-label">Restaurant Rush Error Message</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="RESTAURANT_RUSH_ERROR_MESSAGE" value ="<%= constant_variables.RESTAURANT_RUSH_ERROR_MESSAGE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="RESTAURANT_INVISIBLE_ERROR_MESSAGE" class="control-label">Restaurant Invisible Error Message</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="RESTAURANT_INVISIBLE_ERROR_MESSAGE" value ="<%= constant_variables.RESTAURANT_INVISIBLE_ERROR_MESSAGE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="RESTAURANT_INACTIVE_ERROR_MESSAGE" class="control-label">Restaurant Inactive Error Message</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="RESTAURANT_INACTIVE_ERROR_MESSAGE" value ="<%= constant_variables.RESTAURANT_INACTIVE_ERROR_MESSAGE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="PROMOTION_INVALID_ERROR_MESSAGE" class="control-label">Promotion Invalid Error Message</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="PROMOTION_INVALID_ERROR_MESSAGE" value ="<%= constant_variables.PROMOTION_INVALID_ERROR_MESSAGE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="OPEN_LOGO_SIZE" class="control-label">Open Logo Size</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="OPEN_LOGO_SIZE" value ="<%= constant_variables.OPEN_LOGO_SIZE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="CLOSED_LOGO_SIZE" class="control-label">Closed Logo Size</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="CLOSED_LOGO_SIZE" value ="<%= constant_variables.CLOSED_LOGO_SIZE%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="DEACTIVATE_PROMO_CODES" class="control-label">Deactivate Promo Codes</label>
+            </div>
+            <div class="col-md-6">
+              <input type="hidden" name="DEACTIVATE_PROMO_CODES" value="off">
+              <input type="checkbox" class="form-control input-sm" name="DEACTIVATE_PROMO_CODES" <% if(constant_variables.DEACTIVATE_PROMO_CODES=="true"){%> <%= "checked" %> <% }%> >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="GS_NUMBER_OF_RESTAURANTS" class="control-label">GS Number of Restaurants</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="GS_NUMBER_OF_RESTAURANTS" value ="<%= constant_variables.GS_NUMBER_OF_RESTAURANTS%>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="CALL_BEFORE_ORDER_ACTION" class="control-label">Call Before Order Action</label>
+            </div>
+            <div class="col-md-6">
+              <input type="hidden" name="CALL_BEFORE_ORDER_ACTION" value="off">
+              <input type="checkbox" class="form-control input-sm" name="CALL_BEFORE_ORDER_ACTION" <% if(constant_variables.CALL_BEFORE_ORDER_ACTION=="true"){%> <%= "checked" %> <% }%> >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-1 visible">
+              <label for="ORDER_COUNTER_NUMBER" class="control-label">Order Counter Number</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control input-sm" name="ORDER_COUNTER_NUMBER" value ="<%= constant_variables.ORDER_COUNTER_NUMBER%>">
+            </div>
+          </div>
+
+          <hr>
+
+          <div class ="col-md-offset-1">
+            <ul class="nav nav-pills nav-justified" role="tablist" id="myTab">
+              <li class="active" role="presentation" id="settings_sync"><a href="#release_update_panel" role="tab" data-toggle="tab">Avoid Release Update Sync</a></li>
+              <li  role="presentation" id="location_sync"><a href="#settings_sync_panel" role="tab" data-toggle="tab">Avoid Settings Sync</a></li>
+              <li role="presentation" id="menu_sync"><a href="#delivery_areas_sync_panel" role="tab" data-toggle="tab">Avoid Delivery Areas Sync</a></li>
+              <li role="presentation" id="profile_sync"><a href="#menu_sync_panel" role="tab" data-toggle="tab">Avoid Menu Sync</a></li>
+              <li role="presentation" id="profile_sync"><a href="#avoid_sync_panel" role="tab" data-toggle="tab">Avoid Sync</a></li>
+            </ul>
+            <br>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="release_update_panel">
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_RELEASE_UPDATE_SYNC" class="control-label">Avoid Release Update Sync</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="hidden" name="AVOID_RELEASE_UPDATE_SYNC" value="off">
+                  <input type="checkbox" class="form-control input-sm" name="AVOID_RELEASE_UPDATE_SYNC" <% if(constant_variables.AVOID_RELEASE_UPDATE_SYNC=="true"){%> <%= "checked" %> <% }%> >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_RELEASE_UPDATE_SYNC_START" class="control-label">Avoid Release Update Sync Start</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_RELEASE_UPDATE_SYNC_START" value ="<%= constant_variables.AVOID_RELEASE_UPDATE_SYNC_START%>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_RELEASE_UPDATE_SYNC_END" class="control-label">Avoid Release Update Sync End</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_RELEASE_UPDATE_SYNC_END" value ="<%= constant_variables.AVOID_RELEASE_UPDATE_SYNC_END%>">
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade in" id="settings_sync_panel">
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SETTING_SYNC" class="control-label">Avoid Setting Sync</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="hidden" name="AVOID_SETTING_SYNC" value="off">
+                  <input type="checkbox" class="form-control input-sm" name="AVOID_SETTING_SYNC" <% if(constant_variables.AVOID_SETTING_SYNC=="true"){%> <%= "checked" %> <% }%> >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SETTING_SYNC_START" class="control-label">Avoid Setting Sync Start</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_SETTING_SYNC_START" value ="<%= constant_variables.AVOID_SETTING_SYNC_START%>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SETTING_SYNC_END" class="control-label">Avoid Setting Sync End</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_SETTING_SYNC_END" value ="<%= constant_variables.AVOID_SETTING_SYNC_END%>">
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade in" id="delivery_areas_sync_panel">
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_DELIVERY_AREAS_SYNC" class="control-label">Avoid Delivery Areas Sync</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="hidden" name="AVOID_DELIVERY_AREAS_SYNC" value="off">
+                  <input type="checkbox" class="form-control input-sm" name="AVOID_DELIVERY_AREAS_SYNC" <% if(constant_variables.AVOID_DELIVERY_AREAS_SYNC=="true"){%> <%= "checked" %> <% }%> >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_DELIVERY_AREAS_SYNC_START" class="control-label">Avoid Delivery Areas Sync Start</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_DELIVERY_AREAS_SYNC_START" value ="<%= constant_variables.AVOID_DELIVERY_AREAS_SYNC_START%>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_DELIVERY_AREAS_SYNC_END" class="control-label">Avoid Delivery Areas Sync End</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_DELIVERY_AREAS_SYNC_END" value ="<%= constant_variables.AVOID_DELIVERY_AREAS_SYNC_END%>">
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade in" id="menu_sync_panel">
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_MENU_SYNC" class="control-label">Avoid Menu Sync</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="hidden" name="AVOID_MENU_SYNC" value="off">
+                  <input type="checkbox" class="form-control input-sm" name="AVOID_MENU_SYNC" <% if(constant_variables.AVOID_MENU_SYNC=="true"){%> <%= "checked" %> <% }%> >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_MENU_SYNC_START" class="control-label">Avoid Menu Sync Start</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_MENU_SYNC_START" value ="<%= constant_variables.AVOID_MENU_SYNC_START%>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_MENU_SYNC_END" class="control-label">Avoid Menu Sync End</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_MENU_SYNC_END" value ="<%= constant_variables.AVOID_MENU_SYNC_END%>">
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade in" id="avoid_sync_panel">
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SYNC" class="control-label">Avoid Sync</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="hidden" name="AVOID_SYNC" value="off">
+                  <input type="checkbox" class="form-control input-sm" name="AVOID_SYNC" <% if(constant_variables.AVOID_SYNC=="true"){%> <%= "checked" %> <% }%> >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SYNC_START" class="control-label">Avoid Sync Start</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_SYNC_START" value ="<%= constant_variables.AVOID_SYNC_START%>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-4 col-md-offset-1 visible">
+                  <label for="AVOID_SYNC_END" class="control-label">Avoid Sync End</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control input-sm" name="AVOID_SYNC_END" value ="<%= constant_variables.AVOID_SYNC_END%>">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr/>
+          <div class="to_center">
+            <button type="Create" class="btn btn btn-success" id="edit_constant_variables">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
