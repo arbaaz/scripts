@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.ChangePasswordView = Backbone.View.extend({
+  var ChangePasswordView = Backbone.View.extend({
     el: '#page',
     template: JST['app/scripts/templates/change_password.ejs'],
     initialize: function () {
@@ -64,5 +64,5 @@ function( _, $, Backbone)
     },
 
   });
-
+  return ChangePasswordView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.RestaurantDiffView = Backbone.View.extend({  
+  var RestaurantDiffView = Backbone.View.extend({  
 
         el: '#page',
         template: JST['app/scripts/templates/restaurant_diff.ejs'],
@@ -48,5 +48,5 @@ function( _, $, Backbone)
         }
 
     });
-
+  return RestaurantDiffView;
 });

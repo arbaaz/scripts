@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.FulfilmentView = Backbone.View.extend({
+  var FulfilmentView = Backbone.View.extend({
     	el: "#page",
     	template: JST["app/scripts/templates/fulfilment.ejs"],
       length_messages: 0,
@@ -82,4 +82,5 @@ function( _, $, Backbone)
 			});
 		}
     });
+  return FulfilmentView;
 });

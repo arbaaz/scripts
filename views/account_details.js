@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.AccountDetailsView = Backbone.View.extend({
+  var AccountDetailsView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/account_details.ejs'],
@@ -225,4 +225,5 @@ function( _, $, Backbone)
           return false;
         },
     });
+  return AccountDetailsView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.SpellCheckView = Backbone.View.extend({
+  var SpellCheckView = Backbone.View.extend({
 
     	initialize: function() {
     		window.restaurant_id = ""
@@ -143,5 +143,5 @@ function( _, $, Backbone)
         }
 
   	});
-
+  return SpellCheckView;
 });

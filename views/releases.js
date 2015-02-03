@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.Releases = Backbone.View.extend({  // View to display promotions 
+    var Releases = Backbone.View.extend({  // View to display promotions 
 
         el: '#page',
         template: JST['app/scripts/templates/releases.ejs'],
@@ -74,5 +74,5 @@ function( _, $, Backbone)
         }
 
     });
-
+    return Releases;
 });

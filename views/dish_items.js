@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.DishItemsView = Backbone.View.extend({  // View to display logs 
+    var DishItemsView = Backbone.View.extend({  // View to display logs 
 
         el: '#page',
         template: JST['app/scripts/templates/dish_items.ejs'],
@@ -86,5 +86,5 @@ function( _, $, Backbone)
             });
         }
     });
-
+    return DishItemsView;
 });

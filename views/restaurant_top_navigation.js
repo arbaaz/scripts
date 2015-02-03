@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.RestaurantTopNavigationView = Backbone.View.extend({  // View to display logs 
+    var RestaurantTopNavigationView = Backbone.View.extend({  // View to display logs 
         
         initialize: function (data) {
             
@@ -56,5 +56,5 @@ function( _, $, Backbone)
         }
         
     });
-
+    return RestaurantTopNavigationView;
 });

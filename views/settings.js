@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.SettingsView = Backbone.View.extend({
+  var SettingsView = Backbone.View.extend({
     el: '#page',
     template: JST['app/scripts/templates/settings.ejs'],
     initialize: function () {
@@ -67,5 +67,5 @@ function( _, $, Backbone)
 
     },
   });
-
+  return SettingsView;
 });

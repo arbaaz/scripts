@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.DishTypeTagsView = Backbone.View.extend({  
+    var DishTypeTagsView = Backbone.View.extend({  
 
         el: '#page',
         template: JST['app/scripts/templates/dish_type_tags.ejs'],
@@ -63,5 +63,5 @@ function( _, $, Backbone)
 
         
     });
-
+    return DishTypeTagsView;
 });

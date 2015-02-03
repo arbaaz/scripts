@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.DeliveryAreaView = Backbone.View.extend({  // View to display logs 
+  var DeliveryAreaView = Backbone.View.extend({  // View to display logs 
 
         el: '#page',
         template: JST['app/scripts/templates/delivery_area.ejs'],
@@ -538,4 +538,5 @@ function( _, $, Backbone)
       this.$("#timing_end_" + i + '_' + j).timepicker({'timeFormat': 'H:i'});
     }
   });
+  return DeliveryAreaView;
 });

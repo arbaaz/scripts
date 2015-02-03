@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.RestaurantView = Backbone.View.extend({
+    var RestaurantView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/restaurants.ejs'],
@@ -561,5 +561,5 @@ function( _, $, Backbone)
         }
 
     });
-
+    return RestaurantView;
 });

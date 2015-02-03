@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.TaggingView = Backbone.View.extend({
+  var TaggingView = Backbone.View.extend({
     el: '#page',
     copy_id: '',
     current_pos: '',
@@ -358,4 +358,5 @@ function( _, $, Backbone)
       select_el.last().on("select2-focus",this.select2_focus);
     }
   }); //end-extends
+  return TaggingView;
 });

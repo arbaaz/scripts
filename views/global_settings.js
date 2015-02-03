@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.GlobalSettingsView = Backbone.View.extend({
+  var GlobalSettingsView = Backbone.View.extend({
     el: '#global_settings_panel',
     template: JST['app/scripts/templates/global_settings.ejs'],
     initialize: function (options) {
@@ -72,5 +72,5 @@ function( _, $, Backbone)
       close_sidebar();
     }
   });
-
+  return GlobalSettingsView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.ConstantVariablesView = Backbone.View.extend({
+  var ConstantVariablesView = Backbone.View.extend({
     el: '#constant_variables_panel',
     template: JST['app/scripts/templates/constant_variables.ejs'],
     initialize: function (options) {
@@ -64,5 +64,5 @@ function( _, $, Backbone)
       close_sidebar();
     }
   });
-
+  return ConstantVariablesView;
 });

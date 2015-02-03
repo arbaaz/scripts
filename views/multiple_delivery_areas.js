@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.MultipleDeliveryAreasView = Backbone.View.extend({
+  var MultipleDeliveryAreasView = Backbone.View.extend({
     el: '#page',
     template: JST['app/scripts/templates/multiple_delivery_areas.ejs'],
     initialize: function(options) {
@@ -76,4 +76,5 @@ function( _, $, Backbone)
         e.target.parentElement.remove();
     },
   });
+  return MultipleDeliveryAreasView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.UpdateStatusView = Backbone.View.extend({
+    var UpdateStatusView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/update_status.ejs'],
@@ -138,5 +138,5 @@ function( _, $, Backbone)
         },
 
     });
-
+    return UpdateStatusView;
 });

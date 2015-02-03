@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.DeliveryAreaView = Backbone.View.extend({
+  var DeliveryAreaView = Backbone.View.extend({
 
 
     initialize: function(options) {
@@ -765,5 +765,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return DeliveryAreaView;
 });

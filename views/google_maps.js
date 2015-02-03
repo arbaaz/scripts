@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
 //TODO:refactor the function:add_polygon_with_event
-  dataEntryClient.Views.GoogleMapView = Backbone.View.extend({
+  var GoogleMapView = Backbone.View.extend({
     // el: '#page',
     id: '#map-canvas',
     template: JST['app/scripts/templates/google_map.ejs'],
@@ -202,4 +202,5 @@ function( _, $, Backbone)
     },
 
   });
+  return GoogleMapView;
 });

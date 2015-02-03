@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.ItemEntryView = Backbone.View.extend({
+  var ItemEntryView = Backbone.View.extend({
 
       el: '#page',
       template: JST['app/scripts/templates/menu_entry/item_entry.ejs'],
@@ -425,4 +425,5 @@ function( _, $, Backbone)
         _.each(item.get('sizes').models, function (size, j) { that.assign_selects(i, j) });
       }
     });
+  return ItemEntryView;
 });

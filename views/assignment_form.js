@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.AssignmentFormView = Backbone.View.extend({
+  var AssignmentFormView = Backbone.View.extend({
 
       initialize: function() {
       },
@@ -46,5 +46,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return AssignmentFormView;
 });

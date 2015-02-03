@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.AbsolutePositionSubView = Backbone.View.extend({
+    var AbsolutePositionSubView = Backbone.View.extend({
 
     el: '#ranked_rest_list',
     template: JST['app/scripts/templates/absolute_position_subview.ejs'],
@@ -105,4 +105,5 @@ function( _, $, Backbone)
         })
     }
   });
+    return AbsolutePositionSubView;
 });

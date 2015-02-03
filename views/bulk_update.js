@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.BulkUpdateView = Backbone.View.extend({
+    var BulkUpdateView = Backbone.View.extend({
 
     	el: '#page',
     	template: JST['app/scripts/templates/bulk_update.ejs'],
@@ -112,4 +112,5 @@ function( _, $, Backbone)
         }
 
     });
+    return BulkUpdateView;
 });

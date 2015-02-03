@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.IosSettingsView = Backbone.View.extend({
+  var IosSettingsView = Backbone.View.extend({
     el: '#ios_settings_panel',
     template: JST['app/scripts/templates/ios_settings.ejs'],
     initialize: function (options) {
@@ -67,5 +67,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return IosSettingsView;
 });

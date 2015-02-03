@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
      //Promotion view to add or update a promotion.
-     dataEntryClient.Views.AndroidReleaseView = Backbone.View.extend({
+  var AndroidReleaseView = Backbone.View.extend({
         
           template: JST['app/scripts/templates/release.ejs'],
           initialize: function(attrs) {
@@ -138,5 +138,5 @@ function( _, $, Backbone)
          }
 
      });
-
+  return AndroidReleaseView;
 });

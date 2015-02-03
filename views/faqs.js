@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.FaqsView = Backbone.View.extend({
+    var FaqsView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/faqs.ejs'],
@@ -37,5 +37,5 @@ function( _, $, Backbone)
         },
 
     });
-
+    return FaqsView;
 });

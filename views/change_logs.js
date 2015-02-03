@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.ChangeLogsView = Backbone.View.extend({
+  var ChangeLogsView = Backbone.View.extend({
 
     el: '#page',
     template: JST['app/scripts/templates/change_logs.ejs'],
@@ -45,5 +45,5 @@ function( _, $, Backbone)
     }
 
   });
-
+  return ChangeLogsView;
 });

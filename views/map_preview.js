@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.MapPreviewView = Backbone.View.extend({
+  var MapPreviewView = Backbone.View.extend({
 
     initialize: function() {
       window.map = null;
@@ -406,5 +406,5 @@ function( _, $, Backbone)
     },
 
   });
-
+  return MapPreviewView;
 });

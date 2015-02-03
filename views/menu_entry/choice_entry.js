@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.ChoiceEntryView = Backbone.View.extend({
+  var ChoiceEntryView = Backbone.View.extend({
 
       el: '#page',
       template: JST['app/scripts/templates/menu_entry/choice_entry.ejs'],
@@ -306,4 +306,5 @@ function( _, $, Backbone)
         });
       }
     });
+  return ChoiceEntryView;
 });

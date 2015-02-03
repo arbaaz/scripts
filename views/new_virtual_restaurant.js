@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.NewVirtualRestaurantView = Backbone.View.extend({
+  var NewVirtualRestaurantView = Backbone.View.extend({
 
       initialize: function() {
       },
@@ -49,5 +49,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return NewVirtualRestaurantView;
 });

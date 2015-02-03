@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.MenuCategorizationView = Backbone.View.extend({
+  var MenuCategorizationView = Backbone.View.extend({
 
       initialize: function() {
         this.save_local_tags = {}
@@ -204,5 +204,5 @@ function( _, $, Backbone)
       },
 
  });
-
+  return MenuCategorizationView;
 });

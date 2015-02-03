@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.PointOfSaleView = Backbone.View.extend({
+  var PointOfSaleView = Backbone.View.extend({
         el: '#page',
         template: JST['app/scripts/templates/point_of_sale.ejs'],
 
@@ -155,4 +155,5 @@ function( _, $, Backbone)
         },
         
     });
+  return PointOfSaleView;
 });

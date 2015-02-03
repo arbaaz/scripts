@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
      //Promotion view to add or update a dish item.
-     dataEntryClient.Views.DishItemView = Backbone.View.extend({
+  var DishItemView = Backbone.View.extend({
       template: JST['app/scripts/templates/dish_item.ejs'],
       initialize: function(attrs) {
            
@@ -123,5 +123,5 @@ function( _, $, Backbone)
      }
 
   });
-
+  return DishItemView;
 });

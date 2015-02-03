@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
      //DishType view to add or update a dish type tag.
-     dataEntryClient.Views.DishTypeTagView = Backbone.View.extend({
+  var DishTypeTagView = Backbone.View.extend({
         
           template: JST['app/scripts/templates/dish_type_tag.ejs'],
           initialize: function(attrs) {
@@ -115,5 +115,5 @@ function( _, $, Backbone)
          }
 
      });
-
+  return DishTypeTagView;
 });

@@ -9,7 +9,7 @@ function( _, $, Backbone)
 { 
   'use strict';
      //Promotion view to add or update a promotion.
-     dataEntryClient.Views.PositionView = Backbone.View.extend({
+  var PositionView = Backbone.View.extend({
         
           template: JST['app/scripts/templates/position.ejs'],
           initialize: function() {
@@ -111,5 +111,5 @@ function( _, $, Backbone)
          }
 
      });
-
+  return PositionView;
 });

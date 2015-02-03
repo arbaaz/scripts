@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.CampaignTagsView = Backbone.View.extend({
+  var CampaignTagsView = Backbone.View.extend({
       length_tags: 0,
     	el: "#page",
     	template: JST["app/scripts/templates/campaign_tags.ejs"],
@@ -100,4 +100,5 @@ function( _, $, Backbone)
 			});
 		}
     });
+  return CampaignTagsView;
 });

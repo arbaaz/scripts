@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.MenuView = Backbone.View.extend({
+  var MenuView = Backbone.View.extend({
 
 
         el: "#page",
@@ -49,5 +49,5 @@ function( _, $, Backbone)
 
         
     });
-
+  return MenuView;
 });

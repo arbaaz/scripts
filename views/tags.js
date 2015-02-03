@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.TagsView = Backbone.View.extend({
+  var TagsView = Backbone.View.extend({
 
     el: '#page',
     template: JST['app/scripts/templates/tags.ejs'],
@@ -172,4 +172,5 @@ function( _, $, Backbone)
     },800),
     
   });
+  return TagsView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.OfficeDocumentView = Backbone.View.extend({
+  var OfficeDocumentView = Backbone.View.extend({
 
       initialize: function(attrs) {
         this.options = attrs;
@@ -235,5 +235,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return OfficeDocumentView;
 });

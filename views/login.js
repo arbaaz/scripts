@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.LoginView = Backbone.View.extend({
+  var LoginView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/login.ejs'],
@@ -91,5 +91,5 @@ function( _, $, Backbone)
         }
 
     });
-
+  return LoginView;
 });

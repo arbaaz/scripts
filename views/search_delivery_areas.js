@@ -12,7 +12,7 @@ var PolygonModel = Backbone.Model.extend({});
 var PolygonCollection = Backbone.Collection.extend({
     model: PolygonModel
 });
-  dataEntryClient.Views.SearchDeliveryAreasView = Backbone.View.extend({
+  var SearchDeliveryAreasView = Backbone.View.extend({
     el: '#page',
     template: JST['app/scripts/templates/search_delivery_areas.ejs'],
     initialize: function(options) {
@@ -91,4 +91,5 @@ var PolygonCollection = Backbone.Collection.extend({
     },
 
   });
+  return SearchDeliveryAreasView;   
 });

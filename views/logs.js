@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.LogsView = Backbone.View.extend({  // View to display logs 
+    var LogsView = Backbone.View.extend({  // View to display logs 
 
         el: '#page',
         template: JST['app/scripts/templates/logs.ejs'],
@@ -150,5 +150,5 @@ function( _, $, Backbone)
         }
         
     });
-
+    return LogsView;
 });

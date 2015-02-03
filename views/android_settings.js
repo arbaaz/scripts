@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';  
-  dataEntryClient.Views.AndroidSettingsView = Backbone.View.extend({
+  var AndroidSettingsView = Backbone.View.extend({
     el: '#android_settings_panel',
     template: JST['app/scripts/templates/android_settings.ejs'],
     initialize: function (options) {
@@ -71,5 +71,5 @@ function( _, $, Backbone)
       close_sidebar();
     }
   });
-
+  return AndroidSettingsView;
 });

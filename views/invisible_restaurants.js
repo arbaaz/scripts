@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.InvisibleRestaurantView = Backbone.View.extend({
+    var InvisibleRestaurantView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/invisible_restaurants.ejs'],
@@ -134,5 +134,5 @@ function( _, $, Backbone)
         events: {}
 
     });
-
+    return InvisibleRestaurantView;
 });

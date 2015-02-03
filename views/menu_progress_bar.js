@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.MenuProgressBarView = Backbone.View.extend({  // View for menu progress bar 
+    var MenuProgressBarView = Backbone.View.extend({  // View for menu progress bar 
         
         initialize: function (data) {
             
@@ -36,5 +36,5 @@ function( _, $, Backbone)
         
         
     });
-
+    return MenuProgressBarView;
 });

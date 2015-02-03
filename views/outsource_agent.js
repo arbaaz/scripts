@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.OutsourceAgent = Backbone.View.extend({
+  var OutsourceAgent = Backbone.View.extend({
         el: '#page',
         template: JST['app/scripts/templates/outsource_agent.ejs'],
 
@@ -84,5 +84,5 @@ function( _, $, Backbone)
           return true;
         }
     });
-
+  return OutsourceAgent;
 });

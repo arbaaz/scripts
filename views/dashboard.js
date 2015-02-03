@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.DashboardView = Backbone.View.extend({
+  var DashboardView = Backbone.View.extend({
 
       initialize: function(attrs) {
         this.options = attrs;
@@ -42,5 +42,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return DashboardView;
 });

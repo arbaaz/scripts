@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.AlertsView = Backbone.View.extend({
+    var AlertsView = Backbone.View.extend({
 
         el: '#alerts',
         template: JST['app/scripts/templates/alerts.ejs'],
@@ -42,5 +42,5 @@ function( _, $, Backbone)
         },
 
     });
-
+    return AlertsView;
 });

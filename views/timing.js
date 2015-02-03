@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.TimingView = Backbone.View.extend({
+  var TimingView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/timing.ejs'],
@@ -287,5 +287,5 @@ function( _, $, Backbone)
         }
 
     });
-
+  return TimingView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.CopyRestaurantView = Backbone.View.extend({
+  var CopyRestaurantView = Backbone.View.extend({
 
       initialize: function() {
       },
@@ -56,5 +56,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return CopyRestaurantView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-	dataEntryClient.Views.PromotionItemView = Backbone.View.extend({
+  var PromotionItemView = Backbone.View.extend({
 
 		
           initialize: function() {},
@@ -29,5 +29,6 @@ function( _, $, Backbone)
               maximumSelectionSize: 1
             });
           }
-  });        
+  });  
+  return PromotionItemView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.AbsolutePositionView = Backbone.View.extend({
+  var AbsolutePositionView = Backbone.View.extend({
 
     el: '#page',
     template: JST['app/scripts/templates/absolute_position.ejs'],
@@ -95,4 +95,5 @@ function( _, $, Backbone)
 
 		}
   });
+  return AbsolutePositionView;
 });

@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.MiscellaneousView = Backbone.View.extend({
+  var MiscellaneousView = Backbone.View.extend({
 
       initialize: function(attrs) {
         this.options = attrs;
@@ -163,5 +163,5 @@ function( _, $, Backbone)
       }
 
     });
-
+  return MiscellaneousView;
 });

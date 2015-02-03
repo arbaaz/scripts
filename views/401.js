@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.NotAuthorizedView = Backbone.View.extend({
+    var NotAuthorizedView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/401.ejs'],
@@ -35,5 +35,5 @@ function( _, $, Backbone)
         },
 
     });
-
+    return NotAuthorizedView;
 });

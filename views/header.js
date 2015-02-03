@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.HeaderView = Backbone.View.extend({
+  var HeaderView = Backbone.View.extend({
 
         el: ".header.fixed-top",
         template: JST['app/scripts/templates/header.ejs'],
@@ -48,5 +48,5 @@ function( _, $, Backbone)
         }
 
     });
-
+  return HeaderView;
 });

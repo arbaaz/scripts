@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-    dataEntryClient.Views.NotFoundView = Backbone.View.extend({
+    var NotFoundView = Backbone.View.extend({
 
         el: '#page',
         template: JST['app/scripts/templates/404.ejs'],
@@ -35,5 +35,5 @@ function( _, $, Backbone)
         },
 
     });
-
+    return NotFoundView;
 });

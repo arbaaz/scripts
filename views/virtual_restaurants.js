@@ -8,7 +8,7 @@ define([
 function( _, $, Backbone)
 { 
   'use strict';
-  dataEntryClient.Views.VirtualRestaurantView = Backbone.View.extend({
+  var VirtualRestaurantView = Backbone.View.extend({
 
     el: '#page',
     template: JST['app/scripts/templates/virtual_restaurants.ejs'],
@@ -167,5 +167,5 @@ function( _, $, Backbone)
     },
 
   });
-
+  return VirtualRestaurantView;
 });
