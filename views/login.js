@@ -14,7 +14,7 @@ define([
 
       initialize: function () {
         //this.listenTo(this.model, 'change', this.render);
-        if (window.user.logged_in())
+        if (user.logged_in())
           this.redirect();
         else
           this.render();
@@ -67,7 +67,7 @@ define([
 
 
       redirect: function () {
-        var roles = _.collect(window.user.get_roles(), function (x) {
+        var roles = _.collect(user.get_roles(), function (x) {
           return x['name']
         });
         if (_.contains(roles, "Outsource Data Entry Agent")) {

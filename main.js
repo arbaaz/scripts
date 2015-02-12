@@ -7,8 +7,8 @@
 $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
   //jqXHR.setRequestHeader("key", 'MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRANTGmel6FJbFAGeae9M70cCAwEAAQ');
 
-  if(window.user != undefined)
-    jqXHR.setRequestHeader("session_token", window.user.session_manager.get_session());
+  if(user != undefined)
+    jqXHR.setRequestHeader("session_token", user.session_manager.get_session());
 
   if(!options.skip_url_prefix)
     options.url = '/restaurant/data_entry/' + options.url;
@@ -79,7 +79,7 @@ window.dataEntryClient = {
     var router = new Router;
     window.router = router;
     var user = new dataEntryClient.Models.UserModel();
-    window.user = user;
+    user = user;
     window.google_api_key = "AIzaSyCwdpZ7nWe_lgiClkq0C0XvCnTrzbeyuUU";
     collections; // = get_collections(); global collections
 
@@ -119,7 +119,7 @@ window.dataEntryClient = {
           skip_url_prefix: true,
           async : false,
           success: function(data) {
-            window.user.logout();
+            user.logout();
             window.global_observer.trigger('header_changed');
             window.router.navigate("login", { trigger: true});
           }

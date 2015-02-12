@@ -592,7 +592,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="navbar-header">\n    <button type="button" class="navbar-toggle hr-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n        <span class="fa fa-bars"></span>\n    </button>\n\n    <!--logo start-->\n    <div class="brand ">        \n        ';
- var roles = _.collect(window.user.get_roles(), function(x){ return x['name'] });
+ var roles = _.collect(user.get_roles(), function(x){ return x['name'] });
           if(_.contains(roles, "Outsource Data Entry Agent")){ ;
 __p += '\n            <a href="#outsource/agent" class="logo clearfix">\n          ';
  } 
@@ -1302,7 +1302,7 @@ __p += '\n                        </form>\n                      </div>\n       
 '">Completed</a>\n                        &nbsp;\n                        <a class="btn btn-success btn-sm send_diff" href="javascript:void(0);" data-form-id="' +
 ((__t = ( restaurant.get("form_id") )) == null ? '' : __t) +
 '">Send Diff Report</a>\n                        &nbsp;\n                        ';
- if(window.user.get_company().toLowerCase() == "tinyowl") { ;
+ if(user.get_company().toLowerCase() == "tinyowl") { ;
 __p += '\n                        <a class="btn btn-success btn-sm export" href="javascript:void(0);" data-form-id="' +
 ((__t = ( restaurant.get("form_id") )) == null ? '' : __t) +
 '">Export</a>\n                        &nbsp;\n                        ';
@@ -2468,7 +2468,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<!-- sidebar -->\n';
- var roles = _.collect(window.user.get_roles(), function(x){ return x['name'] });
+ var roles = _.collect(user.get_roles(), function(x){ return x['name'] });
   var user_type;
   if(_.contains(roles, "Outsource Data Entry Agent")){ 
     user_type="outsource";

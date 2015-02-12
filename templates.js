@@ -1248,17 +1248,17 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row">\r\n  <div class="col-md-6 col-md-offset-3">\r\n    <div class="panel">\r\n      <div class="panel-body">\r\n        <h3 class="to_center">Edit Your Profile</h3>\r\n        <hr/>\r\n        <form role="form" class="form-horizontal" id="user_profile_form" method="POST">\r\n          <div class="form-group">\r\n            <div class="col-md-6 col-sm-6 col-xs-6">\r\n              <input type="text" class="form-control input-sm" name="first_name" id="first_name"  placeholder=" First Name" required  value="' +
-((__t = (window.user.get_profile().first_name )) == null ? '' : __t) +
+((__t = (user.get_profile().first_name )) == null ? '' : __t) +
 '">\r\n            </div>\r\n            <div class="col-md-6 col-sm-6 col-xs-6">\r\n              <input type="text" class="form-control input-sm" name="last_name" id="last_name"  placeholder="Last Name" required value="' +
-((__t = (window.user.get_profile().last_name )) == null ? '' : __t) +
+((__t = (user.get_profile().last_name )) == null ? '' : __t) +
 '">\r\n            </div>\r\n          </div>\r\n          <div class="form-group">\r\n            <div class="col-md-6 col-sm-6 col-xs-6">\r\n              <input type="text" class="form-control input-sm" name="phone" id="phone" placeholder="Phone no."  value="' +
-((__t = (window.user.get_profile().phone_numbers[0].number )) == null ? '' : __t) +
+((__t = (user.get_profile().phone_numbers[0].number )) == null ? '' : __t) +
 '" disabled />\r\n            </div>\r\n            <div class="col-md-6 col-sm-6 col-xs-6">\r\n              <input type="text" class="form-control input-sm" name="email" id="email" placeholder="Email id" value="' +
-((__t = (window.user.get_profile().email )) == null ? '' : __t) +
+((__t = (user.get_profile().email )) == null ? '' : __t) +
 '" disabled />\r\n            </div>\r\n          </div>  \r\n          <hr/>\r\n          <div class="to_center">\r\n            <button type="Create" class="btn btn btn-success" id="editprofile">Submit</button>\r\n          </div>\r\n        </form>\r\n        <br/>\r\n        <h3 class="to_center">Edit Your Profile Picture</h3>\r\n        <hr/>\r\n        <form role="form" class="form-horizontal" id="user_avatar_form" method="POST" enctype="multipart/form-data" action="/user/edit_profile_avatar.json">\r\n          <div class="form-group">\r\n            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3" id="avatar_image">\r\n              ';
- if (typeof window.user.get_profile().avatar != "undefined" && window.user.get_profile().avatar.success) { ;
+ if (typeof user.get_profile().avatar != "undefined" && user.get_profile().avatar.success) { ;
 __p += '\r\n              <div>\r\n                <img class="center-block" src="' +
-((__t = ( window.user.get_profile().avatar.thumb )) == null ? '' : __t) +
+((__t = ( user.get_profile().avatar.thumb )) == null ? '' : __t) +
 '"/>\r\n                <br />\r\n              </div>\r\n              ';
  } ;
 __p += '\r\n              <input type="file" class="form-control input-sm" name="avatar" id="avatar" placeholder="Profile pic">\r\n            </div>\r\n          </div>\r\n          <hr/>\r\n          <div class="to_center">\r\n            <button type="Create" class="btn btn btn-success" id="editavatar">Submit</button>\r\n            &nbsp;&nbsp;\r\n            <button type="Delete" class="btn btn btn-danger" id="deleteavatar">Delete</button>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
@@ -1396,7 +1396,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '    <button type="button" class="navbar-toggle hr-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n        <span class="fa fa-bars"></span>\n    </button>\n\n    <!--logo start-->\n    <div class="brand ">        \n        ';
- var roles = _.collect(window.user.get_roles(), function(x){ return x['name'] });
+ var roles = _.collect(user.get_roles(), function(x){ return x['name'] });
           if(_.contains(roles, "Outsource Data Entry Agent")){ ;
 __p += '\n            <a href="#outsource/agent" class="logo clearfix">\n          ';
  } 
@@ -2502,7 +2502,7 @@ __p += '\r\n                        </form>\r\n                      </div>\r\n 
 '">Completed</a>\r\n                        &nbsp;\r\n                        <a class="btn btn-success btn-sm send_diff" href="javascript:void(0);" data-form-id="' +
 ((__t = ( restaurant.get("form_id") )) == null ? '' : __t) +
 '">Send Diff Report</a>\r\n                        &nbsp;\r\n                        ';
- if(window.user.get_company().toLowerCase() == "tinyowl") { ;
+ if(user.get_company().toLowerCase() == "tinyowl") { ;
 __p += '\r\n                        <a class="btn btn-success btn-sm export" href="javascript:void(0);" data-form-id="' +
 ((__t = ( restaurant.get("form_id") )) == null ? '' : __t) +
 '" data-overwrite="false">Export</a>\r\n                        &nbsp;\r\n                        ';
@@ -5872,7 +5872,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<!-- sidebar -->\n';
- var roles = _.collect(window.user.get_roles(), function(x){ return x['name'] });
+ var roles = _.collect(user.get_roles(), function(x){ return x['name'] });
   var user_type;
   if(_.contains(roles, "Outsource Data Entry Agent")){ 
     user_type="outsource";

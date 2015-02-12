@@ -72,7 +72,7 @@
                         &nbsp;
                         <a class="btn btn-success btn-sm send_diff" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>">Send Diff Report</a>
                         &nbsp;
-                        <% if(window.user.get_company().toLowerCase() == "tinyowl") { %>
+                        <% if(user.get_company().toLowerCase() == "tinyowl") { %>
                         <a class="btn btn-success btn-sm export" href="javascript:void(0);" data-form-id="<%= restaurant.get("form_id") %>" data-overwrite="false">Export</a>
                         &nbsp;
                         <% } %>

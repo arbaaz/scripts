@@ -15,7 +15,7 @@ define([
       },
 
       logged_in: function () {
-        if (this.session_manager.exists() && window.user.get_profile() != undefined)
+        if (this.session_manager.exists() && user.get_profile() != undefined)
           return true;
         else {
           this.clean_localstorage();
