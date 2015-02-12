@@ -42,7 +42,7 @@ define([
         "click .delete": "delete",
       },
       delete: function (e) { // delete a dish type tag
-        start_loading();
+        H.start_loading();
         this.dish_tag_type = new dataEntryClient.Models.DishTypeTagModel({id: e.currentTarget.id});
         var that = this;
         this.dish_tag_type.destroy({

@@ -64,7 +64,7 @@ define([
       add_update_promotion: function (e) {
 
         e.preventDefault();
-        start_loading();
+        H.start_loading();
 
         var datastr = $('#release_form').serializeObject();
 

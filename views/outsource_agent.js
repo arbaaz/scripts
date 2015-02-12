@@ -19,7 +19,7 @@ define([
         var restaurants = new dataEntryClient.Collections.RestaurantCollection();
         var that = this;
         global_observer.trigger("header_changed", {'active_tab': null, 'user_type': "outsource"});
-        start_loading();
+        H.start_loading();
         restaurants.url = "agent/restaurants";
         restaurants.fetch({
           success: function (data) {
@@ -57,7 +57,7 @@ define([
         'click .submit': 'submit'
       },
       submit: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         var that = this;
         var currentEl = $(e.currentTarget);

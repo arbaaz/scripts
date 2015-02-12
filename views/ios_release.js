@@ -80,7 +80,7 @@ define([
 
       add_update_ios_release: function (e) {
         e.preventDefault();
-        start_loading();
+        H.start_loading();
 
         var datastr = $('#release_form').serializeObject();
         datastr.base_version = datastr.base_version == "this" ? datastr.version : datastr.base_version;

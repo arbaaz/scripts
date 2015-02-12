@@ -20,7 +20,7 @@ define([
         var that = this;
         that.options = options;
         global_observer.trigger("header_changed", {'active_tab': null});
-        start_loading();
+        H.start_loading();
 
         this.releases.fetch({
           skip_url_prefix: true,
@@ -48,7 +48,7 @@ define([
       },
       delete: function (e) { // delete a promotion
         e.preventDefault();
-        start_loading();
+        H.start_loading();
         var that = this;
         var id = e.currentTarget.id;
         $.ajax({

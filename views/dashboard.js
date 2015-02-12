@@ -18,7 +18,7 @@ define([
       render: function (options) {
         var that = this;
         that.options = options;
-        start_loading();
+        H.start_loading();
         global_observer.trigger("header_changed", {'active_tab': "dashboard", 'user_type': "restaurants"});
         var template = that.template({});
         that.$el.html(template);

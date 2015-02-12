@@ -35,7 +35,7 @@ define([
         var email = $("#email").val();
         var password = $("#password").val();
         var self = this;
-        start_loading();
+        H.start_loading();
         $.ajax({
           url: "/user/login.json",
           type: "POST",

@@ -19,7 +19,7 @@ define([
 
       render: function (options) {
         var that = this;
-        start_loading();
+        H.start_loading();
         if (options.id) { // update a dish type tag
 
           this.dish_type_tag = new dataEntryClient.Models.DishTypeTagModel({id: options.id});
@@ -65,7 +65,7 @@ define([
       add_update_dish_type_tag: function (e) {
         e.preventDefault();
 
-        start_loading();
+        H.start_loading();
         if (this.$("#tag").val() == "-1") {
           stop_loading();
           generate_alert(false, "Please select a dish type tag.");

@@ -18,7 +18,7 @@ define([
 
       render: function (options) {
         this.items = new dataEntryClient.Collections.ItemDishTypeCollection();
-        start_loading();
+        H.start_loading();
 
         var that = this;
         this.items.fetch({
@@ -133,7 +133,7 @@ define([
       },
       save: function (e) {
         var that = this;
-        start_loading();
+        H.start_loading();
         this.items.save({
           success: function (response) {
             stop_loading();

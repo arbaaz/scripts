@@ -23,7 +23,7 @@ define([
 
         that.options = options;
         global_observer.trigger("header_changed", {'active_tab': null, 'user_type': "restaurants"});
-        start_loading();
+        H.start_loading();
         var new_url = restaurants.url + "?";
 
         if (options.filters) {
@@ -390,7 +390,7 @@ define([
         });
         $(document).on("click", "#dump_request", function (e) {
           e.preventDefault();
-          start_loading();
+          H.start_loading();
           $("#dump").popover('hide');
           var dump = {};
           dump.address = $("#address").is(":checked") ? true : false;
@@ -428,7 +428,7 @@ define([
         // restaurant delete and invisible
         $(".delete_anchor").click(function () {
           if (confirm("Are you sure to delete this restaurant?")) {
-            start_loading();
+            H.start_loading();
             var id = $(this).siblings(".delete_id").val();
             //console.log($(this).siblings(".delete_id").val());
             $.ajax({
@@ -451,7 +451,7 @@ define([
         });
         $(".invisible_anchor").click(function () {
           if (confirm("Are you sure to make this restaurant invisible?")) {
-            start_loading();
+            H.start_loading();
             var id = $(this).siblings(".invisible_id").val();
             //console.log($(this).siblings(".invisible_id").val());
             $.ajax({
@@ -476,7 +476,7 @@ define([
 
         // copy timings
         $(".copy_timings_anchor").click(function () {
-          start_loading();
+          H.start_loading();
           var id = $(this).siblings(".copy_timings_id").val();
           $.ajax({
             type: 'post',
@@ -510,7 +510,7 @@ define([
             return false;
           }
           ;
-          start_loading();
+          H.start_loading();
           if ($(this).prop("id") == "next") {
             var next = parseInt($("#current_page_num").prop("value")) + 1;
             var total = parseInt($("#total_page_num").prop("value"));
@@ -541,7 +541,7 @@ define([
       },
 
       push_menu: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         $(e.currentTarget).prop("disabled", "disabled");
         var id = $(e.currentTarget).siblings(".push_menu_id").val();

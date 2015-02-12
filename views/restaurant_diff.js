@@ -17,7 +17,7 @@ define([
 
       render: function (options) {
         var that = this
-        start_loading();
+        H.start_loading();
         that.loadPlugins();
         $.ajax({
           url: "/diff?id1=" + options.id1 + "&id2=" + options.id2,

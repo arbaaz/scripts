@@ -34,7 +34,7 @@ define([
         //   });
         // } else {
         var Assignment = new dataEntryClient.Collections.AssignmentCollection();
-        start_loading();
+        H.start_loading();
         that.options = options;
         global_observer.trigger("header_changed", {'active_tab': null});
         var new_url = Assignment.url + "?";
@@ -104,7 +104,7 @@ define([
             return false;
           }
           ;
-          start_loading();
+          H.start_loading();
           if ($(this).prop("id") == "next") {
             var next = parseInt($("#current_page_num").prop("value")) + 1;
             var total = parseInt($("#total_page_num").prop("value"));
@@ -157,7 +157,7 @@ define([
         return true;
       },
       activate: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         var currentEl = $(e.currentTarget);
         var ids = [];
@@ -198,7 +198,7 @@ define([
         return true;
       },
       send_diff: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         var currentEl = $(e.currentTarget);
         var ids = [];
@@ -240,7 +240,7 @@ define([
       },
 
       export: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         var currentEl = $(e.currentTarget);
         var ids = [];

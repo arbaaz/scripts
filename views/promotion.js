@@ -29,7 +29,7 @@ define([
       render: function (options) {
         var that = this;
 
-        start_loading();
+        H.start_loading();
         if (options.id) { // update a promotion
           this.promotion = new dataEntryClient.Models.PromotionModel({id: options.id});
           this.promotion.fetch({
@@ -45,7 +45,7 @@ define([
               var restaurant_id = $('#virtual-restaurants').val();
               var current_item = promotion.get("promotion")[0].items;
               if ($('#type').val() == 3) {
-                start_loading();
+                H.start_loading();
                 $.ajax({
                   skip_url_prefix: true,
                   url: "/restaurant/global_promotions/get_items?restaurant_id=" + restaurant_id,
@@ -179,7 +179,7 @@ define([
           $('#virtual-restaurants').on('change', function () {
             var restaurant_id = $('#virtual-restaurants').val();
             if (restaurant_id) {
-              start_loading();
+              H.start_loading();
               $.ajax({
                 skip_url_prefix: true,
                 url: "/restaurant/global_promotions/get_items?restaurant_id=" + restaurant_id,
@@ -209,7 +209,7 @@ define([
 
       add_update_promotion: function (e) {
         e.preventDefault();
-        start_loading();
+        H.start_loading();
         if (this.$("#status").val() == "-1") {
           stop_loading();
           generate_alert(false, "Please select status type.");

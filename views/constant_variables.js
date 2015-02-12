@@ -40,7 +40,7 @@ define([
 
       update_settings: function (e) {
         e.preventDefault();
-        start_loading();
+        H.start_loading();
         var datastr = $('#constant_variables_form').serializeObject();
         datastr = this.parent.sanitizeData(datastr);
         $.ajax({

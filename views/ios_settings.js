@@ -46,7 +46,7 @@ define([
 
       update_settings: function (e) {
         e.preventDefault();
-        start_loading();
+        H.start_loading();
         var datastr = $('#ios_settings_form').serializeObject();
         datastr = this.parent.sanitizeData(datastr);
         $.ajax({

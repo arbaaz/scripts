@@ -96,7 +96,7 @@ define([
       },
 
       save_item: function (e) {
-        start_loading();
+        H.start_loading();
         var that = this;
         this.item.save({}, {
           success: function (data) {
@@ -109,7 +109,7 @@ define([
       close_modal: function (e) {
         // close modal, do all cleaning here
         if (this.item.get('id') != null) {
-          start_loading();
+          H.start_loading();
           var that = this;
           this.item.fetch({
             success: function (data) {

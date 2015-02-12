@@ -21,7 +21,7 @@ define([
         "submit #create_new": "create_new"
       },
       create_new: function (e) {
-        start_loading();
+        H.start_loading();
         e.preventDefault();
         $.ajax({
           url: "agent/self_assign",

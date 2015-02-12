@@ -100,7 +100,7 @@ var Router = Backbone.Router.extend({
         /*var href = $(this).attr("href");  // or $(this).prop("hash")
         // pass this link to Backbone
         Backbone.history.navigate(href,true);*/
-        //start_loading();
+        //H.start_loading();
       //});
   },
  before:  function(route){
