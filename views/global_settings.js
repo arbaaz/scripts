@@ -57,10 +57,10 @@ define([
           type: "POST",
           data: datastr,
           success: function (data) {
-            stop_loading();
+            H.stop_loading();
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }

@@ -31,13 +31,13 @@ define([
             "form_id": this.$("#form_id").val()
           },
           success: function (data) {
-            stop_loading();
+            H.stop_loading();
             window.created_new = true;
             window.location.hash = "outsource/agent";
             return true;
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message, "center");
             return false;
           }

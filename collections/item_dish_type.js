@@ -39,7 +39,7 @@ define([
           that.models = changed_items;
           this.sync("update", that, options);
         } else {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "No Change in items");
         }
       }

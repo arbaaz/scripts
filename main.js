@@ -18,7 +18,7 @@ $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
 
 /* Global AJAX Error handler */
 /*$(document).ajaxError(function(event, jqxhr, settings, exception) {
-  stop_loading();
+  H.stop_loading();
   if (jqxhr.status == 400 || jqxhr.status == 401) {
     // backup alert message in case individual alerts don't fire
     //generate_alert(false,$.parseJSON(jqxhr.responseText).message);

@@ -54,12 +54,12 @@ define([
               meta: collection
             });
             that.$el.html(template);
-            stop_loading();
+            H.stop_loading();
             that.loadPlugins();
             return that;
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
@@ -112,7 +112,7 @@ define([
               global_filters.page_num = next;
               apply_filters();
             } else {
-              stop_loading();
+              H.stop_loading();
             }
           } else if ($(this).prop("id") == "previous") {
             var previous = parseInt($("#current_page_num").prop("value")) - 1;
@@ -120,7 +120,7 @@ define([
               global_filters.page_num = previous;
               apply_filters();
             } else {
-              stop_loading();
+              H.stop_loading();
             }
           } else {
             global_filters.page_num = $(this).prop("id");
@@ -167,12 +167,12 @@ define([
           }
         });
         if (ids.length == 0 || ids.length == 1) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "You need to check 2 agents for completing!");
           return false;
         }
         if (ids.length > 2) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
           return false;
         }
@@ -185,13 +185,13 @@ define([
             restaurant_id2: ids[1]
           },
           success: function (data) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(true, "Successfully activated!");
             window.location.reload();
             return data;
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
@@ -208,12 +208,12 @@ define([
           }
         });
         if (ids.length == 0 || ids.length == 1) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "You need to check 2 agents to send diff report!");
           return false;
         }
         if (ids.length > 2) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
           return false;
         }
@@ -226,13 +226,13 @@ define([
             restaurant_id2: ids[1]
           },
           success: function (data) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(true, "Sent Diff report");
             window.location.reload();
             return data;
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
@@ -256,7 +256,7 @@ define([
           $(".export_restaurant_id").val(ids[0]);
 
           if (ids.length != 1) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, "You need to select 1 restaurant to export!");
             return false;
           }
@@ -273,14 +273,14 @@ define([
           },
           success: function (data) {
             $("#overwriteModal").modal('hide');
-            stop_loading();
+            H.stop_loading();
             //generate_alert(true,"Successfully Exported");
             generate_alert(true, data.message);
             window.location.reload();
             return data;
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             if (response.responseJSON.message == "Unable to export the restaurant") {
               $("#overwriteModal").modal({
                 backdrop: 'static'

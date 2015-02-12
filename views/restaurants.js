@@ -66,7 +66,7 @@ define([
               meta: colllection.meta
             });
             that.$el.html(temp);
-            stop_loading();
+            H.stop_loading();
             if (options) {
               if (that.options.success) {
                 generate_alert(true, that.options.message);
@@ -75,7 +75,7 @@ define([
             that.loadPlugins();
           },
           error: function (data, response, options) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, response.responseText ? $.parseJSON(response.responseText).message : "Failed to load");
           }
         })
@@ -416,7 +416,7 @@ define([
               href += "&" + param + "=" + global_filters[param];
             }
           }
-          stop_loading();
+          H.stop_loading();
           //window.location.href = href;
           window.open(href, 'Restaurant_Dump');
           return false;
@@ -436,14 +436,14 @@ define([
               url: 'restaurants/delete',
               data: {id: id},
               success: function () {
-                stop_loading();
+                H.stop_loading();
                 that.render({
                   success: true,
                   message: "Restaurant deleted successfully!"
                 });
               },
               error: function (response, status, error) {
-                stop_loading();
+                H.stop_loading();
                 generate_alert(false, $.parseJSON(response.responseText).message);
               }
             });
@@ -459,7 +459,7 @@ define([
               url: 'restaurants/invisible',
               data: {id: id},
               success: function (message) {
-                stop_loading();
+                H.stop_loading();
                 //console.log(message);
                 that.render({
                   success: true,
@@ -467,7 +467,7 @@ define([
                 });
               },
               error: function (response, status, error) {
-                stop_loading();
+                H.stop_loading();
                 generate_alert(false, $.parseJSON(response.responseText).message);
               }
             });
@@ -483,7 +483,7 @@ define([
             url: 'restaurants/copy_timings',
             data: {id: id},
             success: function (message) {
-              stop_loading();
+              H.stop_loading();
               //console.log(message);
               that.render({
                 success: true,
@@ -491,7 +491,7 @@ define([
               });
             },
             error: function (response, status, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
@@ -518,7 +518,7 @@ define([
               global_filters.page_num = next;
               apply_filters();
             } else {
-              stop_loading();
+              H.stop_loading();
             }
           } else if ($(this).prop("id") == "previous") {
             var previous = parseInt($("#current_page_num").prop("value")) - 1;
@@ -526,7 +526,7 @@ define([
               global_filters.page_num = previous;
               apply_filters();
             } else {
-              stop_loading();
+              H.stop_loading();
             }
           } else {
             global_filters.page_num = $(this).prop("id");
@@ -551,14 +551,14 @@ define([
           url: 'restaurants/push_menu_stash',
           data: {id: id},
           success: function (message) {
-            stop_loading();
+            H.stop_loading();
             that.render({
               success: true,
               message: "Updated menu pushed successfully."
             });
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             setTimeout(function () {
               $(e.currentTarget).removeProp("disabled");

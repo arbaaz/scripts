@@ -24,11 +24,11 @@ define([
               tags: data.models,
             });
             that.$el.html(temp);
-            stop_loading();
+            H.stop_loading();
             that.loadPlugins();
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
@@ -47,13 +47,13 @@ define([
         var that = this;
         this.dish_tag_type.destroy({
           success: function (data, response) {
-            stop_loading();
+            H.stop_loading();
             that.render();
             generate_alert(true, response.message);
 
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });

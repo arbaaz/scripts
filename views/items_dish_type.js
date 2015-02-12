@@ -24,7 +24,7 @@ define([
         this.items.fetch({
           data: {restaurant_id: this.options.restaurant_id},
           success: function (data, collection) {
-            stop_loading();
+            H.stop_loading();
             var temp = that.template({
               restaurant_id: that.options.restaurant_id,
               items: data.models,
@@ -39,7 +39,7 @@ define([
             that.loadPlugins();
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
@@ -136,12 +136,12 @@ define([
         H.start_loading();
         this.items.save({
           success: function (response) {
-            stop_loading();
+            H.stop_loading();
             that.render();
             generate_alert(true, response.message);
           },
           error: function (response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
 

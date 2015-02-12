@@ -101,7 +101,7 @@ define([
         this.item.save({}, {
           success: function (data) {
             that.trigger("item_changed", {});
-            stop_loading();
+            H.stop_loading();
           }
         });
       },
@@ -114,7 +114,7 @@ define([
           this.item.fetch({
             success: function (data) {
               that.trigger("item_changed", {});
-              stop_loading();
+              H.stop_loading();
             },
             reset: true
           });

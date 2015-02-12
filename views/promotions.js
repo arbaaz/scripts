@@ -29,11 +29,11 @@ define([
               promotions: data.models,
             });
             that.$el.html(temp);
-            stop_loading();
+            H.stop_loading();
             that.loadPlugins();
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
@@ -61,12 +61,12 @@ define([
           dataType: "json",
           success: function (data) {
             that.render();
-            stop_loading();
+            H.stop_loading();
             generate_alert(true, "Promotion was deleted successfully.");
             return true;
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }

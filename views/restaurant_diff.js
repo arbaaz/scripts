@@ -24,7 +24,7 @@ define([
           type: "GET",
           dataType: "json",
           success: function (data) {
-            stop_loading();
+            H.stop_loading();
             var temp = that.template({
               diff_menu_items: data.payload.diff_menu_items,
               diff_restaurant: data.payload.diff_restaurant,
@@ -35,7 +35,7 @@ define([
 
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, data.responseText);
             return false;
           }

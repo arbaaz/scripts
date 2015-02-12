@@ -75,11 +75,11 @@ define([
             skip_url_prefix: true,
             type: "PUT",
             success: function (release) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('releases', true);
             },
             error: function (response, status, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
@@ -91,11 +91,11 @@ define([
           release.save(datastr, {
             skip_url_prefix: true,
             success: function (release) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('releases', true);
             },
             error: function (response, status, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }

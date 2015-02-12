@@ -55,10 +55,10 @@ define([
             global_observer.trigger('header_changed');
             window.localStorage.setItem('role', $('#role').val());
             self.redirect();
-            stop_loading();
+            H.stop_loading();
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message, "center");
           }
         });

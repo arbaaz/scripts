@@ -23,7 +23,7 @@ define([
         var template = that.template({});
         that.$el.html(template);
         that.load_plugins();
-        stop_loading();
+        H.stop_loading();
       },
       load_plugins: function () {
         close_sidebar();

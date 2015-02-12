@@ -35,7 +35,7 @@ define([
           this.promotion.fetch({
             skip_url_prefix: true,
             success: function (promotion) {
-              stop_loading();
+              H.stop_loading();
               var temp = that.template({
                 promotion: promotion.get("promotion")[0],
                 virtual_restaurants: promotion.get("restaurants")
@@ -56,10 +56,10 @@ define([
                       items: data,
                       current_item: current_item
                     });
-                    stop_loading();
+                    H.stop_loading();
                   },
                   error: function (data, response, error) {
-                    stop_loading();
+                    H.stop_loading();
                     generate_alert(false, $.parseJSON(response.responseText).message);
                     return false;
                   }
@@ -72,7 +72,7 @@ define([
               that.loadPlugins();
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
@@ -86,7 +86,7 @@ define([
             type: "GET",
             dataType: "json",
             success: function (data) {
-              stop_loading();
+              H.stop_loading();
               var virtual_restaurants = data.virtual_restaurants;
               var temp = that.template({
                 promotion: null,
@@ -98,7 +98,7 @@ define([
               that.loadPlugins();
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
@@ -187,10 +187,10 @@ define([
                 success: function (data) {
                   that.items_view = new dataEntryClient.Views.PromotionItemView();
                   that.items_view.render({items: data});
-                  stop_loading();
+                  H.stop_loading();
                 },
                 error: function (data, response, error) {
-                  stop_loading();
+                  H.stop_loading();
                   generate_alert(false, $.parseJSON(response.responseText).message);
                   return false;
                 }
@@ -211,19 +211,19 @@ define([
         e.preventDefault();
         H.start_loading();
         if (this.$("#status").val() == "-1") {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "Please select status type.");
           return;
         }
 
         if (this.$(type).val() != 4 && this.$("#virtual-restaurants").val() == null) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "Please select a restuarant.");
           return;
         }
 
         if (this.$('type') == 3 && this.$('items').val() == null) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "Please select an item.");
           return;
         }
@@ -236,7 +236,7 @@ define([
         datastr.valid_till = getReverseTimestamp(datastr.valid_till);
 
         if (datastr.valid_from >= datastr.valid_till) {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "Please enter valid dates.");
           return;
         }
@@ -264,11 +264,11 @@ define([
             contentType: false,
             processData: false,
             success: function (promotion) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('promotions', true);
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
@@ -283,11 +283,11 @@ define([
             contentType: false,
             processData: false,
             success: function (promotion) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('promotions', true);
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }

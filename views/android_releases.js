@@ -30,11 +30,11 @@ define([
               releaseType: "android"
             });
             that.$el.html(temp);
-            stop_loading();
+            H.stop_loading();
             that.loadPlugins();
           },
           error: function (data, response, error) {
-            stop_loading();
+            H.stop_loading();
             generate_alert(false, $.parseJSON(response.responseText).message);
           }
         })
@@ -65,7 +65,7 @@ define([
             return true;
           },
           error: function (response, status, error) {
-            stop_loading();
+            H.stop_loading();
             return false;
           }
         });

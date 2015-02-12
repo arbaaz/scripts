@@ -26,7 +26,7 @@ define([
 
           this.dish_type_tag.fetch({
             success: function (dish_type_tag) {
-              stop_loading();
+              H.stop_loading();
               var temp = that.template({
                 dish_type_tag: dish_type_tag
               });
@@ -35,7 +35,7 @@ define([
 
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
@@ -48,7 +48,7 @@ define([
             dish_type_tag: null
           });
           that.$el.html(temp);
-          stop_loading();
+          H.stop_loading();
           that.loadPlugins();
         }
       },
@@ -67,7 +67,7 @@ define([
 
         H.start_loading();
         if (this.$("#tag").val() == "-1") {
-          stop_loading();
+          H.stop_loading();
           generate_alert(false, "Please select a dish type tag.");
           return;
         }
@@ -82,11 +82,11 @@ define([
 
           this.dish_tag_type.save(dish_tag, {
             success: function (data, response) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('dish_type_tags', true);
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
@@ -101,11 +101,11 @@ define([
 
           this.dish_tag_type.save(dish_tag, {
             success: function (data, response) {
-              stop_loading();
+              H.stop_loading();
               Backbone.history.navigate('dish_type_tags', true);
             },
             error: function (data, response, error) {
-              stop_loading();
+              H.stop_loading();
               generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
