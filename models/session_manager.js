@@ -12,7 +12,7 @@ define([
       get_session: function () {
         //return $.cookie('session_token');
         //return window.localStorage.getItem("session_token");
-        return getCookie("session_token");
+        return H.getCookie("session_token");
       },
 
       set_session: function (token) {

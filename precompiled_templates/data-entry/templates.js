@@ -529,7 +529,7 @@ if(logo.logo != null){ ;
 __p += '\n                <input type="file" name="logo" id="logo" class="form-control input-sm hide">\n                <div class="fileupload fileupload-new" data-provides="fileupload">\n                  <input type="hidden" id="logo_url" value="' +
 ((__t = (logo.logo)) == null ? '' : __t) +
 '" >\n                  <div class="fileupload-new thumbnail pull-left" >\n                      <img src="' +
-((__t = (logo.logo+"?"+ new Date().getTime())) == null ? '' : __t) +
+((__t = (logo.logo+"?"+ new Date().H.getTime())) == null ? '' : __t) +
 '" class="img-responsive" id="current_logo" alt="Error loading the image!">\n                  </div> \n                  &nbsp;&nbsp; \n                  <!--<button type="button" class="btn btn-white btn-sm" id="change_image"> Change </button>-->\n                  <a href="/restaurant/data_entry/restaurants/download_logo/' +
 ((__t = ( id )) == null ? '' : __t) +
 '" class="btn btn-info btn-sm" id="download_logo" target="_blank"><i class="fa fa-download"></i> Download </a>\n                  <button type="button" class="btn btn-danger btn-sm" id="delete_current_logo"><i class="fa fa-times"></i> Delete</button>\n                  <button type="button" class="btn btn-white btn-sm hide" id="restore_logo"><i class="fa fa-refresh"></i> Restore</button>                      \n                  <p class="text-warning hide" id="delete_info">&nbsp;&nbsp; Image will be deleted after you click on <span class="text-primary">\'Update Logo\'.</span> </p>                 \n                  <input type="hidden" name="delete_logo" id="delete_logo" value=false>\n                </div>\n\n              ';
@@ -1628,7 +1628,7 @@ __p += '                                     \n                    <tr> \n      
 '\n                        </p>\n                      </td>\n                      <td>\n                        ';
 if(restaurant.get("logo")){;
 __p += '\n                          <span class="thumbnail_loader"><i class="fa fa-2x fa-circle-o-notch fa-spin"></i></span>\n                          <img src="' +
-((__t = (restaurant.get("logo")+"?"+ new Date().getTime())) == null ? '' : __t) +
+((__t = (restaurant.get("logo")+"?"+ new Date().H.getTime())) == null ? '' : __t) +
 '" width="60" class="logo_thumbnail hidden"/>\n                        ';
 };
 __p += '\n                      </td>\n                      <td>\n                          <a>';

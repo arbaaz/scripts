@@ -1195,7 +1195,7 @@ if(logo.logo != null){ ;
 __p += '\r\n                <input type="file" name="logo" id="logo" class="form-control input-sm hide">\r\n                <div class="fileupload fileupload-new" data-provides="fileupload">\r\n                  <input type="hidden" id="logo_url" value="' +
 ((__t = (logo.logo)) == null ? '' : __t) +
 '" >\r\n                  <div class="fileupload-new thumbnail pull-left" >\r\n                      <img src="' +
-((__t = (logo.logo+"?"+ new Date().getTime())) == null ? '' : __t) +
+((__t = (logo.logo+"?"+ new Date().H.getTime())) == null ? '' : __t) +
 '" class="img-responsive" id="current_logo" alt="Error loading the image!">\r\n                  </div> \r\n                  &nbsp;&nbsp; \r\n                  <!--<button type="button" class="btn btn-white btn-sm" id="change_image"> Change </button>-->\r\n                  <a href="/restaurant/data_entry/restaurants/download_logo/' +
 ((__t = ( id )) == null ? '' : __t) +
 '" class="btn btn-info btn-sm" id="download_logo" target="_blank"><i class="fa fa-download"></i> Download </a>\r\n                  <button type="button" class="btn btn-danger btn-sm" id="delete_current_logo"><i class="fa fa-times"></i> Delete</button>\r\n                  <button type="button" class="btn btn-white btn-sm hide" id="restore_logo"><i class="fa fa-refresh"></i> Restore</button>                      \r\n                  <p class="text-warning hide" id="delete_info">&nbsp;&nbsp; Image will be deleted after you click on <span class="text-primary">\'Update Logo\'.</span> </p>                 \r\n                  <input type="hidden" name="delete_logo" id="delete_logo" value=false>\r\n                </div>\r\n\r\n              ';
@@ -2681,8 +2681,8 @@ __p += ' </h3>\n        <hr/>\n        <form role="form" class="form-horizontal"
             id2:"start_time",
             label: "Start Date",
             name: "start_date",
-            value1: promotion ? getDate(promotion.valid_from) : "",
-            value2: promotion ? getTime(promotion.valid_from) : "",
+            value1: promotion ? H.getDate(promotion.valid_from) : "",
+            value2: promotion ? H.getTime(promotion.valid_from) : "",
             required: true
           }) )) == null ? '' : __t) +
 '\n          ' +
@@ -2691,8 +2691,8 @@ __p += ' </h3>\n        <hr/>\n        <form role="form" class="form-horizontal"
             id2:"end_time",  
             label: "End Date",
             name: "end_date",
-            value1: promotion ? getDate(promotion.valid_till) : "",
-            value2: promotion ? getTime(promotion.valid_till) : "",
+            value1: promotion ? H.getDate(promotion.valid_till) : "",
+            value2: promotion ? H.getTime(promotion.valid_till) : "",
             required: true
           }) )) == null ? '' : __t) +
 '\n          ' +
@@ -2735,7 +2735,7 @@ __p += '\n                    ';
 __p += '\n                </select> \n              </div>\n          </div>\n\n          ';
 if(promotion && !_.isEmpty(promotion.promotion_banner_url)) { ;
 __p += '\n           <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Promotion Image</label>\n            <div class="col-md-6 col-sm-6 col-xs-6"> \n              <img id="promo_image" src="' +
-((__t = ( promotion.promotion_banner_url+"?"+ new Date().getTime()/1000 )) == null ? '' : __t) +
+((__t = ( promotion.promotion_banner_url+"?"+ new Date().H.getTime()/1000 )) == null ? '' : __t) +
 '" style="width:200px; height:100px;">\n            </div>\n          </div>\n          ';
  } ;
 __p += '\n\n          <div class="form-group" id="restaurants">\n            <div class="col-xs-1 visible-xs"></div>\n            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm"> * Restaurants</label>\n            <div class="col-md-8 col-sm-8 col-xs-8">\n              <select id="virtual-restaurants" name="restaurant_ids" multiple>\n                ';
@@ -2823,13 +2823,13 @@ __p += '                                     \r\n                      <tr id=\'
 '\r\n                          </p>\r\n                        </td>\r\n                        <td>\r\n                            <p class="text-info">\r\n                            ' +
 ((__t = ( promotion.get("description") )) == null ? '' : __t) +
 '\r\n                          </p>                                  \r\n                        </td>\r\n                        \r\n                        <td>\r\n                            <p class="text-info">\r\n                            ' +
-((__t = ( getDate(promotion.get("valid_from")) )) == null ? '' : __t) +
+((__t = ( H.getDate(promotion.get("valid_from")) )) == null ? '' : __t) +
 '  ' +
-((__t = ( getTime(promotion.get("valid_from")) )) == null ? '' : __t) +
+((__t = ( H.getTime(promotion.get("valid_from")) )) == null ? '' : __t) +
 '\r\n                          </p>                                  \r\n                        </td>\r\n                        <td>\r\n                            <p class="text-info">\r\n                            ' +
-((__t = ( getDate(promotion.get("valid_till")) )) == null ? '' : __t) +
+((__t = ( H.getDate(promotion.get("valid_till")) )) == null ? '' : __t) +
 '  ' +
-((__t = ( getTime(promotion.get("valid_till")) )) == null ? '' : __t) +
+((__t = ( H.getTime(promotion.get("valid_till")) )) == null ? '' : __t) +
 '\r\n                          </p>                                  \r\n                        </td>\r\n                        <td>\r\n                            <p class="text-info">\r\n                            ' +
 ((__t = ( promotion.get("promotion_type") )) == null ? '' : __t) +
 '\r\n                          </p>                                  \r\n                        </td>\r\n\r\n                        <td>\r\n                            <p class="text-info">\r\n                            ' +
@@ -3760,7 +3760,7 @@ __p += '\n                    <tr>\n                      <td class="">\n       
 '\n                        </p>\n                      </td>\n                      <td class="hidden-xs">\n                        ';
 if(restaurant.get("logo")){;
 __p += '\n                          <span class="thumbnail_loader "><i class="fa fa-2x fa-circle-o-notch fa-spin"></i></span>\n                          <img src="' +
-((__t = (restaurant.get("logo")+"?"+ new Date().getTime())) == null ? '' : __t) +
+((__t = (restaurant.get("logo")+"?"+ new Date().H.getTime())) == null ? '' : __t) +
 '" width="60" class="logo_thumbnail hidden"/>\n                        ';
 };
 __p += '\n                      </td>\n                      <td>\n                          <a href="#restaurants/' +
@@ -4242,7 +4242,7 @@ __p += '                                     \r\n                      <tr data-
 '\r\n                          </p>\r\n                        </td>\r\n                        <td class="hidden-xs">\r\n                        ';
 if(restaurant.get("logo")){;
 __p += '\r\n                          <span class="thumbnail_loader "><i class="fa fa-2x fa-circle-o-notch fa-spin"></i></span>\r\n                          <img src="' +
-((__t = (restaurant.get("logo")+"?"+ new Date().getTime())) == null ? '' : __t) +
+((__t = (restaurant.get("logo")+"?"+ new Date().H.getTime())) == null ? '' : __t) +
 '" width="60" class="logo_thumbnail hidden"/>\r\n                        ';
 };
 __p += '\r\n                        </td>\r\n                        <td>\r\n                            <a>';

@@ -67,12 +67,12 @@ define([
         var new_size = new dataEntryClient.Models.ItemSize({
           size_id: get_size_id_by_value('NONE'),
           item: this.item,
-          id: generate_new_id(),
+          id: H.generate_new_id(),
           status: get_status_id('ACTIVE')
         });
         var new_price = new dataEntryClient.Models.ItemPrice({
           item_size: new_size,
-          id: generate_new_id(),
+          id: H.generate_new_id(),
           timing_id: this.timings[0].id
         });
       },

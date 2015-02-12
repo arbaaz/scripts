@@ -111,7 +111,7 @@ define([
         H.close_sidebar();
 
         var nowTemp = new Date();     // load datepicker
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.H.getDate(), 0, 0, 0, 0);
         this.$(".schedule_time").timepicker({'timeFormat': 'H:i'});
         this.$(".schedule_date").datepicker({
           format: 'dd/mm/yyyy',
@@ -232,8 +232,8 @@ define([
         var datastr = $('#promotion_form').serializeObject();
         datastr.valid_from = this.$("#start_date").val() + " " + this.$("#start_time").val();
         datastr.valid_till = this.$("#end_date").val() + " " + this.$("#end_time").val();
-        datastr.valid_from = getReverseTimestamp(datastr.valid_from);
-        datastr.valid_till = getReverseTimestamp(datastr.valid_till);
+        datastr.valid_from = H.getReverseTimestamp(datastr.valid_from);
+        datastr.valid_till = H.getReverseTimestamp(datastr.valid_till);
 
         if (datastr.valid_from >= datastr.valid_till) {
           H.stop_loading();
