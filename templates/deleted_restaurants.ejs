@@ -57,7 +57,7 @@
 		              </thead>
 		              <tbody class="searchable">
 		                <% _.each(restaurants, function(restaurant, i) { %>                                     
-		                  <tr data-locality="<%=restaurant.get("locality_id")%>" data-status="<%= get_status(restaurant.get("status")) %>" data-call="<%=restaurant.get("call_as_user")?'YES':'NO'%>"> 
+		                  <tr data-locality="<%=restaurant.get("locality_id")%>" data-status="<%= H.get_status(restaurant.get("status")) %>" data-call="<%=restaurant.get("call_as_user")?'YES':'NO'%>"> 
 		                    <td>
 		                      <p class="text-info">
 		                        <%= restaurant.get("form_id") %>
@@ -66,11 +66,11 @@
 		                    <td>
 		                        <a><% if (restaurant.get("name") != null) { %><%= restaurant.get("name").substring(0,25) %><% } %></a><br/>
 		                        <p class="text-muted">
-		                          <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=get_locality(restaurant.get("locality_id"))%>
+		                          <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=C.get_locality(restaurant.get("locality_id"))%>
 		                        </p>                                   
 		                    </td>
 		                    <td class="hidden-phone"><span data-livestamp="<%= restaurant.get("updated_at") %>"></span></td>
-	                    	<td><%= get_status_span(restaurant.get("status")) %></td>		  
+	                    	<td><%= H.get_status_span(restaurant.get("status")) %></td>		  
 	                    	<td>                                        
 									        <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.get("id") %>/profile" disabled="disabled"><i class="fa fa-edit"></i> Edit</a> 
 		                      <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_items" disabled="disabled"><i class="fa fa-list"></i> Menu</a>

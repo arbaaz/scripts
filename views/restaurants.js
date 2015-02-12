@@ -13,7 +13,7 @@ define([
       template: JST['app/scripts/templates/restaurants.ejs'],
 
       initialize: function () {
-        //this.collections=get_collections();
+        //this.collections=C.get_collections();
         H.close_sidebar();
       },
 
@@ -153,11 +153,11 @@ define([
         var initialize_filters = function () {
           global_filters.restaurant_status = $('#status_filter').val();
           global_filters.call_as_user = $("#call_as_user_filter").val();
-          global_filters.locality_id = get_locality_id($("#locality").val());
+          global_filters.locality_id = C.get_locality_id($("#locality").val());
           global_filters.has_logo = $("#has_logo_filter").val();
-          global_filters.delivers_in = get_locality_group_id($("#delivers_in").val());
+          global_filters.delivers_in = C.get_locality_group_id($("#delivers_in").val());
           global_filters.has_changes = $("#has_changes_filter").val();
-          global_filters.cuisine_ids = get_cuisine_id($('#cuisine').val());
+          global_filters.cuisine_ids = data_collection.get_cuisine_id($('#cuisine').val());
 
         };
         initialize_filters();
@@ -231,14 +231,14 @@ define([
         });
         var filterLocalities = function () {
           if ($("#locality").val()) {
-            global_filters.locality_id = get_locality_id($("#locality").val());
+            global_filters.locality_id = C.get_locality_id($("#locality").val());
           } else {
             global_filters.locality_id = undefined;
           }
         }
         var filter_delivers_in = function () {
           if ($("#delivers_in").val()) {
-            global_filters.delivers_in = get_locality_group_id($("#delivers_in").val());
+            global_filters.delivers_in = C.get_locality_group_id($("#delivers_in").val());
           } else {
             global_filters.delivers_in = undefined;
           }

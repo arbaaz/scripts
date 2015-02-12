@@ -56,7 +56,7 @@
                       <div class="agents">
                         <form id="diff_<%= restaurant.get("form_id") %>">
                         <% _.each(restaurant.get("agents"), function(agent) { %>
-                          <%= get_status_span(agent.status) %>&nbsp;&nbsp;                            
+                          <%= H.get_status_span(agent.status) %>&nbsp;&nbsp;                            
                           <i class="fa fa-user"></i>&nbsp; <%= agent.name %>&nbsp;&nbsp;&nbsp;                            
                           <input type="checkbox" value="<%= agent.restaurant_id %>" id="<%= restaurant.get("form_id") %>_<%= agent.restaurant_id %>">
                           <br/><br/>

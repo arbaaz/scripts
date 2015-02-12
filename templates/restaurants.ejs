@@ -13,12 +13,12 @@
                     </div>
 
                     <div class="col-sm-2 hidden-xs">
-                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="<%=H.get_url_parameter("locality_id")?get_locality(H.get_url_parameter("locality_id")):''%>">
+                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="<%=H.get_url_parameter("locality_id")?C.get_locality(H.get_url_parameter("locality_id")):''%>">
 
                     </div>
 
                       <div class="col-sm-2 hidden-xs">
-                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="<%=H.get_url_parameter("delivers_in")?get_locality_group(H.get_url_parameter("delivers_in")):''%>">
+                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="<%=H.get_url_parameter("delivers_in")?C.get_locality_group(H.get_url_parameter("delivers_in")):''%>">
                     </div>
 
                     <div class="col-sm-5 hidden-xs">
@@ -228,12 +228,12 @@
                       <td>
                           <a href="#restaurants/<%= restaurant.get("id") %>/profile"><% if (restaurant.get("name") != null) { %><%= restaurant.get("name").substring(0,40) %><% } %></a><br/>
                           <p class="text-muted">
-                            <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=get_locality(restaurant.get("locality_id"))%>
+                            <i class="fa fa-map-marker" style="color:#fa8564"></i> <%=C.get_locality(restaurant.get("locality_id"))%>
                           </p>
                       </td>
                       <td class="hidden-xs"><span data-livestamp="<%= restaurant.get("updated_at") %>"></span></td>
 
-                      <td><span  class= 'js-status' data-toggle='popover' title='Reason' data-content="<%=restaurant.get('inactive_reason')%>" ><%= get_status_span(restaurant.get("status")) %></span></td>     
+                      <td><span  class= 'js-status' data-toggle='popover' title='Reason' data-content="<%=restaurant.get('inactive_reason')%>" ><%= H.get_status_span(restaurant.get("status")) %></span></td>     
                       <td>                                        
                         <a class="btn btn-primary btn-sm" href="#restaurants/<%= restaurant.get("id") %>/profile"><i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span></a> 
                         <a class="btn btn-primary btn-sm hidden-xs" href="/restaurant/crm/restaurants/<%= restaurant.id %>/menu_items"><i class="fa fa-list"></i> Menu</a>

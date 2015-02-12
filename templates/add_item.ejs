@@ -22,7 +22,7 @@
                 <div style="margin-top:9px;">
                     <label for="item_veg_type">Dish Type: </label>
                     <select name='veg_type' class='item_input_veg_type' id="item_veg_type">
-                        <% _.each(get_collections().veg_types, function(value, key){ %>
+                        <% _.each(C.get_collections().veg_types, function(value, key){ %>
                             <option value="<%= key %>" <% if(key == item.get('veg_type')){ %> selected=selected<%} %>><%= key.replace("_", " ") %></option>
                         <% }) %>
                     </select>

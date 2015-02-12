@@ -20,11 +20,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -165,7 +165,7 @@ __p += '<div class="modal fade" id="item_modal" tabindex="-1" role="dialog" aria
 '">\n                <br />\n                <div style="margin-top:9px;">\n                    <label for="description">Description: </label>\n                    <textarea rows="2" cols="50" class="item_desc" id="description" style="width: 65%;" placeholder="Item description..">' +
 ((__t = ( item.get('description') )) == null ? '' : __t) +
 '</textarea>\n                </div>\n                <div style="margin-top:9px;">\n                    <label for="item_veg_type">Dish Type: </label>\n                    <select name=\'veg_type\' class=\'item_input_veg_type\' id="item_veg_type">\n                        ';
- _.each(get_collections().veg_types, function(value, key){ ;
+ _.each(C.get_collections().veg_types, function(value, key){ ;
 __p += '\n                            <option value="' +
 ((__t = ( key )) == null ? '' : __t) +
 '" ';
@@ -363,7 +363,7 @@ __p += '                 \n                  <li><a id="next" class="page_number
 __p += '                                     \n\t\t                  <tr data-locality="' +
 ((__t = (restaurant.get("locality_id"))) == null ? '' : __t) +
 '" data-status="' +
-((__t = ( get_status(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status(restaurant.get("status")) )) == null ? '' : __t) +
 '" data-call="' +
 ((__t = (restaurant.get("call_as_user")?'YES':'NO')) == null ? '' : __t) +
 '"> \n\t\t                    <td>\n\t\t                      <p class="text-info">\n\t\t                        ' +
@@ -374,11 +374,11 @@ __p +=
 ((__t = ( restaurant.get("name").substring(0,25) )) == null ? '' : __t);
  } ;
 __p += '</a><br/>\n\t\t                        <p class="text-muted">\n\t\t                          <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '\n\t\t                        </p>                                   \n\t\t                    </td>\n\t\t                    <td class="hidden-phone"><span data-livestamp="' +
 ((__t = ( restaurant.get("updated_at") )) == null ? '' : __t) +
 '"></span></td>\n\t                    \t<td>' +
-((__t = ( get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
 '</td>\t\t  \n\t                    \t<td>                                        \n\t\t\t\t\t\t\t\t\t        <a class="btn btn-primary btn-sm" href="#restaurants/' +
 ((__t = ( restaurant.get("id") )) == null ? '' : __t) +
 '/profile" disabled="disabled"><i class="fa fa-edit"></i> Edit</a> \n\t\t                      <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/' +
@@ -448,11 +448,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -504,11 +504,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -695,7 +695,7 @@ __p += '                 \n                  <li><a id="next" class="page_number
 __p += '                                     \n\t\t                  <tr data-locality="' +
 ((__t = (restaurant.get("locality_id"))) == null ? '' : __t) +
 '" data-status="' +
-((__t = ( get_status(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status(restaurant.get("status")) )) == null ? '' : __t) +
 '" data-call="' +
 ((__t = (restaurant.get("call_as_user")?'YES':'NO')) == null ? '' : __t) +
 '"> \n\t\t                    <td>\n\t\t                      <p class="text-info">\n\t\t                        ' +
@@ -706,11 +706,11 @@ __p +=
 ((__t = ( restaurant.get("name").substring(0,25) )) == null ? '' : __t);
  } ;
 __p += '</a><br/>\n\t\t                        <p class="text-muted">\n\t\t                          <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '\n\t\t                        </p>                                   \n\t\t                    </td>\n\t\t                    <td class="hidden-phone"><span data-livestamp="' +
 ((__t = ( restaurant.get("updated_at") )) == null ? '' : __t) +
 '"></span></td>\n\t                    \t<td>' +
-((__t = ( get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
 '</td>\t\t  \n\t                    \t<td>                                        \n\t\t\t\t\t\t\t\t\t        <a class="btn btn-primary btn-sm" href="#restaurants/' +
 ((__t = ( restaurant.get("id") )) == null ? '' : __t) +
 '/profile" disabled="disabled"><i class="fa fa-edit"></i> Edit</a> \n\t\t                      <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/' +
@@ -786,13 +786,13 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<!--<div class="row">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body">-->\n        <div id="alert_restaurant_off" class="alert alert-danger alert-fix" ';
- if(get_status(restaurant.get('status')) != 'INACTIVE'){ ;
+ if(H.get_status(restaurant.get('status')) != 'INACTIVE'){ ;
 __p += 'style="display:none;"';
  } ;
 __p += ' style="position:fixed; top:80px;width:100%; z-index:10000000">\n            <p style="text-align:center;">\n                ' +
 ((__t = ( restaurant.get('name') )) == null ? '' : __t) +
 ' is <strong>' +
-((__t = ( get_status(restaurant.get('status')) )) == null ? '' : __t) +
+((__t = ( H.get_status(restaurant.get('status')) )) == null ? '' : __t) +
 '</strong> now.\n            </p>\n        </div>\n      <!--</div>\n    </div>\n  </div>\n</div>-->\n<div class="row">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body">\n        <h2>' +
 ((__t = ( restaurant.get('name') )) == null ? '' : __t) +
 ' -> Menu Items\n        <div id="cache_rebuild_blk" class="col-md-4 col-md-offset-3 pull-right" style="margin-bottom: 14px;">\n            <button type="button" style="font-size: 16px; margin-left: 16px; width: 60%;" class="rebuild_cache btn btn-danger btn-lg pull-right">Validate Menu</button>\n            <button id="activate_restaurant" style="font-size: 16px; display: none;" type="button" class="btn btn-success btn-lg pull-right">Activate</button>\n        </div>\n        </h2>\n\n\n        <div id="menu_categories">\n        </div>\n\n        <div id="menu_items">\n        </div>\n\n        <div id="add_item_modal">\n        </div>\n\n        <div id="edit_menu_category_modal">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n';
@@ -884,11 +884,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -1023,11 +1023,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -1196,9 +1196,9 @@ __p +=
 ((__t = ( restaurant.get("name").substring(0,25) )) == null ? '' : __t);
  } ;
 __p += '</a><br/>\n                        <p class="text-muted">\n                          <i class="fa fa-map-marker" style="color:#fa8564"></i> ';
- if(get_locality(restaurant.get("locality_id"))){;
+ if(C.get_locality(restaurant.get("locality_id"))){;
 __p +=
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t);
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t);
 }else{;
 __p +=
 ((__t = ( "Could not fetch location")) == null ? '' : __t);
@@ -1206,7 +1206,7 @@ __p +=
 __p += '\n                        </p>                                    \n                    </td>\n                    <td class="hidden-phone"><span data-livestamp="' +
 ((__t = ( restaurant.get("updated_at") )) == null ? '' : __t) +
 '"></span></td>\n                    <td>' +
-((__t = ( get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
 '</td>\n                    <td>                                        \n                      <a class="btn btn-primary btn-sm" href="#/restaurants/' +
 ((__t = ( restaurant.id )) == null ? '' : __t) +
 '/profile"><i class="fa fa-edit"></i> Edit</a> \n                      <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/' +
@@ -1214,13 +1214,13 @@ __p += '\n                        </p>                                    \n    
 '/menu_items" target="_blank"><i class="fa fa-list"></i> Menu</a>\n                      <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/' +
 ((__t = ( restaurant.id )) == null ? '' : __t) +
 '/menu_choices" target="_blank"><i class="fa fa-check-square-o"></i> Choices</a>                                                                                                          \n                    </td>\n                    <td>\n                      ';
- if(get_status(restaurant.get('status')) != 'SUBMITTED') { ;
+ if(H.get_status(restaurant.get('status')) != 'SUBMITTED') { ;
 __p += '\n                        <a class="btn btn-info btn-sm submit" href="javascript:void(0)" target="_blank" id="' +
 ((__t = ( restaurant.get('id') )) == null ? '' : __t) +
 '">Submit</a>\n                      ';
  } ;
 __p += '                        \n                      ';
- if(get_status(restaurant.get('status')) == 'DIFF_ERROR') { ;
+ if(H.get_status(restaurant.get('status')) == 'DIFF_ERROR') { ;
 __p += '\n                        <a class="btn btn-info btn-sm diff" href="/restaurant/data_entry/diff?id1=' +
 ((__t = ( restaurant.id )) == null ? '' : __t) +
 '&id2=' +
@@ -1284,7 +1284,7 @@ __p += '">\n                    <td>  \n                      ' +
 '">\n                        ';
  _.each(restaurant.get("agents"), function(agent) { ;
 __p += '\n                          ' +
-((__t = ( get_status_span(agent.status) )) == null ? '' : __t) +
+((__t = ( H.get_status_span(agent.status) )) == null ? '' : __t) +
 '&nbsp;&nbsp;                            \n                          <i class="fa fa-user"></i>&nbsp; ' +
 ((__t = ( agent.name )) == null ? '' : __t) +
 '&nbsp;&nbsp;&nbsp;                            \n                          <input type="checkbox" value="' +
@@ -1352,11 +1352,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -1525,7 +1525,7 @@ with (obj) {
 __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body" style="padding-bottom:0px;">                        \n        <div class="row">             \n          <div class="col-sm-6 col-md-7 col-lg-8">\n              <div class="input-group">\n                  <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>\n                  <input type="text" id="filter" class="form-control input-sm" placeholder="type here and hit ENTER to search" autocomplete="off" value="' +
 ((__t = (H.get_url_parameter("search"))) == null ? '' : __t) +
 '">\n              </div>\n          </div>\n          <div class="col-sm-6 col-md-5 col-lg-4">\n              <a class="btn btn-success btn-sm" href="#restaurants/new"><i class="fa fa-plus-square"></i> Add a new Restaurant</a>\n              <a class="btn btn-danger btn-sm" href="#restaurants/deleted"><i class="fa fa-file-text"></i> View Deleted </a>\n              <a class="btn btn-info btn-sm" href="#restaurants/invisible"><i class="fa fa-file-text"></i> View Invisible </a>\n          </div>                                \n        </div>\n        <hr id="filters_rule"/>\n        <div class="row">\n            <!--<div class="col-sm-12" id="filters_heading"><h4>Filter by:</h4></div>-->                \n            <div class="col-sm-2 ">\n                <!--<div class="input-group input-group-sm m-bot15">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-location-arrow"></i></span>-->\n                    <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="' +
-((__t = (H.get_url_parameter("locality_id")?get_locality(H.get_url_parameter("locality_id")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("locality_id")?C.get_locality(H.get_url_parameter("locality_id")):'')) == null ? '' : __t) +
 '">\n                <!--</div>-->\n            </div>\n            <div class="col-sm-2">                                    \n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>\n                    <select class="form-control" id="status_filter">\n                        <option value="-1" selected> All </option>                            \n                        ';
  _.each(collections.status,function(i,stat,j){;
 __p += '\n                          ';
@@ -1559,7 +1559,7 @@ __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>                                           \n                    </select>\n                </div>\n            </div>\n            <div class="col-sm-2 ">\n                    <!--<span class="input-group-addon btn-primary"><i class="fa fa-location-arrow"></i></span>-->\n                    <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="' +
-((__t = (H.get_url_parameter("delivers_in")?get_locality_group(H.get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("delivers_in")?C.get_locality_group(H.get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
 '">\n            </div>\n            <div class="col-sm-2">\n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-picture-o"></i> Has Logo?</span>\n                    <select class="form-control" id="has_logo_filter">\n                        <option value="YES" ';
 if(H.get_url_parameter("has_logo") == "true"){;
 __p +=
@@ -1637,11 +1637,11 @@ __p +=
 ((__t = ( restaurant.get("name").substring(0,40) )) == null ? '' : __t);
  } ;
 __p += '</a><br/>\n                          <p class="text-muted">\n                            <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '\n                          </p>                                   \n                      </td>\n                      <td class="hidden-phone"><span data-livestamp="' +
 ((__t = ( restaurant.get("updated_at") )) == null ? '' : __t) +
 '"></span></td>\n                      <td>' +
-((__t = ( get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
+((__t = ( H.get_status_span(restaurant.get("status")) )) == null ? '' : __t) +
 '</td>     \n                      <td>                                        \n                        <a class="btn btn-primary btn-sm" href="#restaurants/' +
 ((__t = ( restaurant.get("id") )) == null ? '' : __t) +
 '/profile"><i class="fa fa-edit"></i> Edit</a> \n                        <a class="btn btn-primary btn-sm" href="/restaurant/crm/restaurants/' +
@@ -1717,11 +1717,11 @@ __p += '\n\t\t\t\t\t\t';
 __p += '\n\t\t\t\t\t\t\t';
  if(status_log.get("scheduled_update").status == 1){;
 __p += '\n\t\t\t\t\t\t\t\t<div class="activity-desk scheduled">\n\t\t\t        \t\t<span class="alert-icon pull-left bg-terques"><i class="fa fa-calendar"></i></span>\t\t\t\t<span class="label label-primary pull-right">' +
-((__t = (get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
+((__t = (H.get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
 '</span>\t\t\t        \t\t\n\t                <h3 class="terques">\n\t                \t';
- if(get_status(status_log.get("scheduled_update").new_status)){ ;
+ if(H.get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\n\t                \t\tScheduled Status : ' +
-((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 '\n\t                \t';
  }else{ ;
 __p += '\n\t                \t\tScheduled Reminder!\n\t                \t';
@@ -1749,15 +1749,15 @@ __p += '\n\t\t\t\t\t\t';
 __p += '\n\t\t\t        ';
  if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ ;
 __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>\t\n\t\t\t\t\t\t\t\t\t<span class="label label-danger pull-right">' +
-((__t = (get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
+((__t = (H.get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
 '</span>\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>\n\t                \t';
- if(get_status(status_log.get("scheduled_update").new_status)){ ;
+ if(H.get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\n\t                \t\tScheduled Status : ' +
-((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 '\n\t                \t';
  }else{ ;
 __p += '\n\t                \t\tScheduled Reminder!\n\t                \t';
@@ -1771,13 +1771,13 @@ __p += ' | <i class="fa fa-user"></i> ' +
 __p += '\t\n\t\t\t        ';
  if(status_log.get("scheduled_update").status == 3){ ;
 __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\t\n\t\t\t\t\t\t\t\t\t<span class="label label-success pull-right">' +
-((__t = (get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
+((__t = (H.get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
 '</span>\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>Scheduled Status : ' +
-((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 ' </p>\n\t                <p><i class="fa fa-comment"></i> ' +
@@ -1793,9 +1793,9 @@ __p += '\n\t\t\t\t\t\t\t<div class="activity-desk">\n\t\t\t\t\t\t\t\t<span class
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n                <p>' +
-((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
-((__t = (get_status(status_log.get("new_status")))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("new_status")))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 ' </p>\n                <p><i class="fa fa-comment"></i> ' +
@@ -1811,15 +1811,15 @@ __p += '\n\t\t\t\t\t\t';
 __p += '\t\t\t\t\t\t\t\n\t\t\t        ';
  if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ ;
 __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>\t\n\t\t\t\t\t\t\t\t\t<span class="label label-danger pull-right">' +
-((__t = (get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
+((__t = (H.get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
 '</span>\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>\n\t                \t';
- if(get_status(status_log.get("scheduled_update").new_status)){ ;
+ if(H.get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\n\t                \t\tScheduled Status : ' +
-((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 '\n\t                \t';
  }else{ ;
 __p += '\n\t                \t\tScheduled Reminder!\n\t                \t';
@@ -1833,13 +1833,13 @@ __p += ' | <i class="fa fa-user"></i> ' +
 __p += '\n\t\t\t        ';
  if(status_log.get("scheduled_update").status == 3){ ;
 __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\t\n\t\t\t\t\t\t\t\t\t<span class="label label-success pull-right">' +
-((__t = (get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
+((__t = (H.get_scheduled_status(status_log.get("scheduled_update").status))) == null ? '' : __t) +
 '</span>\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>Scheduled Status : ' +
-((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 ' </p>\n\t                <p><i class="fa fa-comment"></i> ' +
@@ -1855,9 +1855,9 @@ __p += '\n\t\t\t\t\t\t\t<div class="activity-desk">\n\t\t\t\t\t\t\t\t<span class
 '"></span>| <span class="small">' +
 ((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n                <p>' +
-((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
-((__t = (get_status(status_log.get("new_status")))) == null ? '' : __t) +
+((__t = (H.get_status(status_log.get("new_status")))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 ' </p>\n                <p><i class="fa fa-comment"></i> ' +
@@ -1882,11 +1882,11 @@ with (obj) {
 __p += '\n  <div class="row">\n    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 profile-adjust pull-right">\n      <div class="panel">\n        <div class="panel-body">\n          <span class="text-info">#' +
 ((__t = (restaurant.get("form_id"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n          <span>&nbsp;&nbsp;</span>\n          <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;</span>\n          <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n          <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n          <span class="pull-right">\n            <a class="btn btn-primary " href="#restaurants"><i class="fa fa-cutlery"></i> Restaurants</a>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n';
@@ -1920,11 +1920,11 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class="row">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body">\n        ' +
-((__t = (get_status_span(restaurant.get("status")))) == null ? '' : __t) +
+((__t = (H.get_status_span(restaurant.get("status")))) == null ? '' : __t) +
 '\n        <span>&nbsp;&nbsp;</span>\n        <span class="lead"> ' +
 ((__t = (restaurant.get("name"))) == null ? '' : __t) +
 '</span>\n        <span>&nbsp;&nbsp;</span>\n        <span> <i class="fa fa-map-marker" style="color:#fa8564"></i> ' +
-((__t = (get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
+((__t = (C.get_locality(restaurant.get("locality_id")))) == null ? '' : __t) +
 '</span>\n        <span>&nbsp;&nbsp;<input type="hidden" id="current_status" value="' +
 ((__t = (restaurant.get("status"))) == null ? '' : __t) +
 '"></span>\n        <span>\n          <a class="btn btn-primary btn-sm" href="#restaurants/' +
@@ -2187,17 +2187,17 @@ __p += '\n      ';
 __p += '\n    </div>\n  </td>\n  <td style=\'padding-top: 8px; padding-bottom: 8px;\'>\n      <button class=\'edit_item btn btn-info\' title=\'Edit\' data-item-id="' +
 ((__t = ( item.get('id') )) == null ? '' : __t) +
 '">\n        <i class=\'fa fa-pencil-square-o\'></i>\n      </button>\n      ';
- if(get_status(item.get('status')) != 'DELETED') { ;
+ if(H.get_status(item.get('status')) != 'DELETED') { ;
 __p += '\n      <button type=\'button\' class=\'delete_item btn btn-danger\' data-item-id="' +
 ((__t = ( item.get('id') )) == null ? '' : __t) +
 '" title=\'Delete\'>\n        <i class=\'fa fa-times\'></i>\n      </button>\n      ';
  } ;
 __p += '\n  </td>\n  <td>\n      ';
- if(get_status(item.get('status')) != 'DELETED') { ;
+ if(H.get_status(item.get('status')) != 'DELETED') { ;
 __p += '\n      <input type=\'checkbox\' data-on=\'success\' data-item-id="' +
 ((__t = ( item.get('id') )) == null ? '' : __t) +
 '" data-off=\'warning\' class=\'item_status_switch switch-mini\' \n        ';
- if(get_status(item.get('status')) == 'ACTIVE') { ;
+ if(H.get_status(item.get('status')) == 'ACTIVE') { ;
 __p += '\n          checked\n        ';
  } ;
 __p += '>\n      ';
@@ -2249,7 +2249,7 @@ __p += '<tr data-t-id="' +
 '">\n    <td colspan="2">\n        Select Size :\n        <select class="input_item_sizes" name="sizes" data-id="' +
 ((__t = ( size.get('id') )) == null ? '' : __t) +
 '">\n            ';
- _.each(get_collections().size_lists, function(value, key){ ;
+ _.each(C.get_collections().size_lists, function(value, key){ ;
 __p += '\n                <option value="' +
 ((__t = ( value )) == null ? '' : __t) +
 '" ';

@@ -50,7 +50,7 @@ define([
         this.item = new dataEntryClient.Models.MenuItem({
           menu_category_id: this.menu_category.id,
           veg_type: 'VEG',
-          status: get_status_id('ACTIVE')
+          status: C.get_status_id('ACTIVE')
         });
         this.add_new_size();
         this.render();
@@ -65,10 +65,10 @@ define([
 
       add_new_size: function () {
         var new_size = new dataEntryClient.Models.ItemSize({
-          size_id: get_size_id_by_value('NONE'),
+          size_id: H.get_size_id_by_value('NONE'),
           item: this.item,
           id: H.generate_new_id(),
-          status: get_status_id('ACTIVE')
+          status: C.get_status_id('ACTIVE')
         });
         var new_price = new dataEntryClient.Models.ItemPrice({
           item_size: new_size,

@@ -11,10 +11,10 @@
 						<% if(status_log.get("scheduled_update")){%>
 							<% if(status_log.get("scheduled_update").status == 1){%>
 								<div class="activity-desk scheduled">
-			        		<span class="alert-icon pull-left bg-terques"><i class="fa fa-calendar"></i></span>				<span class="label label-primary pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>			        		
+			        		<span class="alert-icon pull-left bg-terques"><i class="fa fa-calendar"></i></span>				<span class="label label-primary pull-right"><%=H.get_scheduled_status(status_log.get("scheduled_update").status)%></span>			        		
 	                <h3 class="terques">
-	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
-	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% if(H.get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=H.get_status(status_log.get("scheduled_update").new_status)%>
 	                	<% }else{ %>
 	                		Scheduled Reminder!
 	                	<% } %>
@@ -33,11 +33,11 @@
 			        <% if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ %>
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
-									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+									<span class="label label-danger pull-right"><%=H.get_scheduled_status(status_log.get("scheduled_update").status)%></span>
 	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
-	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
-	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% if(H.get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=H.get_status(status_log.get("scheduled_update").new_status)%>
 	                	<% }else{ %>
 	                		Scheduled Reminder!
 	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> 
@@ -48,11 +48,11 @@
 			        <% if(status_log.get("scheduled_update").status == 3){ %>
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
-									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+									<span class="label label-success pull-right"><%=H.get_scheduled_status(status_log.get("scheduled_update").status)%></span>
 	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
-	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
-	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% if(H.get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=H.get_status(status_log.get("scheduled_update").new_status)%>
 	                	<% }else{ %>
 	                		Scheduled Reminder!
 	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> 
@@ -67,7 +67,7 @@
 								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>
 								<span class="label label-success pull-right">COMPLETED</span>
                 <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
-                <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+                <p><%=H.get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=H.get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
                 <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
               </div>
 						<% } %>			
@@ -79,11 +79,11 @@
 			        <% if(status_log.get("scheduled_update").status == 2 || status_log.get("scheduled_update").status == 4){ %>
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
-									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+									<span class="label label-danger pull-right"><%=H.get_scheduled_status(status_log.get("scheduled_update").status)%></span>
 	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
-	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
-	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
+	                	<% if(H.get_status(status_log.get("scheduled_update").new_status)){ %>
+	                		Scheduled Status : <%=H.get_status(status_log.get("scheduled_update").new_status)%>
 	                	<% }else{ %>
 	                		Scheduled Reminder!
 	                	<% } %> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%>
@@ -94,9 +94,9 @@
 			        <% if(status_log.get("scheduled_update").status == 3){ %>
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
-									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
+									<span class="label label-success pull-right"><%=H.get_scheduled_status(status_log.get("scheduled_update").status)%></span>
 	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
-	                <p>Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+	                <p>Scheduled Status : <%=H.get_status(status_log.get("scheduled_update").new_status)%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
 	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
 	              </div>			        	
 			        <% } %>
@@ -107,7 +107,7 @@
 								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
 								<span class="label label-success pull-right">COMPLETED</span>
                 <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
-                <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
+                <p><%=H.get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=H.get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
                 <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
               </div>
 						<% } %>
