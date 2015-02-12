@@ -19,7 +19,7 @@
 	                		Scheduled Reminder!
 	                	<% } %>
 	                	<span class="small"> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%></span> </h3><hr class="terques"/>
-	                <h2 class="terques"><i class="fa fa-clock-o"></i> <%= timeConverter(status_log.get("scheduled_update").scheduled_at) %> | <span class="small"><span data-livestamp="<%= status_log.get("created_at") %>"></span></span></h2>
+	                <h2 class="terques"><i class="fa fa-clock-o"></i> <%= H.timeConverter(status_log.get("scheduled_update").scheduled_at) %> | <span class="small"><span data-livestamp="<%= status_log.get("created_at") %>"></span></span></h2>
 	                <button type="button" class="btn btn-danger btn-xs pull-right js_cancel_schedule" data-id="<%=status_log.get("scheduled_update").id%>"><i class="fa fa-times"></i> Cancel</button> 	      
 	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
 				         <input type="hidden" value="<%=status_log.get("scheduled_update").id%>" id="schedule_id"> 
@@ -34,7 +34,7 @@
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
 									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
-	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
 	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
 	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
@@ -49,7 +49,7 @@
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
 									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
-	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
 	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
 	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
@@ -66,7 +66,7 @@
 							<div class="activity-desk">
 								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>
 								<span class="label label-success pull-right">COMPLETED</span>
-                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
                 <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
                 <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
               </div>
@@ -80,7 +80,7 @@
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left orange"><i class="fa fa-times"></i></span>	
 									<span class="label label-danger pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
-	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <h2 class="red"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>
 	                	<% if(get_status(status_log.get("scheduled_update").new_status)){ %>
 	                		Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%>
@@ -95,7 +95,7 @@
 			        	<div class="activity-desk">
 			        		<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
 									<span class="label label-success pull-right"><%=get_scheduled_status(status_log.get("scheduled_update").status)%></span>
-	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+	                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
 	                <p>Scheduled Status : <%=get_status(status_log.get("scheduled_update").new_status)%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
 	                <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
 	              </div>			        	
@@ -106,7 +106,7 @@
 							<div class="activity-desk">
 								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
 								<span class="label label-success pull-right">COMPLETED</span>
-                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
                 <p><%=get_status(status_log.get("previous_status"))%> <i class='fa fa-arrow-right'></i> <%=get_status(status_log.get("new_status"))%> | <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
                 <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
               </div>
@@ -116,7 +116,7 @@
 							<div class="activity-desk">
 								<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>	
 								<span class="label label-success pull-right">Comment</span>
-                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= timeConverter(status_log.get("created_at")) %></span></h2> 
+                <h2 class="purple"><span data-livestamp="<%= status_log.get("created_at") %>"></span>| <span class="small"><%= H.timeConverter(status_log.get("created_at")) %></span></h2> 
                 <i class="fa fa-user"></i> <%=status_log.get("user_name")%> </p>
                 <p><i class="fa fa-comment"></i> <%= status_log.get("comment") %></p>
               </div>

@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-11">
               <i class="fa fa-user"></i> <%=change_log.get("user_name")%>              
-              <span class="muted"><%=timeConverter(change_log.get("changed_at"))%></span>
+              <span class="muted"><%=H.timeConverter(change_log.get("changed_at"))%></span>
               <br/>
               <div class="well">
                 <%_.each(change_log.get("change_logs"), function(log){ %>

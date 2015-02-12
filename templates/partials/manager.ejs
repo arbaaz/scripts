@@ -1,6 +1,6 @@
 <div class="partial_box">
 
-	<h4 class="to_center"><%= makeTitle(whois) %></h4>
+	<h4 class="to_center"><%= H.makeTitle(whois) %></h4>
 
 	<hr>
 
@@ -10,7 +10,7 @@
 		<div class="col-xs-1 visible-xs"></div>
 		<label for="<%= whois %>_name" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">Name</label>
 		<div class="col-md-6 col-sm-6 col-xs-6">
-		  <input type="text" class="form-control input-sm" name="<%= whois %>_name" id="<%= whois %>_name" placeholder="Name of the <%= makeTitle(whois) %>" value="<%= options ? options.name : "" %>">
+		  <input type="text" class="form-control input-sm" name="<%= whois %>_name" id="<%= whois %>_name" placeholder="Name of the <%= H.makeTitle(whois) %>" value="<%= options ? options.name : "" %>">
 		</div>
 	</div>
 
@@ -18,7 +18,7 @@
 		<div class="col-xs-1 visible-xs"></div>
 		<label for="<%= whois %>_email" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">Email</label>
 		<div class="col-md-6 col-sm-6 col-xs-6">
-		  <input type="email" class="form-control input-sm" name="<%= whois %>_email" id="<%= whois %>_email" placeholder="Email of the <%= makeTitle(whois) %>" value="<%= options ? options.email : "" %>">
+		  <input type="email" class="form-control input-sm" name="<%= whois %>_email" id="<%= whois %>_email" placeholder="Email of the <%= H.makeTitle(whois) %>" value="<%= options ? options.email : "" %>">
 		</div>
 	</div>
 

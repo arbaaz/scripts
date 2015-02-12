@@ -79,10 +79,10 @@
                         </td>
                       <% }%>
                       <td style="color:red">
-                        <%= timing["Start"] ? to_hours(timing["Start"]) : "" %> 
+                        <%= timing["Start"] ? H.to_hours(timing["Start"]) : "" %> 
                       </td>
                       <td style="color:red">
-                        <%= timing["End"] ? to_hours(timing["End"]) : "" %> 
+                        <%= timing["End"] ? H.to_hours(timing["End"]) : "" %> 
                       </td>
                     </tr>
                     <%}); %>

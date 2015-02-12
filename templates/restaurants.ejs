@@ -8,23 +8,23 @@
                     <div class="col-sm-3">
                          <div class="input-group">
                               <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>
-                              <input type="text" id="filter" class="form-control input-sm" placeholder="Type here and hit ENTER to search" autocomplete="off" value="<%=get_url_parameter("search")%>">
+                              <input type="text" id="filter" class="form-control input-sm" placeholder="Type here and hit ENTER to search" autocomplete="off" value="<%=H.get_url_parameter("search")%>">
                          </div>
                     </div>
 
                     <div class="col-sm-2 hidden-xs">
-                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="<%=get_url_parameter("locality_id")?get_locality(get_url_parameter("locality_id")):''%>">
+                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="<%=H.get_url_parameter("locality_id")?get_locality(H.get_url_parameter("locality_id")):''%>">
 
                     </div>
 
                       <div class="col-sm-2 hidden-xs">
-                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="<%=get_url_parameter("delivers_in")?get_locality_group(get_url_parameter("delivers_in")):''%>">
+                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="<%=H.get_url_parameter("delivers_in")?get_locality_group(H.get_url_parameter("delivers_in")):''%>">
                     </div>
 
                     <div class="col-sm-5 hidden-xs">
                          <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>
                           <% _.each(collections.cuisines, function(cuisine) { %>
-                            <option <%if ( get_url_parameter("cuisine_ids") && H.check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
+                            <option <%if ( H.get_url_parameter("cuisine_ids") && H.check_element_exists(H.get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
                           <% }) %>
                         </select>
                     </div>
@@ -38,9 +38,9 @@
                          <div class="input-group input-group-sm">
                               <span class="input-group-addon btn-primary"><i class="fa fa-phone"></i> Call as a user</span>
                               <select class="form-control" id="call_as_user_filter">
-                                  <option value="YES" <%if(get_url_parameter("call_as_user") == "true"){%><%="selected"%><%}%>>YES</option>
-                                  <option value="NO" <%if(get_url_parameter("call_as_user") =="false"){%><%="selected"%><%}%>>NO</option>
-                                  <option value="-1" <%if(get_url_parameter("call_as_user") == null){%><%="selected"%><%}%>>Both</option>
+                                  <option value="YES" <%if(H.get_url_parameter("call_as_user") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(H.get_url_parameter("call_as_user") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(H.get_url_parameter("call_as_user") == null){%><%="selected"%><%}%>>Both</option>
                               </select>
                          </div>
                     </div>
@@ -52,7 +52,7 @@
                                    <option value="-1" selected> All </option>
                                     <% _.each(collections.status,function(i,stat,j){%>
                                       <%if(i<4 || i==11){%>
-                                        <option value="<%=i%>" <%if(get_url_parameter("status")==i){%><%="selected"%><% } %>><%=stat%></option>
+                                        <option value="<%=i%>" <%if(H.get_url_parameter("status")==i){%><%="selected"%><% } %>><%=stat%></option>
                                       <% } %>
                                     <%});%>
                               </select>
@@ -62,9 +62,9 @@
                          <div class="input-group input-group-sm">
                               <span class="input-group-addon btn-primary"><i class="fa fa-picture-o"></i> Logo </span>
                               <select class="form-control" id="has_logo_filter">
-                                  <option value="YES" <%if(get_url_parameter("has_logo") == "true"){%><%="selected"%><%}%>>YES</option>
-                                  <option value="NO" <%if(get_url_parameter("has_logo") =="false"){%><%="selected"%><%}%>>NO</option>
-                                  <option value="-1" <%if(get_url_parameter("has_logo") == null){%><%="selected"%><%}%>>Both</option>
+                                  <option value="YES" <%if(H.get_url_parameter("has_logo") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(H.get_url_parameter("has_logo") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(H.get_url_parameter("has_logo") == null){%><%="selected"%><%}%>>Both</option>
                               </select>
                          </div>
                     </div>
@@ -72,9 +72,9 @@
                          <div class="input-group input-group-sm">
                               <span class="input-group-addon btn-primary"><i class="fa fa-gavel"></i> Push Changes</span>
                               <select class="form-control" id="has_changes_filter">
-                                  <option value="YES" <%if(get_url_parameter("has_changes") == "true"){%><%="selected"%><%}%>>YES</option>
-                                  <option value="NO" <%if(get_url_parameter("has_changes") =="false"){%><%="selected"%><%}%>>NO</option>
-                                  <option value="-1" <%if(get_url_parameter("has_changes") == null){%><%="selected"%><%}%>>Both</option>
+                                  <option value="YES" <%if(H.get_url_parameter("has_changes") == "true"){%><%="selected"%><%}%>>YES</option>
+                                  <option value="NO" <%if(H.get_url_parameter("has_changes") =="false"){%><%="selected"%><%}%>>NO</option>
+                                  <option value="-1" <%if(H.get_url_parameter("has_changes") == null){%><%="selected"%><%}%>>Both</option>
                               </select>
                          </div>
                     </div>
@@ -168,12 +168,12 @@
           <div class="col-xs-12 text-center">
             <p class="lead stats">
                   <span> Total: <span class=""><strong><%=meta.total %></strong></span> | </span>
-                  <span class="<%if(get_url_parameter("status")!=2 && get_url_parameter("status")!=null){%><%="hide"%><%}%>"> Active: <span class="text-success"><strong><%=meta.active%>&nbsp;</strong></span></span>
-                  <span class="<%if(get_url_parameter("status")!=3 && get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="inactive">Inactive: <span class="text-warning"><strong><%=meta.inactive%>&nbsp;</strong></span></span>
-                  <span class="<%if(get_url_parameter("status")!=1 && get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="new">New: <span class="text-info"><strong><%=meta.new%></strong></span></span>
+                  <span class="<%if(H.get_url_parameter("status")!=2 && H.get_url_parameter("status")!=null){%><%="hide"%><%}%>"> Active: <span class="text-success"><strong><%=meta.active%>&nbsp;</strong></span></span>
+                  <span class="<%if(H.get_url_parameter("status")!=3 && H.get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="inactive">Inactive: <span class="text-warning"><strong><%=meta.inactive%>&nbsp;</strong></span></span>
+                  <span class="<%if(H.get_url_parameter("status")!=1 && H.get_url_parameter("status")!=null){%><%="hide"%><%}%>" id="new">New: <span class="text-info"><strong><%=meta.new%></strong></span></span>
             </p>
               <ul class="pagination pagination-sm">
-                <% var page_num = get_url_parameter("page")? get_url_parameter("page"):1;
+                <% var page_num = H.get_url_parameter("page")? H.get_url_parameter("page"):1;
                   var start_page = (page_num-7 > 0)? page_num -7 : 1;
                   var total_pages = parseInt(meta.total/20) + 1;
                   var max_pages = _.min([start_page + 15, total_pages]);
@@ -278,7 +278,7 @@
                                 </li>
 
                                 <li class="<%= (restaurant.get('has_items') ? '_disabled' : '')%>">
-                                    <a  href="<%= get_menu_timeline_url(restaurant.get('id'),restaurant.get('menu_progress_bar')) %>" data-restaurant-id="<%=restaurant.get('id')%>"><i class="fa fa-file"></i> Menu Timeline </a>
+                                    <a  href="<%= H.get_menu_timeline_url(restaurant.get('id'),restaurant.get('menu_progress_bar')) %>" data-restaurant-id="<%=restaurant.get('id')%>"><i class="fa fa-file"></i> Menu Timeline </a>
                                 </li>
 
                             </ul>

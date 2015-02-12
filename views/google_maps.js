@@ -89,7 +89,7 @@ define([
         map_polygons[polygon.get("id")].setMap(window.map);
       },
       add_polygon_with_event: function (polygon) {
-        var stroke_color = get_random_color();
+        var stroke_color = H.get_random_color();
         var fill_color = this.color_fill;
         map_polygons[polygon.get("id")] = new google.maps.Polygon({
           paths: eval("[" + polygon.get('polygon_string') + "]"),
@@ -175,14 +175,14 @@ define([
       loadPlugins: function () {
       },
       add_polygon_event: function (polygon, event, strokeColor, info_window) {
-        var stroke_color = get_random_color();
+        var stroke_color = H.get_random_color();
         var content_string = '<div style="width:200px;" class="text-center"><p>'
           + polygon.get("name") + "<br/>"
           + "Delivery Time : <strong>"
-          + get_delivery_time([polygon.get("id")], window.delivery_time_mapping)
+          + H.get_delivery_time([polygon.get("id")], window.delivery_time_mapping)
           + " mins</strong><br/>"
           + "Min Delivery Amount : <strong>"
-          + get_min_delivery_amount([polygon.get("id")], window.min_delivery_amount_mapping)
+          + H.get_min_delivery_amount([polygon.get("id")], window.min_delivery_amount_mapping)
           + " Rs </strong>"
           + "</p></div>";
         var infowindow = new google.maps.InfoWindow({
@@ -208,7 +208,7 @@ define([
         });
       },
       add_marker_event: function (polygon, event) {
-        var stroke_color = get_random_color();
+        var stroke_color = H.get_random_color();
         google.maps.event.addListener(map_markers[polygon.get("id")], event, function (e) {
           map_polygons[polygon.get("id")].setOptions({
             strokeColor: stroke_color,

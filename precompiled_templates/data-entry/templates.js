@@ -267,7 +267,7 @@ __p += '\n          <div class="row">\n            <div class="col-sm-1 terques-
 '</h4>\n            </div>\n            <div class="col-sm-11">\n              <i class="fa fa-user"></i> ' +
 ((__t = (change_log.get("user_name"))) == null ? '' : __t) +
 '              \n              <span class="muted">' +
-((__t = (timeConverter(change_log.get("changed_at")))) == null ? '' : __t) +
+((__t = (H.timeConverter(change_log.get("changed_at")))) == null ? '' : __t) +
 '</span>\n              <br/>\n              <div class="well">\n                ';
 _.each(change_log.get("change_logs"), function(log){ ;
 __p += '\n                  From <code>' +
@@ -541,7 +541,7 @@ if(logo.logo_updated_at != 0){ ;
 __p += '<p class=""> Logo last updated : <strong><span data-livestamp="' +
 ((__t = ( logo.logo_updated_at )) == null ? '' : __t) +
 '"></span> | ' +
-((__t = (timeConverter(logo.logo_updated_at))) == null ? '' : __t) +
+((__t = (H.timeConverter(logo.logo_updated_at))) == null ? '' : __t) +
 '</strong></p>';
  } ;
 __p += '\n            <button type="button" class="btn btn-primary btn-sm update_logo" id="update_logo"> Update Logo </button>\n          </div>\n        </div>\n        <hr/>\n        <h2 class="to_center"> Documents </h2>\n        <hr/>\n        ';
@@ -1523,9 +1523,9 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body" style="padding-bottom:0px;">                        \n        <div class="row">             \n          <div class="col-sm-6 col-md-7 col-lg-8">\n              <div class="input-group">\n                  <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>\n                  <input type="text" id="filter" class="form-control input-sm" placeholder="type here and hit ENTER to search" autocomplete="off" value="' +
-((__t = (get_url_parameter("search"))) == null ? '' : __t) +
+((__t = (H.get_url_parameter("search"))) == null ? '' : __t) +
 '">\n              </div>\n          </div>\n          <div class="col-sm-6 col-md-5 col-lg-4">\n              <a class="btn btn-success btn-sm" href="#restaurants/new"><i class="fa fa-plus-square"></i> Add a new Restaurant</a>\n              <a class="btn btn-danger btn-sm" href="#restaurants/deleted"><i class="fa fa-file-text"></i> View Deleted </a>\n              <a class="btn btn-info btn-sm" href="#restaurants/invisible"><i class="fa fa-file-text"></i> View Invisible </a>\n          </div>                                \n        </div>\n        <hr id="filters_rule"/>\n        <div class="row">\n            <!--<div class="col-sm-12" id="filters_heading"><h4>Filter by:</h4></div>-->                \n            <div class="col-sm-2 ">\n                <!--<div class="input-group input-group-sm m-bot15">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-location-arrow"></i></span>-->\n                    <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="' +
-((__t = (get_url_parameter("locality_id")?get_locality(get_url_parameter("locality_id")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("locality_id")?get_locality(H.get_url_parameter("locality_id")):'')) == null ? '' : __t) +
 '">\n                <!--</div>-->\n            </div>\n            <div class="col-sm-2">                                    \n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>\n                    <select class="form-control" id="status_filter">\n                        <option value="-1" selected> All </option>                            \n                        ';
  _.each(collections.status,function(i,stat,j){;
 __p += '\n                          ';
@@ -1533,7 +1533,7 @@ if(i<4 || i==11){;
 __p += '\n                            <option value="' +
 ((__t = (i)) == null ? '' : __t) +
 '" ';
-if(get_url_parameter("status")==i){;
+if(H.get_url_parameter("status")==i){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
  } ;
@@ -1544,62 +1544,62 @@ __p += '>' +
 __p += '\n                        ';
 });;
 __p += '\n                    </select>\n                </div>\n            </div>\n            <div class="col-sm-2">\n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-phone"></i> Call as a user</span>\n                    <select class="form-control" id="call_as_user_filter">\n                        <option value="YES" ';
-if(get_url_parameter("call_as_user") == "true"){;
+if(H.get_url_parameter("call_as_user") == "true"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>YES</option>\n                        <option value="NO" ';
-if(get_url_parameter("call_as_user") =="false"){;
+if(H.get_url_parameter("call_as_user") =="false"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>NO</option>\n                        <option value="-1" ';
-if(get_url_parameter("call_as_user") == null){;
+if(H.get_url_parameter("call_as_user") == null){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>                                           \n                    </select>\n                </div>\n            </div>\n            <div class="col-sm-2 ">\n                    <!--<span class="input-group-addon btn-primary"><i class="fa fa-location-arrow"></i></span>-->\n                    <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="' +
-((__t = (get_url_parameter("delivers_in")?get_locality_group(get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("delivers_in")?get_locality_group(H.get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
 '">\n            </div>\n            <div class="col-sm-2">\n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-picture-o"></i> Has Logo?</span>\n                    <select class="form-control" id="has_logo_filter">\n                        <option value="YES" ';
-if(get_url_parameter("has_logo") == "true"){;
+if(H.get_url_parameter("has_logo") == "true"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>YES</option>\n                        <option value="NO" ';
-if(get_url_parameter("has_logo") =="false"){;
+if(H.get_url_parameter("has_logo") =="false"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>NO</option>\n                        <option value="-1" ';
-if(get_url_parameter("has_logo") == null){;
+if(H.get_url_parameter("has_logo") == null){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>                                           \n                    </select>\n                </div>\n            </div>\n            \n            <div class="col-sm-1">\n                <button class="btn btn-primary btn-sm" id="clear_filters"><i class="fa fa-times"></i> Clear Filers</button>\n            </div>\n            <div class="col-sm-1">\n                <button class="btn btn-info btn-sm" id="dump"><i class="fa fa-download"></i> Dump</button>\n            </div>\n            <div id="dump_content" class="col-sm-5 hidden">\n              <h3 class="text-center" style="margin-top:10px;margin-bottom:10px;">\n                <i class="fa fa-file-text-o"></i> Dump\n              </h3>\n              <hr/>\n              <div class="row">\n                <div class="col-sm-8 text-center">\n                  <p>Address:</p> \n                </div>\n                <div class="col-sm-4">\n                  <input type="checkbox" id="address" checked>\n                </div>\n              </div>\n              <div class="row">\n                <div class="col-sm-8 text-center">\n                  <p>Contact Details:</p> \n                </div>\n                <div class="col-sm-4">\n                  <input type="checkbox" id="contact_info" checked>\n                </div>\n              </div>\n              <div class="row">\n                <div class="col-sm-8 text-center">\n                  <p>Payment Details:</p> \n                </div>\n                <div class="col-sm-4">\n                  <input type="checkbox" id="payment_details" checked>\n                </div>\n              </div>\n              <div class="row">\n                <div class="col-sm-8 text-center">\n                  <p>Other Info:</p> \n                </div>\n                <div class="col-sm-4">\n                  <input type="checkbox" id="other_info" checked>\n                </div>\n              </div>\n              <hr/>\n              <div class="text-center">\n                <button class="btn btn-primary btn-sm dump_request" id="dump_request"> <i class="fa fa-download"></i> Download</button>\n                <button class="btn btn-default btn-sm" id="close_dump"><i class="fa fa-times"></i> Close </button>\n              </div>\n            </div>\n        </div>&nbsp;\n      </div>\n    </div>\n  </div>\n</div>\n<div class="row">\n  <div class="col-sm-12">\n    <section class="panel">\n      <div class="panel-body">\n        <div class="row">             \n          <div class="col-sm-12 text-center">\n            <p class="lead stats">\n                  <span> Total: <span class=""><strong>' +
 ((__t = (meta.total )) == null ? '' : __t) +
 '</strong></span> | </span>\n                  <span class="';
-if(get_url_parameter("status")!=2 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=2 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '"> Active: <span class="text-success"><strong>' +
 ((__t = (meta.active)) == null ? '' : __t) +
 '&nbsp;</strong></span></span>\n                  <span class="';
-if(get_url_parameter("status")!=3 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=3 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '" id="inactive">Inactive: <span class="text-warning"><strong>' +
 ((__t = (meta.inactive)) == null ? '' : __t) +
 '&nbsp;</strong></span></span>\n                  <span class="';
-if(get_url_parameter("status")!=1 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=1 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '" id="new">New: <span class="text-info"><strong>' +
 ((__t = (meta.new)) == null ? '' : __t) +
 '</strong></span></span>\n            </p>\n              <ul class="pagination pagination-sm">\n                <li><a id="1" class="page_number">First</a></li>\n                <li><a id="previous" class="page_number">«</a></li>\n                ';
- var page_num = get_url_parameter("page")? get_url_parameter("page"):1;
+ var page_num = H.get_url_parameter("page")? H.get_url_parameter("page"):1;
                   for(i=1,j=1;i<=meta.total; i+=20,j++){ ;
 __p += '\n                    <li ';
 if(page_num==j){;
@@ -1677,7 +1677,7 @@ __p += '                        \n                      <td>\n                  
 '/update_status"><i class="fa fa-refresh"></i> Update status</a>                                          \n                      </td>\n                    </tr>\n                  ';
  }); ;
 __p += '                                                 \n                </tbody>\n              </table>                \n            </div>\n          </div>\n          <hr/>\n          <div class="row">\n            <div class="col-sm-12 text-center">\n              <ul class="pagination pagination-sm">\n                <li><a id="1" class="page_number">First</a></li>\n                <li><a id="previous" class="page_number">«</a></li>\n                ';
- var page_num = get_url_parameter("page")?get_url_parameter("page"):1;
+ var page_num = H.get_url_parameter("page")?H.get_url_parameter("page"):1;
                   for(i=1,j=1;i<=meta.total; i+=20,j++){ ;
 __p += '\n                  <li ';
 if(page_num==j){;
@@ -1729,7 +1729,7 @@ __p += '\n\t                \t\tScheduled Reminder!\n\t                \t';
 __p += '\n\t                \t<span class="small"> | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 '</span> </h3><hr class="terques"/>\n\t                <h2 class="terques"><i class="fa fa-clock-o"></i> ' +
-((__t = ( timeConverter(status_log.get("scheduled_update").scheduled_at) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("scheduled_update").scheduled_at) )) == null ? '' : __t) +
 ' | <span class="small"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span></span></h2>\n\t                <button type="button" class="btn btn-danger btn-xs pull-right" id="cancel_schedule"><i class="fa fa-times"></i> Cancel</button> \t      \n\t                <p><i class="fa fa-comment"></i> ' +
@@ -1753,7 +1753,7 @@ __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span c
 '</span>\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>\n\t                \t';
  if(get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\n\t                \t\tScheduled Status : ' +
@@ -1775,7 +1775,7 @@ __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span c
 '</span>\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>Scheduled Status : ' +
 ((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
@@ -1791,7 +1791,7 @@ __p += '\n\n\t\t\t\t\t\t';
 __p += '\n\t\t\t\t\t\t\t<div class="activity-desk">\n\t\t\t\t\t\t\t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\n\t\t\t\t\t\t\t\t<span class="label label-success pull-right">COMPLETED</span>\n                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n                <p>' +
 ((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
@@ -1815,7 +1815,7 @@ __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span c
 '</span>\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>\n\t                \t';
  if(get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\n\t                \t\tScheduled Status : ' +
@@ -1837,7 +1837,7 @@ __p += '\n\t\t\t        \t<div class="activity-desk">\n\t\t\t        \t\t<span c
 '</span>\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n\t                <p>Scheduled Status : ' +
 ((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
@@ -1853,7 +1853,7 @@ __p += '\n\n\t\t\t\t\t\t';
 __p += '\n\t\t\t\t\t\t\t<div class="activity-desk">\n\t\t\t\t\t\t\t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\t\n\t\t\t\t\t\t\t\t<span class="label label-success pull-right">COMPLETED</span>\n                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \n                <p>' +
 ((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
@@ -2126,11 +2126,11 @@ __p += '\n\t    </select>\n\t</td>\n\n\t<td>\n\t\t<!-- render the text type for:
 '" required>\n\t</td>\n\n\t<td>\n\t\t<!-- render the text type for: delivery_time -->\n\t\t<input type="text" class="delivery_time_input input-sm form-control" name="delivery_time_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" value="' +
-((__t = ( to_mins(deliveryArea.get("delivery_time")) )) == null ? '' : __t) +
+((__t = ( H.to_mins(deliveryArea.get("delivery_time")) )) == null ? '' : __t) +
 '" required>\n\t</td>\n\n\t<td>\n\t\t<!-- render the text type for: rush_hour_delivery_time -->\n\t\t<input type="text" class="delivery_time_input input-sm form-control" name="rush_hour_delivery_time_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" value="' +
-((__t = ( to_mins(deliveryArea.get("rush_hour_delivery_time")) )) == null ? '' : __t) +
+((__t = ( H.to_mins(deliveryArea.get("rush_hour_delivery_time")) )) == null ? '' : __t) +
 '" required>\n\t</td>\n\t\n\n  <td>\n\t\t<button type="button" class="btn btn-danger btn-sm delete_this_locality table_delete" data-index="' +
 ((__t = ( i )) == null ? '' : __t) +
 '"><i class="fa fa-times"></i> Delete</button>\n\t</td>\n\t\n</tr>';
@@ -2296,7 +2296,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="partial_box">\n\n\t<h4 class="to_center">' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '</h4>\n\n\t<hr>\n\n\t<input type="hidden" name="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_id" value="' +
@@ -2308,7 +2308,7 @@ __p += '<div class="partial_box">\n\n\t<h4 class="to_center">' +
 '_name" id="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_name" placeholder="Name of the ' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '" value="' +
 ((__t = ( options ? options.name : "" )) == null ? '' : __t) +
 '">\n\t\t</div>\n\t</div>\n\n\t<div class="form-group">\n\t\t<label for="' +
@@ -2318,7 +2318,7 @@ __p += '<div class="partial_box">\n\n\t<h4 class="to_center">' +
 '_email" id="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_email" placeholder="Email of the ' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '" value="' +
 ((__t = ( options ? options.email : "" )) == null ? '' : __t) +
 '">\n\t\t</div>\n\t</div>\n\n\t<input type="hidden" name="' +

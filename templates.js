@@ -622,7 +622,7 @@ __p += '\r\n          <div class="row">\r\n            <div class="col-sm-1 terq
 '</h4>\r\n            </div>\r\n            <div class="col-sm-11">\r\n              <i class="fa fa-user"></i> ' +
 ((__t = (change_log.get("user_name"))) == null ? '' : __t) +
 '              \r\n              <span class="muted">' +
-((__t = (timeConverter(change_log.get("changed_at")))) == null ? '' : __t) +
+((__t = (H.timeConverter(change_log.get("changed_at")))) == null ? '' : __t) +
 '</span>\r\n              <br/>\r\n              <div class="well">\r\n                ';
 _.each(change_log.get("change_logs"), function(log){ ;
 __p += '\r\n                  From <code>' +
@@ -1207,7 +1207,7 @@ if(logo.logo_updated_at != 0){ ;
 __p += '<p class=""> Logo last updated : <strong><span data-livestamp="' +
 ((__t = ( logo.logo_updated_at )) == null ? '' : __t) +
 '"></span> | ' +
-((__t = (timeConverter(logo.logo_updated_at))) == null ? '' : __t) +
+((__t = (H.timeConverter(logo.logo_updated_at))) == null ? '' : __t) +
 '</strong></p>';
  } ;
 __p += '\r\n            <button type="button" class="btn btn-primary btn-sm update_logo" id="update_logo"> Update Logo </button>\r\n          </div>\r\n        </div>\r\n        <hr/>\r\n        <h2 class="to_center"> Documents </h2>\r\n        <hr/>\r\n        ';
@@ -3392,9 +3392,9 @@ __p += '\n                        <td>\n                           ' +
 ' \n                        </td>\n                      ';
  };
 __p += '\n                      <td style="color:red">\n                        ' +
-((__t = ( timing["Start"] ? to_hours(timing["Start"]) : "" )) == null ? '' : __t) +
+((__t = ( timing["Start"] ? H.to_hours(timing["Start"]) : "" )) == null ? '' : __t) +
 ' \n                      </td>\n                      <td style="color:red">\n                        ' +
-((__t = ( timing["End"] ? to_hours(timing["End"]) : "" )) == null ? '' : __t) +
+((__t = ( timing["End"] ? H.to_hours(timing["End"]) : "" )) == null ? '' : __t) +
 ' \n                      </td>\n                    </tr>\n                    ';
 }); ;
 __p += '\n                </tbody>\n              </table>\n            ';
@@ -3626,15 +3626,15 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <div class="panel">\n      <div class="panel-body">                        \n        <div class="row">             \n          <div class="col-sm-12 col-md-12 col-lg-12">\n               <div class="row">\n                    <div class="col-sm-3">\n                         <div class="input-group">\n                              <span class="input-group-addon btn-primary btn-sm"><i class="fa fa-search"></i></span>\n                              <input type="text" id="filter" class="form-control input-sm" placeholder="Type here and hit ENTER to search" autocomplete="off" value="' +
-((__t = (get_url_parameter("search"))) == null ? '' : __t) +
+((__t = (H.get_url_parameter("search"))) == null ? '' : __t) +
 '">\n                         </div>\n                    </div>\n\n                    <div class="col-sm-2 hidden-xs">\n                         <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="' +
-((__t = (get_url_parameter("locality_id")?get_locality(get_url_parameter("locality_id")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("locality_id")?get_locality(H.get_url_parameter("locality_id")):'')) == null ? '' : __t) +
 '">\n\n                    </div>\n\n                      <div class="col-sm-2 hidden-xs">\n                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="' +
-((__t = (get_url_parameter("delivers_in")?get_locality_group(get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
+((__t = (H.get_url_parameter("delivers_in")?get_locality_group(H.get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
 '">\n                    </div>\n\n                    <div class="col-sm-5 hidden-xs">\n                         <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>\n                          ';
  _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n                            <option ';
-if ( get_url_parameter("cuisine_ids") && H.check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { ;
+if ( H.get_url_parameter("cuisine_ids") && H.check_element_exists(H.get_url_parameter("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -3644,17 +3644,17 @@ __p += ' value="' +
 '</option>\n                          ';
  }) ;
 __p += '\n                        </select>\n                    </div>\n                    \n                  </div>\n\n               <br class="hidden-xs">\n\n               <div class="row">\n                    <div class="col-sm-2 hidden-xs">\n                         <div class="input-group input-group-sm">\n                              <span class="input-group-addon btn-primary"><i class="fa fa-phone"></i> Call as a user</span>\n                              <select class="form-control" id="call_as_user_filter">\n                                  <option value="YES" ';
-if(get_url_parameter("call_as_user") == "true"){;
+if(H.get_url_parameter("call_as_user") == "true"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>YES</option>\n                                  <option value="NO" ';
-if(get_url_parameter("call_as_user") =="false"){;
+if(H.get_url_parameter("call_as_user") =="false"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>NO</option>\n                                  <option value="-1" ';
-if(get_url_parameter("call_as_user") == null){;
+if(H.get_url_parameter("call_as_user") == null){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
@@ -3665,7 +3665,7 @@ if(i<4 || i==11){;
 __p += '\n                                        <option value="' +
 ((__t = (i)) == null ? '' : __t) +
 '" ';
-if(get_url_parameter("status")==i){;
+if(H.get_url_parameter("status")==i){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
  } ;
@@ -3676,60 +3676,60 @@ __p += '>' +
 __p += '\n                                    ';
 });;
 __p += '\n                              </select>\n                         </div>\n                    </div>\n                    <div class="col-sm-2 hidden-xs">\n                         <div class="input-group input-group-sm">\n                              <span class="input-group-addon btn-primary"><i class="fa fa-picture-o"></i> Logo </span>\n                              <select class="form-control" id="has_logo_filter">\n                                  <option value="YES" ';
-if(get_url_parameter("has_logo") == "true"){;
+if(H.get_url_parameter("has_logo") == "true"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>YES</option>\n                                  <option value="NO" ';
-if(get_url_parameter("has_logo") =="false"){;
+if(H.get_url_parameter("has_logo") =="false"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>NO</option>\n                                  <option value="-1" ';
-if(get_url_parameter("has_logo") == null){;
+if(H.get_url_parameter("has_logo") == null){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>\n                              </select>\n                         </div>\n                    </div>\n                    <div class="col-sm-2 hidden-xs">\n                         <div class="input-group input-group-sm">\n                              <span class="input-group-addon btn-primary"><i class="fa fa-gavel"></i> Push Changes</span>\n                              <select class="form-control" id="has_changes_filter">\n                                  <option value="YES" ';
-if(get_url_parameter("has_changes") == "true"){;
+if(H.get_url_parameter("has_changes") == "true"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>YES</option>\n                                  <option value="NO" ';
-if(get_url_parameter("has_changes") =="false"){;
+if(H.get_url_parameter("has_changes") =="false"){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>NO</option>\n                                  <option value="-1" ';
-if(get_url_parameter("has_changes") == null){;
+if(H.get_url_parameter("has_changes") == null){;
 __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>\n                              </select>\n                         </div>\n                    </div>\n\n                    <div class="col-sm-1">\n                      <button class="btn btn-primary btn-sm" id="clear_filters"><i class="fa fa-times"></i> Filters</button>\n                    </div>\n                    <div class="col-sm-1 dropdown">\n                       <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-plus-square"></i>\n                            Add\n                            <span class="caret"></span>\n                       </button>\n                       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">\n                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/new"><i class="fa fa-plus-square"></i> New Restaurant</a></li>\n                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/new/virtual"><i class="fa fa-plus-square"></i> New Virtual Restaurant</a></li>\n                       </ul>\n                    </div>\n                    <div class="col-sm-1 dropdown">\n                         <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-file-text"></i>\n                              View\n                              <span class="caret"></span>\n                         </button>\n                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">\n                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/deleted"><i class="fa fa-file-text"></i> Deleted Restaurants </a></li>\n                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/invisible"><i class="fa fa-file-text"></i> Invisible Restaurants</a></li>\n                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/virtual"><i class="fa fa-file-text"></i> Virtual Restaurants </a></li>\n                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#promotions"><i class="fa fa-file-text"></i> Promotions </a></li>\n                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#restaurants/tags"><i class="fa fa-pencil-square-o"></i></i> Item Tags </a></li>\n                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#dish_type_tags"><i class="fa fa-pencil-square-o"></i> Dish Type Tags</a></li>\n                         </ul>\n                    </div>\n\n                    <div class="col-sm-1">\n                      <button class="btn btn-info btn-sm" id="dump"><i class="fa fa-download"></i> Dump</button>\n                    </div>\n                    <div id="dump_content" class="col-sm-5 hidden">\n                       <h3 class="text-center" style="margin-top:10px;margin-bottom:10px;">\n                            <i class="fa fa-file-text-o"></i> Dump\n                       </h3>\n                       <hr/>\n                       <div class="row">\n                            <div class="col-sm-8 text-center">\n                                 <p>Address:</p> \n                            </div>\n                             <div class="col-sm-4">\n                                 <input type="checkbox" id="address" checked>\n                             </div>\n                       </div>\n                       <div class="row">\n                            <div class="col-sm-8 text-center">\n                                 <p>Contact Details:</p> \n                            </div>\n                       <div class="col-sm-4">\n                            <input type="checkbox" id="contact_info" checked>\n                       </div>\n                       </div>\n                       <div class="row">\n                            <div class="col-sm-8 text-center">\n                                 <p>Payment Details:</p> \n                            </div>\n                            <div class="col-sm-4">\n                                 <input type="checkbox" id="payment_details" checked>\n                            </div>\n                       </div>\n                       <div class="row">\n                            <div class="col-sm-8 text-center">\n                                 <p>Other Info:</p> \n                            </div>\n                            <div class="col-sm-4">\n                                 <input type="checkbox" id="other_info" checked>\n                            </div>\n                       </div>\n                       <hr/>\n                       <div class="text-center">\n                            <button class="btn btn-primary btn-sm dump_request" id="dump_request"> <i class="fa fa-download"></i> Download</button>\n                            <button class="btn btn-default btn-sm" id="close_dump"><i class="fa fa-times"></i> Close </button>\n                       </div>\n                    </div>\n               </div>    \n          </div>             \n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class="row">\n  <div class="col-xs-12">\n    <section class="panel">\n      <div class="panel-body">\n        <div class="row">\n          <div class="col-xs-12 text-center">\n            <p class="lead stats">\n                  <span> Total: <span class=""><strong>' +
 ((__t = (meta.total )) == null ? '' : __t) +
 '</strong></span> | </span>\n                  <span class="';
-if(get_url_parameter("status")!=2 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=2 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '"> Active: <span class="text-success"><strong>' +
 ((__t = (meta.active)) == null ? '' : __t) +
 '&nbsp;</strong></span></span>\n                  <span class="';
-if(get_url_parameter("status")!=3 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=3 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '" id="inactive">Inactive: <span class="text-warning"><strong>' +
 ((__t = (meta.inactive)) == null ? '' : __t) +
 '&nbsp;</strong></span></span>\n                  <span class="';
-if(get_url_parameter("status")!=1 && get_url_parameter("status")!=null){;
+if(H.get_url_parameter("status")!=1 && H.get_url_parameter("status")!=null){;
 __p +=
 ((__t = ("hide")) == null ? '' : __t);
 };
 __p += '" id="new">New: <span class="text-info"><strong>' +
 ((__t = (meta.new)) == null ? '' : __t) +
 '</strong></span></span>\n            </p>\n              <ul class="pagination pagination-sm">\n                ';
- var page_num = get_url_parameter("page")? get_url_parameter("page"):1;
+ var page_num = H.get_url_parameter("page")? H.get_url_parameter("page"):1;
                   var start_page = (page_num-7 > 0)? page_num -7 : 1;
                   var total_pages = parseInt(meta.total/20) + 1;
                   var max_pages = _.min([start_page + 15, total_pages]);
@@ -3821,7 +3821,7 @@ __p += '\n                                <li id="get_logs">\n\n                
 '"><i class="fa fa-file"></i> Menu </a>-->\n\n                                </li>\n\n                                <li class="' +
 ((__t = ( (restaurant.get('has_items') ? '_disabled' : ''))) == null ? '' : __t) +
 '">\n                                    <a  href="' +
-((__t = ( get_menu_timeline_url(restaurant.get('id'),restaurant.get('menu_progress_bar')) )) == null ? '' : __t) +
+((__t = ( H.get_menu_timeline_url(restaurant.get('id'),restaurant.get('menu_progress_bar')) )) == null ? '' : __t) +
 '" data-restaurant-id="' +
 ((__t = (restaurant.get('id'))) == null ? '' : __t) +
 '"><i class="fa fa-file"></i> Menu Timeline </a>\n                                </li>\n\n                            </ul>\n                        </div>\n                      </td>\n                      <td class="hidden-xs">\n                        ';
@@ -3943,7 +3943,7 @@ __p += '\r\n\t                \t\tScheduled Reminder!\r\n\t                \t';
 __p += '\r\n\t                \t<span class="small"> | <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 '</span> </h3><hr class="terques"/>\r\n\t                <h2 class="terques"><i class="fa fa-clock-o"></i> ' +
-((__t = ( timeConverter(status_log.get("scheduled_update").scheduled_at) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("scheduled_update").scheduled_at) )) == null ? '' : __t) +
 ' | <span class="small"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span></span></h2>\r\n\t                <button type="button" class="btn btn-danger btn-xs pull-right js_cancel_schedule" data-id="' +
@@ -3969,7 +3969,7 @@ __p += '\r\n\t\t\t        \t<div class="activity-desk">\r\n\t\t\t        \t\t<sp
 '</span>\r\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n\t                <p>\r\n\t                \t';
  if(get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\r\n\t                \t\tScheduled Status : ' +
@@ -3991,7 +3991,7 @@ __p += '\r\n\t\t\t        \t<div class="activity-desk">\r\n\t\t\t        \t\t<sp
 '</span>\r\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n\t                <p>\r\n\t                \t';
  if(get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\r\n\t                \t\tScheduled Status : ' +
@@ -4013,7 +4013,7 @@ __p += '\r\n\r\n\t\t\t\t\t\t';
 __p += '\r\n\t\t\t\t\t\t\t<div class="activity-desk">\r\n\t\t\t\t\t\t\t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\r\n\t\t\t\t\t\t\t\t<span class="label label-success pull-right">COMPLETED</span>\r\n                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n                <p>' +
 ((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
@@ -4037,7 +4037,7 @@ __p += '\r\n\t\t\t        \t<div class="activity-desk">\r\n\t\t\t        \t\t<sp
 '</span>\r\n\t                <h2 class="red"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n\t                <p>\r\n\t                \t';
  if(get_status(status_log.get("scheduled_update").new_status)){ ;
 __p += '\r\n\t                \t\tScheduled Status : ' +
@@ -4059,7 +4059,7 @@ __p += '\r\n\t\t\t        \t<div class="activity-desk">\r\n\t\t\t        \t\t<sp
 '</span>\r\n\t                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n\t                <p>Scheduled Status : ' +
 ((__t = (get_status(status_log.get("scheduled_update").new_status))) == null ? '' : __t) +
 ' | <i class="fa fa-user"></i> ' +
@@ -4075,7 +4075,7 @@ __p += '\r\n\r\n\t\t\t\t\t\t';
 __p += '\r\n\t\t\t\t\t\t\t<div class="activity-desk">\r\n\t\t\t\t\t\t\t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\t\r\n\t\t\t\t\t\t\t\t<span class="label label-success pull-right">COMPLETED</span>\r\n                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n                <p>' +
 ((__t = (get_status(status_log.get("previous_status")))) == null ? '' : __t) +
 ' <i class=\'fa fa-arrow-right\'></i> ' +
@@ -4091,7 +4091,7 @@ __p += '\r\n\r\n\t\t\t\t\t\t';
 __p += '\r\n\t\t\t\t\t\t\t<div class="activity-desk">\r\n\t\t\t\t\t\t\t\t<span class="alert-icon pull-left bg-green"><i class="fa fa-check"></i></span>\t\r\n\t\t\t\t\t\t\t\t<span class="label label-success pull-right">Comment</span>\r\n                <h2 class="purple"><span data-livestamp="' +
 ((__t = ( status_log.get("created_at") )) == null ? '' : __t) +
 '"></span>| <span class="small">' +
-((__t = ( timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
+((__t = ( H.timeConverter(status_log.get("created_at")) )) == null ? '' : __t) +
 '</span></h2> \r\n                <i class="fa fa-user"></i> ' +
 ((__t = (status_log.get("user_name"))) == null ? '' : __t) +
 ' </p>\r\n                <p><i class="fa fa-comment"></i> ' +
@@ -4868,11 +4868,11 @@ __p += '\n\t    </select>\n\t</td>\t\n\n\t<td>\n\t\t<input type="text" class="de
 '" required>\n\t</td>\n\n\t<td>\n\t\t<input type="text" class="delivery_time_input input-sm form-control" name="delivery_time_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" value="' +
-((__t = ( to_mins(deliveryArea.get("delivery_time")) )) == null ? '' : __t) +
+((__t = ( H.to_mins(deliveryArea.get("delivery_time")) )) == null ? '' : __t) +
 '" required>\n\t</td>\n\n\t<td>\n\t\t<input type="text" class="delivery_time_input input-sm form-control" name="rush_hour_delivery_time_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" value="' +
-((__t = ( to_mins(deliveryArea.get("rush_hour_delivery_time")) )) == null ? '' : __t) +
+((__t = ( H.to_mins(deliveryArea.get("rush_hour_delivery_time")) )) == null ? '' : __t) +
 '" required>\n\t</td>\n  <td class="hidden-xs">\n  \t<input type="checkbox" name="delivery_type_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" id="delivery_type_id_' +
@@ -4903,8 +4903,8 @@ __p += '\n\t' +
 		i: i,
 		j: j,
 		id: timing["_id"],
-		start_time: get_delivery_time(timing["start"]),
-		end_time: get_delivery_time(timing["end"])
+		start_time: H.get_delivery_time(timing["start"]),
+		end_time: H.get_delivery_time(timing["end"])
 	}) )) == null ? '' : __t) +
 '\n';
  }) ;
@@ -5479,7 +5479,7 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="partial_box">\r\n\r\n\t<h4 class="to_center">' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '</h4>\r\n\r\n\t<hr>\r\n\r\n\t<input type="hidden" name="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_id" value="' +
@@ -5491,7 +5491,7 @@ __p += '<div class="partial_box">\r\n\r\n\t<h4 class="to_center">' +
 '_name" id="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_name" placeholder="Name of the ' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '" value="' +
 ((__t = ( options ? options.name : "" )) == null ? '' : __t) +
 '">\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class="form-group">\r\n\t\t<div class="col-xs-1 visible-xs"></div>\r\n\t\t<label for="' +
@@ -5501,7 +5501,7 @@ __p += '<div class="partial_box">\r\n\r\n\t<h4 class="to_center">' +
 '_email" id="' +
 ((__t = ( whois )) == null ? '' : __t) +
 '_email" placeholder="Email of the ' +
-((__t = ( makeTitle(whois) )) == null ? '' : __t) +
+((__t = ( H.makeTitle(whois) )) == null ? '' : __t) +
 '" value="' +
 ((__t = ( options ? options.email : "" )) == null ? '' : __t) +
 '">\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<input type="hidden" name="' +

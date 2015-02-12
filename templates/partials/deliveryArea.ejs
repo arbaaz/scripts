@@ -20,11 +20,11 @@
 	</td>
 
 	<td>
-		<input type="text" class="delivery_time_input input-sm form-control" name="delivery_time_<%= i %>" value="<%= to_mins(deliveryArea.get("delivery_time")) %>" required>
+		<input type="text" class="delivery_time_input input-sm form-control" name="delivery_time_<%= i %>" value="<%= H.to_mins(deliveryArea.get("delivery_time")) %>" required>
 	</td>
 
 	<td>
-		<input type="text" class="delivery_time_input input-sm form-control" name="rush_hour_delivery_time_<%= i %>" value="<%= to_mins(deliveryArea.get("rush_hour_delivery_time")) %>" required>
+		<input type="text" class="delivery_time_input input-sm form-control" name="rush_hour_delivery_time_<%= i %>" value="<%= H.to_mins(deliveryArea.get("rush_hour_delivery_time")) %>" required>
 	</td>
   <td class="hidden-xs">
   	<input type="checkbox" name="delivery_type_<%= i %>" id="delivery_type_id_<%= i %>" class="delivery_type_select" <% if(deliveryArea.get("delivery_type") == 2){%> <%="checked"%><% } %>>
@@ -40,8 +40,8 @@
 		i: i,
 		j: j,
 		id: timing["_id"],
-		start_time: get_delivery_time(timing["start"]),
-		end_time: get_delivery_time(timing["end"])
+		start_time: H.get_delivery_time(timing["start"]),
+		end_time: H.get_delivery_time(timing["end"])
 	}) %>
 <% }) %>
 
