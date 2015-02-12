@@ -24,7 +24,7 @@
                     <div class="col-sm-5 hidden-xs">
                          <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>
                           <% _.each(collections.cuisines, function(cuisine) { %>
-                            <option <%if ( get_url_parameter("cuisine_ids") && check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
+                            <option <%if ( get_url_parameter("cuisine_ids") && H.check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
                           <% }) %>
                         </select>
                     </div>

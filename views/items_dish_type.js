@@ -47,7 +47,7 @@ define([
 
       },
       loadPlugins: function () {
-        close_sidebar();
+        H.close_sidebar();
       },
       events: {
         "click .save": "save",

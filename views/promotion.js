@@ -108,7 +108,7 @@ define([
 
 
       loadPlugins: function () {
-        close_sidebar();
+        H.close_sidebar();
 
         var nowTemp = new Date();     // load datepicker
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);

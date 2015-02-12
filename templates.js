@@ -2031,7 +2031,7 @@ __p += '<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form comp
 '\n\n\t          <div class="form-group adjust-xs">\n              <label for="restaurant_suggestion_ids" class="col-md-4 control-label">Restaurant Suggestions</label>\n              <div class="col-md-8">\n              <select multiple name="restaurant_suggestion_ids" id="restaurant_suggestion_ids">\n              ';
  _.each(miscellaneous.get("restaurant_suggestion_collection"), function(suggestion) { ;
 __p += '\n                <option ';
-if (check_element_exists(miscellaneous.get("restaurant_suggestion_ids"), suggestion.id)) { ;
+if (H.check_element_exists(miscellaneous.get("restaurant_suggestion_ids"), suggestion.id)) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -2043,7 +2043,7 @@ __p += ' value="' +
 __p += '\n              </select>\n              </div>\n            </div>  \n\n            <div class="form-group adjust-xs">\n\t            <label for="cuisine_ids" class="col-md-4 control-label">Cuisines</label>\n\t            <div class="col-md-8">\n\t            <select multiple name="cuisine_ids" id="cuisine_ids">\n\t            ';
  _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n\t              <option ';
-if (check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
+if (H.check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -3159,7 +3159,7 @@ __p += '\n        </div>\n\n          \n          <hr>\n          \n          <d
 '" autocomplete="off"> \n            </div>\n          </div>\n\n          <hr>\n\n          <!-- custom markup: since Jquery plugin breaks the partial -->\n          <div class="form-group adjust-xs">\n            <label for="closed_timing_ids" class="col-md-4 control-label">Closed Timings</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n            <select multiple name="closed_timing_ids" id="closed_timing_ids" class="default-select2">\n            ';
  _.each(collections.closed_timings, function(timing) { ;
 __p += '\n              <option ';
- if (check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
+ if (H.check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -3171,7 +3171,7 @@ __p += ' value="' +
 __p += '\n            </select>\n            </div>\n          </div>\n          <div class="form-group adjust-xs">\n            <label for="delivery_boys_vehicle" class="col-md-4 control-label">Delivery  boys vehicle</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n              <select name="delivery_boys_vehicle" id="delivery_boys_vehicle" class="default-select2" multiple>\n              ';
  _.each(collections.delivery_boys_vehicle, function(i,vehicle) { ;
 __p += '\n                <option ';
- if (check_element_exists(restaurant.get("delivery_boys_vehicle"),i)) { ;
+ if (H.check_element_exists(restaurant.get("delivery_boys_vehicle"),i)) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -3634,7 +3634,7 @@ __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <di
 '">\n                    </div>\n\n                    <div class="col-sm-5 hidden-xs">\n                         <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>\n                          ';
  _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n                            <option ';
-if ( get_url_parameter("cuisine_ids") && check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { ;
+if ( get_url_parameter("cuisine_ids") && H.check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +

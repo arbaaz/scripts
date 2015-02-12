@@ -12,7 +12,7 @@ define([
       template: JST['app/scripts/templates/outsource_agent.ejs'],
 
       initialize: function () {
-        close_sidebar();
+        H.close_sidebar();
       },
 
       render: function () {

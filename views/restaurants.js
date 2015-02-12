@@ -14,7 +14,7 @@ define([
 
       initialize: function () {
         //this.collections=get_collections();
-        close_sidebar();
+        H.close_sidebar();
       },
 
       render: function (options) {

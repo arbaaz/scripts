@@ -912,7 +912,7 @@ __p += '\n<div class="row">\n\n  ' +
 '\n\n\t          <div class="form-group">\n              <label for="restaurant_suggestion_ids" class="col-md-4 control-label">Restaurant Suggestions</label>\n              <div class="col-md-8">\n              <select multiple name="restaurant_suggestion_ids" id="restaurant_suggestion_ids">\n              ';
  _.each(miscellaneous.get("restaurant_suggestion_collection"), function(suggestion) { ;
 __p += '\n                <option ';
-if (check_element_exists(miscellaneous.get("restaurant_suggestion_ids"), suggestion.id)) { ;
+if (H.check_element_exists(miscellaneous.get("restaurant_suggestion_ids"), suggestion.id)) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -924,7 +924,7 @@ __p += ' value="' +
 __p += '\n              </select>\n              </div>\n            </div>  \n\n            <div class="form-group">\n\t            <label for="cuisine_ids" class="col-md-4 control-label">Cuisines</label>\n\t            <div class="col-md-8">\n\t            <select multiple name="cuisine_ids" id="cuisine_ids">\n\t            ';
  _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n\t              <option ';
-if (check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
+if (H.check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +
@@ -1445,7 +1445,7 @@ __p += '\n\n          <button type="button" class="btn btn-info btn-sm add_new_n
 '" autocomplete="off"> \n            </div>\n          </div>\n\n          <hr>\n\n          <!-- custom markup: since Jquery plugin breaks the partial -->\n          <div class="form-group">\n            <label for="closed_timing_ids" class="col-md-4 control-label">Closed Timings</label>\n            <div class="col-md-8">\n            <select multiple name="closed_timing_ids" id="closed_timing_ids">\n            ';
  _.each(collections.closed_timings, function(timing) { ;
 __p += '\n              <option ';
- if (check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
+ if (H.check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
 __p += 'selected="selected"';
  } ;
 __p += ' value="' +

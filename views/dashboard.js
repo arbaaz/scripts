@@ -26,7 +26,7 @@ define([
         H.stop_loading();
       },
       load_plugins: function () {
-        close_sidebar();
+        H.close_sidebar();
       },
       events: {},
 

@@ -11,7 +11,7 @@ define([
 
       initialize: function (attrs) {
         this.options = attrs;
-        close_sidebar();
+        H.close_sidebar();
       },
       el: '#page',
       template: JST['app/scripts/templates/outsource_head.ejs'],

@@ -18,7 +18,7 @@ define([
           this.redirect();
         else
           this.render();
-        close_sidebar();
+        H.close_sidebar();
       },
       render: function () {
         console.log("render");
