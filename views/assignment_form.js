@@ -38,7 +38,7 @@ define([
           },
           error: function (response, status, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message, "center");
+            H.generate_alert(false, $.parseJSON(response.responseText).message, "center");
             return false;
           }
         });

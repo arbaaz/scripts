@@ -69,14 +69,14 @@ define([
             H.stop_loading();
             if (options) {
               if (that.options.success) {
-                generate_alert(true, that.options.message);
+                H.generate_alert(true, that.options.message);
               }
             }
             that.loadPlugins();
           },
           error: function (data, response, options) {
             H.stop_loading();
-            generate_alert(false, response.responseText ? $.parseJSON(response.responseText).message : "Failed to load");
+            H.generate_alert(false, response.responseText ? $.parseJSON(response.responseText).message : "Failed to load");
           }
         })
 
@@ -444,7 +444,7 @@ define([
               },
               error: function (response, status, error) {
                 H.stop_loading();
-                generate_alert(false, $.parseJSON(response.responseText).message);
+                H.generate_alert(false, $.parseJSON(response.responseText).message);
               }
             });
           }
@@ -468,7 +468,7 @@ define([
               },
               error: function (response, status, error) {
                 H.stop_loading();
-                generate_alert(false, $.parseJSON(response.responseText).message);
+                H.generate_alert(false, $.parseJSON(response.responseText).message);
               }
             });
           }
@@ -492,7 +492,7 @@ define([
             },
             error: function (response, status, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
         });
@@ -559,7 +559,7 @@ define([
           },
           error: function (response, status, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
             setTimeout(function () {
               $(e.currentTarget).removeProp("disabled");
             }, 10000);

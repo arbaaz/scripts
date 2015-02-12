@@ -60,7 +60,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
         return false;
@@ -145,11 +145,11 @@ define([
           }
         });
         if (ids.length == 0 || ids.length == 1) {
-          generate_alert(false, "You need to check 2 agents for diff!");
+          H.generate_alert(false, "You need to check 2 agents for diff!");
           return false;
         }
         if (ids.length > 2) {
-          generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.");
+          H.generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.");
           return false;
         }
         // window.location = "/restaurant/data_entry/diff_beta?id1=" + ids[0] + "&id2=" + ids[1];
@@ -168,12 +168,12 @@ define([
         });
         if (ids.length == 0 || ids.length == 1) {
           H.stop_loading();
-          generate_alert(false, "You need to check 2 agents for completing!");
+          H.generate_alert(false, "You need to check 2 agents for completing!");
           return false;
         }
         if (ids.length > 2) {
           H.stop_loading();
-          generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
+          H.generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
           return false;
         }
         $.ajax({
@@ -186,13 +186,13 @@ define([
           },
           success: function (data) {
             H.stop_loading();
-            generate_alert(true, "Successfully activated!");
+            H.generate_alert(true, "Successfully activated!");
             window.location.reload();
             return data;
           },
           error: function (response, status, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
         return true;
@@ -209,12 +209,12 @@ define([
         });
         if (ids.length == 0 || ids.length == 1) {
           H.stop_loading();
-          generate_alert(false, "You need to check 2 agents to send diff report!");
+          H.generate_alert(false, "You need to check 2 agents to send diff report!");
           return false;
         }
         if (ids.length > 2) {
           H.stop_loading();
-          generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
+          H.generate_alert(false, "You have checked more than 2 agents. you can only check 2 at a time.")
           return false;
         }
         $.ajax({
@@ -227,13 +227,13 @@ define([
           },
           success: function (data) {
             H.stop_loading();
-            generate_alert(true, "Sent Diff report");
+            H.generate_alert(true, "Sent Diff report");
             window.location.reload();
             return data;
           },
           error: function (response, status, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
         return true;
@@ -257,7 +257,7 @@ define([
 
           if (ids.length != 1) {
             H.stop_loading();
-            generate_alert(false, "You need to select 1 restaurant to export!");
+            H.generate_alert(false, "You need to select 1 restaurant to export!");
             return false;
           }
         } else if (overwrite) {
@@ -274,8 +274,8 @@ define([
           success: function (data) {
             $("#overwriteModal").modal('hide');
             H.stop_loading();
-            //generate_alert(true,"Successfully Exported");
-            generate_alert(true, data.message);
+            //H.generate_alert(true,"Successfully Exported");
+            H.generate_alert(true, data.message);
             window.location.reload();
             return data;
           },
@@ -287,7 +287,7 @@ define([
               });
               $("#overwriteModal").modal('show');
             } else {
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
             }
             return false;
           }

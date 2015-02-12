@@ -36,7 +36,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
 
@@ -68,7 +68,7 @@ define([
         H.start_loading();
         if (this.$("#tag").val() == "-1") {
           H.stop_loading();
-          generate_alert(false, "Please select a dish type tag.");
+          H.generate_alert(false, "Please select a dish type tag.");
           return;
         }
         var dish_type_tag_object = $('#dish_type_tag_form').serializeObject();
@@ -87,7 +87,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
         }
@@ -106,7 +106,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
             }
           });
         }

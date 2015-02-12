@@ -21,9 +21,9 @@ $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
   H.stop_loading();
   if (jqxhr.status == 400 || jqxhr.status == 401) {
     // backup alert message in case individual alerts don't fire
-    //generate_alert(false,$.parseJSON(jqxhr.responseText).message);
+    //H.generate_alert(false,$.parseJSON(jqxhr.responseText).message);
   } else {
-    //var alert = generate_alert(false,"Sorry but something went wrong! Please report this, or contact the Admin.");
+    //var alert = H.generate_alert(false,"Sorry but something went wrong! Please report this, or contact the Admin.");
   }
   return false;
 });*/

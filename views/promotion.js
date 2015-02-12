@@ -60,7 +60,7 @@ define([
                   },
                   error: function (data, response, error) {
                     H.stop_loading();
-                    generate_alert(false, $.parseJSON(response.responseText).message);
+                    H.generate_alert(false, $.parseJSON(response.responseText).message);
                     return false;
                   }
                 });
@@ -73,7 +73,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
 
@@ -99,7 +99,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
           });
@@ -191,7 +191,7 @@ define([
                 },
                 error: function (data, response, error) {
                   H.stop_loading();
-                  generate_alert(false, $.parseJSON(response.responseText).message);
+                  H.generate_alert(false, $.parseJSON(response.responseText).message);
                   return false;
                 }
               });
@@ -212,19 +212,19 @@ define([
         H.start_loading();
         if (this.$("#status").val() == "-1") {
           H.stop_loading();
-          generate_alert(false, "Please select status type.");
+          H.generate_alert(false, "Please select status type.");
           return;
         }
 
         if (this.$(type).val() != 4 && this.$("#virtual-restaurants").val() == null) {
           H.stop_loading();
-          generate_alert(false, "Please select a restuarant.");
+          H.generate_alert(false, "Please select a restuarant.");
           return;
         }
 
         if (this.$('type') == 3 && this.$('items').val() == null) {
           H.stop_loading();
-          generate_alert(false, "Please select an item.");
+          H.generate_alert(false, "Please select an item.");
           return;
         }
         ;
@@ -237,7 +237,7 @@ define([
 
         if (datastr.valid_from >= datastr.valid_till) {
           H.stop_loading();
-          generate_alert(false, "Please enter valid dates.");
+          H.generate_alert(false, "Please enter valid dates.");
           return;
         }
 
@@ -269,7 +269,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
           })
@@ -288,7 +288,7 @@ define([
             },
             error: function (data, response, error) {
               H.stop_loading();
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
           })

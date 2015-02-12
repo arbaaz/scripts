@@ -37,7 +37,7 @@ define([
 
             },
             error: function (response, status, error) {
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
 
@@ -60,7 +60,7 @@ define([
 
             },
             error: function (data, response, error) {
-              generate_alert(false, $.parseJSON(response.responseText).message);
+              H.generate_alert(false, $.parseJSON(response.responseText).message);
               return false;
             }
           });
@@ -99,7 +99,7 @@ define([
             },
             error: function (response, status, error) {
               H.stop_loading();
-              generate_alert(false, "Version must be unique");
+              H.generate_alert(false, "Version must be unique");
               return false;
             }
           })
@@ -115,7 +115,7 @@ define([
             error: function (response, status, error) {
 
               H.stop_loading();
-              generate_alert(false, "Version must be unique");
+              H.generate_alert(false, "Version must be unique");
               return false;
             }
           })

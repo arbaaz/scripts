@@ -40,7 +40,7 @@ define([
           this.sync("update", that, options);
         } else {
           H.stop_loading();
-          generate_alert(false, "No Change in items");
+          H.generate_alert(false, "No Change in items");
         }
       }
     });

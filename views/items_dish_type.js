@@ -40,7 +40,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
         })
@@ -113,7 +113,7 @@ define([
       next_state: function (e) {
         // if(this.items.where({dish_type_tag:-1}).length>0)
         // {
-        //     generate_alert(false,"Not allowed. Please complete the dish type for all items.");
+        //     H.generate_alert(false,"Not allowed. Please complete the dish type for all items.");
 
         // } else {
         //     $.ajax({
@@ -138,11 +138,11 @@ define([
           success: function (response) {
             H.stop_loading();
             that.render();
-            generate_alert(true, response.message);
+            H.generate_alert(true, response.message);
           },
           error: function (response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
 
         });

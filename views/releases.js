@@ -35,7 +35,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         })
 
@@ -61,7 +61,7 @@ define([
           dataType: "json",
           success: function (data) {
             that.render();
-            generate_alert(true, "Promotion was deleted successfully.");
+            H.generate_alert(true, "Promotion was deleted successfully.");
             return true;
           },
           error: function (response, status, error) {

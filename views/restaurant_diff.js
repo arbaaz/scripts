@@ -36,7 +36,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, data.responseText);
+            H.generate_alert(false, data.responseText);
             return false;
           }
         });

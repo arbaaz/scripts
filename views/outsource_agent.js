@@ -30,13 +30,13 @@ define([
             that.$el.html(template);
             H.stop_loading();
             if (window.created_new) {
-              generate_alert(true, "New Restaurant was successfully created!");
+              H.generate_alert(true, "New Restaurant was successfully created!");
             }
             that.loadPlugins();
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         })
       },
@@ -71,13 +71,13 @@ define([
           dataType: "json",
           success: function (data) {
             H.stop_loading();
-            generate_alert(true, "Submitted Successfully");
+            H.generate_alert(true, "Submitted Successfully");
             that.render();
             return data;
           },
           error: function (response, status, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
         return true;

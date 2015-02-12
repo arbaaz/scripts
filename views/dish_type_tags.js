@@ -29,7 +29,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
         })
@@ -49,12 +49,12 @@ define([
           success: function (data, response) {
             H.stop_loading();
             that.render();
-            generate_alert(true, response.message);
+            H.generate_alert(true, response.message);
 
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
           }
         });
       },

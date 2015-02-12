@@ -28,7 +28,7 @@ define([
             that.$el.html(temp);
           },
           error: function (data, response, error) {
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
         });
@@ -59,7 +59,7 @@ define([
           },
           error: function (data, response, error) {
             H.stop_loading();
-            generate_alert(false, $.parseJSON(response.responseText).message);
+            H.generate_alert(false, $.parseJSON(response.responseText).message);
             return false;
           }
         });
