@@ -115,7 +115,7 @@ var Router = Backbone.Router.extend({
     else{
       if (route != 'login' && route != 'faqs' && route != 'dashboard') {
         if(typeof profile_collection_flag =='undefined'){
-          window.collections = get_collections();
+          collections = get_collections();
           profile_collection_flag = 1 // updating the global collections object
         }
       }

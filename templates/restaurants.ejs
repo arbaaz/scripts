@@ -23,7 +23,7 @@
 
                     <div class="col-sm-5 hidden-xs">
                          <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>
-                          <% _.each(window.collections.cuisines, function(cuisine) { %>
+                          <% _.each(collections.cuisines, function(cuisine) { %>
                             <option <%if ( get_url_parameter("cuisine_ids") && check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { %>selected="selected"<% } %> value="<%= cuisine[1] %>"><%= cuisine[0] %></option>
                           <% }) %>
                         </select>
@@ -50,7 +50,7 @@
                               <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>
                               <select class="form-control" id="status_filter">
                                    <option value="-1" selected> All </option>
-                                    <% _.each(window.collections.status,function(i,stat,j){%>
+                                    <% _.each(collections.status,function(i,stat,j){%>
                                       <%if(i<4 || i==11){%>
                                         <option value="<%=i%>" <%if(get_url_parameter("status")==i){%><%="selected"%><% } %>><%=stat%></option>
                                       <% } %>

@@ -65,7 +65,7 @@ define([
         $("#veg-" + id).addClass('btn-success')
 
         var model = this.items.findWhere({id: id})
-        model.set({veg_type: window.collections.veg_types["VEG"]})
+        model.set({veg_type: collections.veg_types["VEG"]})
 
       },
       select_dish_type_tag_nonveg: function (e) {
@@ -75,7 +75,7 @@ define([
         $("#nonveg-" + id).addClass('btn-danger')
 
         var model = this.items.findWhere({id: id})
-        model.set({veg_type: window.collections.veg_types["NON_VEG"]})
+        model.set({veg_type: collections.veg_types["NON_VEG"]})
 
       },
       select_dish_type_tag_egg: function (e) {
@@ -87,7 +87,7 @@ define([
         // $("#egg-"+id).attr('class', 'btn btn-warning egg');
 
         var model = this.items.findWhere({id: id})
-        model.set({veg_type: window.collections.veg_types["EGG"]})
+        model.set({veg_type: collections.veg_types["EGG"]})
 
       },
       select_dish_type_tag_jain: function (e) {
@@ -97,7 +97,7 @@ define([
         $("#jain-" + id).addClass('btn-info')
 
         var model = this.items.findWhere({id: id})
-        model.set({veg_type: window.collections.veg_types["JAIN"]})
+        model.set({veg_type: collections.veg_types["JAIN"]})
 
       },
       select_dish_type_tag_neutral: function (e) {
@@ -107,7 +107,7 @@ define([
         $("#neutral-" + id).addClass('btn-default')
 
         var model = this.items.findWhere({id: id})
-        model.set({veg_type: window.collections.veg_types["NEUTRAL"]})
+        model.set({veg_type: collections.veg_types["NEUTRAL"]})
 
       },
       next_state: function (e) {

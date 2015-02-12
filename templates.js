@@ -70,7 +70,7 @@ with (obj) {
 __p += '<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form component -->\n  <div class="col-xs-12">\n\n    <div class="panel">\n      <div class="panel-body">\n      <section id="alerts"></section> \n      <h2 class="to_center">Edit: Account Details</h2>\n      <hr>\n      <div class="row">\n        <form accept-charset="UTF-8" class="form-horizontal" id="account_details_form" method="post" enctype="multipart/form-data">\n          <input type="hidden" value="' +
 ((__t = ( account_details.get('id') )) == null ? '' : __t) +
 '" name="id">  \n       \t  \t\t\t\t\t  \n          \t<div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n\t            <label for="payment_settlement_period" class="col-md-4 col-xs-4 control-label">Payment Settlement Period</label>\n\t            <div class="col-md-8 col-sm-8 col-xs-6">\n\t\t            <select name="payment_settlement_period" class="form-inline-element input-sm" id="payment_settlement_period">\n                  <option value="-1" selected>none</option>\n\t\t\t            ';
- _.each(window.collections.time_period, function(i,period) {;
+ _.each(collections.time_period, function(i,period) {;
 __p += '\n\t\t\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -83,7 +83,7 @@ __p += ' > ' +
 '</option>\n\t\t\t            ';
  }) ;
 __p += '\n\t\t            </select>\n\t            </div>\n\t          </div>\n\t          <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n\t            <label for="payment_settlement_type" class="col-md-4 col-xs-4 control-label">Payment Settlement Mode</label>\n\t            <div class="col-md-8 col-sm-8 col-xs-6">\n\t\t            <select name="payment_settlement_type" class="form-inline-element input-sm" id="payment_settlement_type">\n                <option value="-1" selected>none</option>\n\t\t\t            ';
- _.each(window.collections.payment_settlement_type, function(i,type,mapping) {;
+ _.each(collections.payment_settlement_type, function(i,type,mapping) {;
 __p += '\n\t\t\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -96,7 +96,7 @@ __p += ' > ' +
 '</option>\n\t\t\t            ';
  }) ;
 __p += '\n\t\t            </select>\n\t            </div>\n\t          </div>\n\t          <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n\t            <label for="payment_settlement_weekday" class="col-md-4 col-xs-4 control-label">Payment Settlement Day</label>\n\t            <div class="col-md-8 col-sm-8 col-xs-6">\n\t            <select name="payment_settlement_weekday" class="form-inline-element input-sm" id="payment_settlement_weekday">\n                <option value="-1" selected>none</option>\n\t            ';
- _.each(window.collections.week_days, function(i,weekday) { ;
+ _.each(collections.week_days, function(i,weekday) { ;
 __p += '\n\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -129,7 +129,7 @@ __p += ' ' +
 ((__t = ("checked")) == null ? '' : __t);
  } ;
 __p += '>                          \n                      </label>\n                  </div>\n              </div>\n            </div> \n            <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="payment_modes">User Payment Modes</label>\n              <div class="col-md-6 col-sm-6 col-xs-6">\n                 <select name="payment_modes" required="true" id="payment_modes" multiple>\n                  ';
- _.chain(window.collections.payment_mode).pairs().each(function(mode){ ;
+ _.chain(collections.payment_mode).pairs().each(function(mode){ ;
 __p += '\n                  <option value="' +
 ((__t = (mode[1])) == null ? '' : __t) +
 '">' +
@@ -137,7 +137,7 @@ __p += '\n                  <option value="' +
 '</option>\n                  ';
  }) ;
 __p += '\n                  </select>\n              </div>\n            </div>\n\n            <hr/>\n\t          <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n\t            <label for="bank_id" class="col-md-4 col-sm-4 col-xs-4 control-label">Bank Name</label>\n\t            <div class="col-md-6 col-sm-6 col-xs-6">\n\t            <select name="bank_id" class="form-inline-element input-sm" id="bank_id">\n                <option value="-1" selected>none</option>\n\t            ';
- _.each(window.collections.bank, function(banks) { ;
+ _.each(collections.bank, function(banks) { ;
 __p += '\n\t              <option value="' +
 ((__t = ( banks[1] )) == null ? '' : __t) +
 '" ';
@@ -260,7 +260,7 @@ __p += '\n            ' +
                 markup_to_delete: "phone_numbers_for_confirmation_sms_" + i + "_delete",
                 i: i,
                 number: phone_number.number,
-                contact_number_types: window.collections.contact_number_types,
+                contact_number_types: collections.contact_number_types,
                 number_type: phone_number.number_type,
                 sms: false,
                 is_present_on_counter: false,
@@ -906,7 +906,7 @@ __p += '<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form comp
 '" name="id" id="id">\n\n          <input type="hidden" name="delivery_area_count" value="' +
 ((__t = ( deliveryAreas.length )) == null ? '' : __t) +
 '">\n          <div class="form-group">\n            <label for="locality_filter" class="col-md-3 control-label" style="padding-top:2px">Select a locality: </label>\n            <div class="col-md-8">\n              <select name="locality_filter" id="locality_filter" class="" >\n                <option value="" selected="selected"></option>\n                ';
- _.each(window.collections.localities, function(locality) { ;
+ _.each(collections.localities, function(locality) { ;
 __p += '\n                  ';
  if(!locality.parent_id){ ;
 __p += '\n                    <option value="' +
@@ -918,7 +918,7 @@ __p += '\n                    <option value="' +
 __p += '\n                ';
  }) ;
 __p += '\n              </select>\n              &nbsp;\n              <!--<button type="button" class="btn btn-info btn-sm" id="lock"><i class="fa fa-lock"></i> </button>\n              <button type="button" class="btn btn-info btn-sm" id="unlock"><i class="fa fa-unlock"></i> </button>-->\n              <button type="button" class="btn btn-danger btn-sm" id="clear_filter"><i class="fa fa-times"></i> Clear</button>\n            </div>\n            <br/><br/>\n            <div>\n              <label class="col-md-3 control-label" style="padding-top:2px">Selected localities: </label>\n              <div id="locality_tags" class="col-md-8">\n                ';
- _.each(window.collections.localities, function(locality, i) { ;
+ _.each(collections.localities, function(locality, i) { ;
 __p += '\n                  ';
  if (tags[locality.id] != undefined) { ;
 __p += '\n                    <span class="label label-primary" style="background: #1fb5ad; margin-right: 2px;" id="selected_locality_' +
@@ -945,7 +945,7 @@ __p += '\n                ' +
 ((__t = ( partial('partials_deliveryArea', {
                   i: i,
                   deliveryArea: deliveryArea,
-                  localities: window.collections.groups,
+                  localities: collections.groups,
                   group_map: group_map
                 }) )) == null ? '' : __t) +
 '\n              ';
@@ -968,7 +968,7 @@ __p += '<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form comp
 '" name="id" id="id">\n\n          <input type="hidden" name="delivery_area_count" value="' +
 ((__t = ( deliveryAreas.length )) == null ? '' : __t) +
 '">\n          <div class="form-group">\n            <label for="locality_filter" class="col-md-3 control-label" style="padding-top:2px">Select a locality: </label>\n            <div class="col-md-8">\n              <select name="locality_filter" id="locality_filter" class="" >\n                <option value="" selected="selected"></option>\n                ';
- _.each(window.collections.localities, function(locality) { ;
+ _.each(collections.localities, function(locality) { ;
 __p += '\n                  ';
  if(!locality.parent_id){ ;
 __p += '\n                    <option value="' +
@@ -980,7 +980,7 @@ __p += '\n                    <option value="' +
 __p += '\n                ';
  }) ;
 __p += '\n              </select>\n              &nbsp;\n          \n              <button type="button" class="btn btn-danger btn-sm" id="clear_filter"><i class="fa fa-times"></i> Clear</button>\n            </div>\n            <br/><br/>\n            <div>\n              <label class="col-md-3 control-label" style="padding-top:2px">Selected localities: </label>\n              <div id="locality_tags" class="col-md-8">\n                ';
- _.each(window.collections.localities, function(locality, i) { ;
+ _.each(collections.localities, function(locality, i) { ;
 __p += '\n                  ';
  if (tags[locality.id] != undefined) { ;
 __p += '\n                    <span class="label label-primary" style="background: #1fb5ad; margin-right: 2px;" id="selected_locality_' +
@@ -1007,7 +1007,7 @@ __p += '\n            ' +
 ((__t = ( partial('partials_deliveryArea', {
               i: i,
               deliveryArea: deliveryArea,
-              localities: window.collections.groups,
+              localities: collections.groups,
               group_map: group_map
             }) )) == null ? '' : __t) +
 '\n          ';
@@ -1042,7 +1042,7 @@ __p += '<div class="row">\n  <div class="col-sm-12">\n    <div class="panel">\n 
 '/menu_choices" target="_blank"><i class="fa fa-check-square-o"></i> Choices</a>\n        </span>\n        <span class="pull-right">\n          <a class="btn btn-primary " href="#dishes"><i class="fa fa-spoon"></i> Dishes</a>\n        </span>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class="row">\n<div class="col-md-6">\n    <div class="panel">\n      <div class="panel-body">\n      <section id="alerts"></section>\n        <form accept-charset="UTF-8" class="form-horizontal" id="update_status_form" data-item="' +
 ((__t = ( dish_item.id )) == null ? '' : __t) +
 '" method="post">  \n          <div class="form-group">\n            <label for="status_change" class="col-md-4 control-label">Change Status to: </label>\n            <div class="col-md-8">\n              <select name="status_change" class="form-inline-element input-sm" id="status_change">\n                <option value=null> No Action </option>   \n                ';
- _.each(window.collections.status,function(i,stat,j){;
+ _.each(collections.status,function(i,stat,j){;
 __p += '\n                  ';
 if(i==2 || i==3){ ;
 __p += '\n                    <option value="' +
@@ -1127,7 +1127,7 @@ __p += ' </h3>\n        <hr/>\n        <form role="form" class="form-horizontal"
             required: true
           }) )) == null ? '' : __t) +
 '\n\n          <div class="form-group">\n          <div class="col-xs-1 visible-xs"></div>\n          <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Dish Type Tag</label>\n          <div class="col-md-6 col-sm-6 col-xs-6">\n          <select class="form-control col-md-6" name="tag" id="tag">\n            <option value="-1" selected> --Select-- </option>                         \n            ';
- _.each(window.collections.veg_types,function(i,type,j){ ;
+ _.each(collections.veg_types,function(i,type,j){ ;
 __p += '\n              <option value="' +
 ((__t = (i)) == null ? '' : __t) +
 '" ';
@@ -1164,7 +1164,7 @@ __p += '                                     \n                      <tr id=\'' 
 '" >' +
 ((__t = ( tag.get("keyword") )) == null ? '' : __t) +
 '</td>\n                       \n                        <td class="col-lg-4">\n                          ' +
-((__t = ( _.invert(window.collections.veg_types)[tag.get("tag")] )) == null ? '' : __t) +
+((__t = ( _.invert(collections.veg_types)[tag.get("tag")] )) == null ? '' : __t) +
 '\n                        </td>\n                        <td class="col-lg-4"> \n                            <a  href="#dish_type_tags/edit/' +
 ((__t = ( tag.get("id") )) == null ? '' : __t) +
 '" class="btn btn-primary btn-sm save col-lg-5"  id="' +
@@ -2041,7 +2041,7 @@ __p += ' value="' +
 '</option>\n              ';
  }) ;
 __p += '\n              </select>\n              </div>\n            </div>  \n\n            <div class="form-group adjust-xs">\n\t            <label for="cuisine_ids" class="col-md-4 control-label">Cuisines</label>\n\t            <div class="col-md-8">\n\t            <select multiple name="cuisine_ids" id="cuisine_ids">\n\t            ';
- _.each(window.collections.cuisines, function(cuisine) { ;
+ _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n\t              <option ';
 if (check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
@@ -2125,7 +2125,7 @@ __p += '\n                  <input type="hidden" name="dinner_rating" class="rat
 '"> ' +
 ((__t = (miscellaneous.get("dinner_rating")?miscellaneous.get("dinner_rating"):"0")) == null ? '' : __t) +
 '</label>                    \n                </span>\n\t\t\t\t       </div>\n\t\t\t\t    </div>\t -->          \t\t\t\t\t  \n\n\n            <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n              <label for="spot_payment_type" class="col-md-4 col-xs-4 control-label">Spot Payment Type</label>\n              <div class="col-md-8 col-sm-8 col-xs-6">\n              <select name="spot_payment_type" class="form-inline-element input-sm" id="spot_payment_type">\n              ';
- _.each(window.collections.spot_payment_type, function(i,status) { ;
+ _.each(collections.spot_payment_type, function(i,status) { ;
 __p += '\n                <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -2138,7 +2138,7 @@ __p += ' >' +
 '</option>\n              ';
  }) ;
 __p += '\n              </select>\n              </div>\n            </div>\n\n\n            <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n              <label for="delivery_status" class="col-md-4 col-xs-4 control-label">Delivery Status</label>\n              <div class="col-md-8 col-sm-8 col-xs-6">\n              <select name="delivery_status" class="form-inline-element input-sm" id="delivery_status">\n              ';
- _.each(window.collections.delivery_status, function(i,status) { ;
+ _.each(collections.delivery_status, function(i,status) { ;
 __p += '\n                <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -2153,7 +2153,7 @@ __p += ' >' +
 __p += '\n              </select>\n              </div>\n            </div>\n            \n\n          \t<!-- <div class="form-group">\n              <div class="col-xs-1 visible-xs"></div>\n\t\t\t\t\t\t\t<label for="comments" class="col-md-4 col-xs-4 control-label">Comments</label>\n\t\t\t\t\t\t\t<div class="col-md-6 col-sm-6 col-xs-6">\n\t\t\t\t\t\t\t  <textarea col="30" rows="3" class="form-control" name="comments" id="comments" placeholder="Comments">' +
 ((__t = ( miscellaneous.get("comments") )) == null ? '' : __t) +
 '</textarea>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div> -->\t  \n\n            <div class="form-group" id=\'closingReasonFormGroup\' >\n              <div class="col-xs-1 visible-xs"></div>\n              <label for="closing_reason" class="col-md-4 col-xs-4 control-label">Closing Reasons</label>\n              <div class="col-md-8 col-sm-8 col-xs-6">\n                <select  class="form-inline-element input-sm" name="reason_id" id="closing_reasons">\n                  <option value="nil">None</option>\n                  ';
- $.each(window.collections.reasons,function(index,closingReasonItem){ ;
+ $.each(collections.reasons,function(index,closingReasonItem){ ;
 __p += '\n                  <option value="' +
 ((__t = (closingReasonItem.id)) == null ? '' : __t) +
 '"';
@@ -2309,7 +2309,7 @@ __p += '\n            ' +
                 markup_to_delete: "phone_numbers_" + i + "_delete",
                 i: i,
                 number: phone_number.number,
-                contact_number_types: window.collections.contact_number_types,
+                contact_number_types: collections.contact_number_types,
                 number_type: phone_number.number_type,
                 sms: false,
                 is_present_on_counter: false,
@@ -2320,7 +2320,7 @@ __p += '\n            ' +
 '\n          ';
  }) ;
 __p += '\n\n          <button type="button" class="btn btn-info btn-sm add_new_number">Add new Phone Number</button>\n\n          <hr>\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label for="next_menu_update" class="col-md-4 col-sm-4 col-xs-4 control-label">Next Menu Update</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n              <select name="next_menu_update" class="form-inline-element input-sm" id="next_menu_update">\n                  <option disabled selected>none</option>\n                ';
- _.each(window.collections.months, function(i,month) {;
+ _.each(collections.months, function(i,month) {;
 __p += '\n                  <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -2340,7 +2340,7 @@ __p += '\n              </select>\n            </div>\n          </div>\n       
             name: "veg_type",
             value: office_document.get("veg_type"),
             required: false,
-            collection: window.collections.dish_types
+            collection: collections.dish_types
           }) )) == null ? '' : __t) +
 '\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label class="col-sm-4 col-xs-4 control-label" for="automatically_confirm_after_place">Automatically confirm order after placing</label>\n            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" name="automatically_confirm_after_place" ';
  if(office_document.get("automatically_confirm_after_place")){;
@@ -2373,7 +2373,7 @@ __p += ' >                        \n                    </label>\n              
             name: "jain_food_available",
             value: office_document.get("jain_food_available"),
             required: false,
-            collection: window.collections.boolean
+            collection: collections.boolean
           }) )) == null ? '' : __t) +
 '\n          <hr/>\n\n          <!-- Phone numbers for phone_numbers -->\n                             \n           \n          \n          <div class="submit_div">\n            <input type="submit" class="btn btn-primary" value="Save Changes" id="save_changes_office">\n          </div>\n\n        </form>\n      </div>\n      </div>\n    </div><!-- end well -->\n  </div>\n\n</div><!-- end row -->';
 
@@ -2705,7 +2705,7 @@ __p += ' </h3>\n        <hr/>\n        <form role="form" class="form-horizontal"
             required: false
           }) )) == null ? '' : __t) +
 '\n\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Promotion type</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n              <select class="form-control col-md-6" id="type" name="promotion_type">\n                <option value="-1" selected> --Select-- </option>                  \n                  ';
- _.each(window.collections.promotion_type,function(i,promo_type,j){;
+ _.each(collections.promotion_type,function(i,promo_type,j){;
 __p += '\n                    <option value="' +
 ((__t = (i)) == null ? '' : __t) +
 '" "';
@@ -2717,7 +2717,7 @@ __p += '" >' +
 '</option>\n                  ';
 });;
 __p += '\n              </select>\n            </div>\n          </div>\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n              <label  class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">* Status</label>\n              <div class="col-md-6 col-sm-6 col-xs-6">\n                <select class="form-control col-md-6" id="status" name="status">\n                  <option value="-1" selected> --Select-- </option>                       \n                    ';
- _.each(window.collections.status,function(i,stat,j){;
+ _.each(collections.status,function(i,stat,j){;
 __p += '\n                      ';
 if(i==2 || i==3){ ;
 __p += '\n                        <option value="' +
@@ -3046,7 +3046,7 @@ __p += '\n\n<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form 
             label: "Tinyowl Representative",
             name: "tinyowl_representative",
             value: restaurant ? restaurant.get('tinyowl_representative') : "",
-            representatives: window.collections.bd_team,
+            representatives: collections.bd_team,
             required: true
           }) )) == null ? '' : __t) +
 '\n\n          <!-- render the text type for: name -->\n          ' +
@@ -3059,7 +3059,7 @@ __p += '\n\n<div id="top_navigation">\n</div>\n\n<div class="row">\n  <!-- form 
             required: true
           }) )) == null ? '' : __t) +
 '\n\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label for="restaurant_type" class="col-md-4 col-xs-4 control-label">Restaurant Type</label>\n            <div class="col-md-8 col-sm-8 col-xs-6">\n            <select name="restaurant_type" class="form-inline-element input-sm" id="restaurant_type">\n              <option value="-1" selected>none</option>\n                ';
- _.each(window.collections.restaurant_type, function(i,restaurant_type) { ;
+ _.each(collections.restaurant_type, function(i,restaurant_type) { ;
 __p += '\n                  <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -3072,7 +3072,7 @@ __p += ' >' +
 '</option>\n                ';
  }) ;
 __p += '\n            </select>\n            </div>\n          </div>\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label for="city" class="col-md-4 col-xs-4 control-label">City</label>\n            <div class="col-md-8 col-sm-8 col-xs-6">\n            <select name="city" class="form-inline-element input-sm" id="city">\n              <option value="" selected>none</option>\n                ';
- _.each(window.collections.cities, function(city) { ;
+ _.each(collections.cities, function(city) { ;
 __p += '\n                  <option value="' +
 ((__t = ( city )) == null ? '' : __t) +
 '" ';
@@ -3123,8 +3123,8 @@ __p += '\n                ' +
 ((__t = ( partial('partials_designation', {
                   index: index,
                   who: who,
-                  designations: window.collections.designations,
-                  contact_number_types: window.collections.contact_number_types,
+                  designations: collections.designations,
+                  contact_number_types: collections.contact_number_types,
                 }) )) == null ? '' : __t) +
 '\n              ';
  }); ;
@@ -3142,7 +3142,7 @@ __p += '\n            ' +
                 markup_to_delete: "phone_numbers_for_sms_contact_numbers_" + i + "_delete",
                 i: i,
                 number: phone_number.number,
-                contact_number_types: window.collections.contact_number_types,
+                contact_number_types: collections.contact_number_types,
                 number_type: phone_number.number_type,
                 sms:true,
                 is_present_on_counter: phone_number.is_present_on_counter,
@@ -3157,7 +3157,7 @@ __p += '\n        </div>\n\n          \n          <hr>\n          \n          <d
 '" autocomplete="off"> \n            </div>\n          </div>\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label for="orders_per_day" class="col-md-4 col-sm-4 col-xs-4 control-label label-sm">No. Of  Orders  Per day (Average)</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n              <input type="number" class="form-control input-sm" name="orders_per_day" id="orders_per_day" placeholder="Orders per day" value="' +
 ((__t = (restaurant.get('orders_per_day'))) == null ? '' : __t) +
 '" autocomplete="off"> \n            </div>\n          </div>\n\n          <hr>\n\n          <!-- custom markup: since Jquery plugin breaks the partial -->\n          <div class="form-group adjust-xs">\n            <label for="closed_timing_ids" class="col-md-4 control-label">Closed Timings</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n            <select multiple name="closed_timing_ids" id="closed_timing_ids" class="default-select2">\n            ';
- _.each(window.collections.closed_timings, function(timing) { ;
+ _.each(collections.closed_timings, function(timing) { ;
 __p += '\n              <option ';
  if (check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
 __p += 'selected="selected"';
@@ -3169,7 +3169,7 @@ __p += ' value="' +
 '</option>\n            ';
  }) ;
 __p += '\n            </select>\n            </div>\n          </div>\n          <div class="form-group adjust-xs">\n            <label for="delivery_boys_vehicle" class="col-md-4 control-label">Delivery  boys vehicle</label>\n            <div class="col-md-6 col-sm-6 col-xs-6">\n              <select name="delivery_boys_vehicle" id="delivery_boys_vehicle" class="default-select2" multiple>\n              ';
- _.each(window.collections.delivery_boys_vehicle, function(i,vehicle) { ;
+ _.each(collections.delivery_boys_vehicle, function(i,vehicle) { ;
 __p += '\n                <option ';
  if (check_element_exists(restaurant.get("delivery_boys_vehicle"),i)) { ;
 __p += 'selected="selected"';
@@ -3190,7 +3190,7 @@ __p += '\n              </select>\n            </div>\n          </div>\n       
             required: false
           }) )) == null ? '' : __t) +
 '\n\n          <div class="form-group">\n            <div class="col-xs-1 visible-xs"></div>\n            <label class="col-md-4 col-sm-4 col-xs-3 control-label label-sm">Packaging Charges Type</label>\n\n            <div class="col-md-8 col-sm-8 col-xs-8">\n              <select name="packaging_charges_type" id="packaging_charges_type" class="form-inline-element input-sm">\n                ';
- _.each(window.collections.packaging_charges_type, function(value, key) { ;
+ _.each(collections.packaging_charges_type, function(value, key) { ;
 __p += '\n                  <option id="pack" value="' +
 ((__t = ( value )) == null ? '' : __t) +
 '" ';
@@ -3632,7 +3632,7 @@ __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <di
 '">\n\n                    </div>\n\n                      <div class="col-sm-2 hidden-xs">\n                              <input type="text" class="form-control input-sm typeahead" id="delivers_in" placeholder="delivers in" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Delivers in" value="' +
 ((__t = (get_url_parameter("delivers_in")?get_locality_group(get_url_parameter("delivers_in")):'')) == null ? '' : __t) +
 '">\n                    </div>\n\n                    <div class="col-sm-5 hidden-xs">\n                         <select id="cuisine" name="cuisine_ids" class="form-control input-sm default-select2"  multiple>\n                          ';
- _.each(window.collections.cuisines, function(cuisine) { ;
+ _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n                            <option ';
 if ( get_url_parameter("cuisine_ids") && check_element_exists(get_url_parameter("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
@@ -3659,7 +3659,7 @@ __p +=
 ((__t = ("selected")) == null ? '' : __t);
 };
 __p += '>Both</option>\n                              </select>\n                         </div>\n                    </div>\n\n                    <div class="col-sm-2 hidden-xs">      \n                         <div class="input-group input-group-sm">\n                              <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>\n                              <select class="form-control" id="status_filter">\n                                   <option value="-1" selected> All </option>\n                                    ';
- _.each(window.collections.status,function(i,stat,j){;
+ _.each(collections.status,function(i,stat,j){;
 __p += '\n                                      ';
 if(i<4 || i==11){;
 __p += '\n                                        <option value="' +
@@ -4687,7 +4687,7 @@ __p += '<div class="row option_row" style="background-color: rgba(237, 237, 237,
 '_' +
 ((__t = ( j )) == null ? '' : __t) +
 '">\n\t\t\t\t\t\t';
- $.each(window.collections.veg_types, function (type) { ;
+ $.each(collections.veg_types, function (type) { ;
 __p += '\n\t\t\t\t\t\t\t<option value="' +
 ((__t = ( type )) == null ? '' : __t) +
 '" ';
@@ -5394,7 +5394,7 @@ __p += '\n            <select class="form-control default-select2 item_size edit
 '" name="sizes" data-id="' +
 ((__t = ( size_id )) == null ? '' : __t) +
 '" data-field="size">\n              ';
- _.each(window.collections.size_lists, function(value, key) { ;
+ _.each(collections.size_lists, function(value, key) { ;
 __p += '\n                <option value="' +
 ((__t = ( value )) == null ? '' : __t) +
 '" ';
@@ -6060,7 +6060,7 @@ __p += '<tr>\n  <input type="hidden" name="timing_' +
 '" id="timing_type_' +
 ((__t = ( i )) == null ? '' : __t) +
 '" class="timing_type_select" >\n        ';
- _.each(window.collections.timing_type, function(key, value) { ;
+ _.each(collections.timing_type, function(key, value) { ;
 __p += '\n          <option ';
  if (key == timing.get("timing_type")) { ;
 __p += 'selected="selected"';
@@ -6134,7 +6134,7 @@ with (obj) {
 __p += '<div>\n    <div class="panel">\n      <div class="panel-body">\n      <section id="alerts"></section>\n        <form accept-charset="UTF-8" class="form-horizontal" id="update_status_form" method="post">  \n          <input type="hidden" value="' +
 ((__t = ( restaurant_id )) == null ? '' : __t) +
 '" name="id" >\n          <div class="form-group">\n            <label for="status_change" class="col-md-4 control-label">Change Status to: </label>\n            <div class="col-md-8">\n              <select name="status_change" class="form-inline-element input-sm" id="status_change">\n                <option value=null> No Action </option>                \n              </select>\n              <p class="help-block text-info">Will immediately change the status </p>\n            </div>\n          </div>          \n        \n        <div class="well scheduler">\n            <div class="panel-heading" style="background-color:#FFFFFF">\n                <h4 class="panel-title">\n                    <span class="label label-warning label-sm pull-right"> Optional </span>\n                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">\n                        <i class="fa fa-calendar"></i> Schedule an action\n                    </a>\n                </h4>\n            </div>\n            <div id="collapseOne" class="panel-collapse collapse in" style="height: auto;">\n                <div class="panel-body">                    \n                    <div class="form-group">\n                      <label class="col-sm-4 control-label col-lg-4" for="automatic"> Automatic?</label>\n                      <div class="col-lg-6">\n                          <div class="checkbox">\n                              <label>\n                                  <input type="checkbox" name="automatic" checked>\n                                  <p class="text-muted"> (Unchecked indicates a Manual Update!) </p>\n                              </label>\n                          </div> \n                      </div>\n                    </div>\n\n                    <div class="form-group">\n                      <label for="new_status" class="col-md-4 control-label">Future Status: </label>\n                      <div class="col-md-8">\n                        <select name="new_status" class="form-inline-element input-sm" id="new_status">\n                          <option value=null> No Action </option>\n                          <option value="2">ACTIVE</option>\n                          <option value="3">INACTIVE</option>\n                        </select>                        \n                      </div>\n                    </div>  \n\n                    <div class="form-group">\n                      <label class="control-label col-md-4">Scheduled Date-Time:</label>\n                      <div class="col-md-6">\n                        <div class="input-group input-sm">\n                          <span class="input-group-addon input-sm">on</span>\n                          <input type="text" class="form-control input-sm schedule_date" name="schedule_date" id="schedule_date" placeholder="date" value="">\n                          <span class="input-group-addon input-sm">at</span>\n                          <input type="text" class="form-control input-sm schedule_time" name="schedule_time" id="schedule_time" placeholder="time" value="">\n                        </div>                        \n                      </div>\n                    </div>                  \n                    \n                    <div class="form-group">\n                      <label class="col-sm-4 control-label col-lg-4" for="keep_notifying"></label>\n                      <div class="col-lg-6">\n                          <div class="checkbox">\n                              <label>\n                                  <input type="checkbox" name="keep_notifying" checked>\n                                  Keep notifying me until an action is taken\n                              </label>\n                          </div> \n                      </div>\n                    </div>\n                    \n                </div>\n            </div>\n        </div> \n        <div class="form-group">\n            <label class="col-md-4 control-label">* Comment</label>\n            <div class="col-md-6">\n                <input type="text" class="form-control input-sm" name="comment" required autocomplete="off" >\n            </div>\n        </div>\n        <div class="form-group" id="js-update-status-reason-form-group">\n            <label class="col-md-4 control-label">* Reason</label>\n            <div class="col-md-6">\n                <select class="form-control input-sm" name="reason_id" id="closing_reasons">\n                  <option value="nil">None</option>\n                ';
- $.each(window.collections.reasons,function(index,closingReasonItem){ ;
+ $.each(collections.reasons,function(index,closingReasonItem){ ;
 __p += '\n                   <option value="' +
 ((__t = (closingReasonItem.id)) == null ? '' : __t) +
 '">' +

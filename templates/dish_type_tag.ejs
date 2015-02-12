@@ -23,7 +23,7 @@
           <div class="col-md-6 col-sm-6 col-xs-6">
           <select class="form-control col-md-6" name="tag" id="tag">
             <option value="-1" selected> --Select-- </option>                         
-            <% _.each(window.collections.veg_types,function(i,type,j){ %>
+            <% _.each(collections.veg_types,function(i,type,j){ %>
               <option value="<%=i%>" <% if(dish_type_tag && dish_type_tag.get("tag")==i ) { %>selected<%}   %> ><%=type%></option>
             <%});%>
           </select> 

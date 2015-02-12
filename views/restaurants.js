@@ -324,7 +324,7 @@ define([
           limit: 100,
           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
-          local: $.map(window.collections.localities.reverse(), function (locality) {
+          local: $.map(collections.localities.reverse(), function (locality) {
             return {value: locality.name, key: locality.id};
           })
         });

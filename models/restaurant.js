@@ -24,11 +24,11 @@ define([
         payload['restaurant_commissions'] = [];
         var commission_obj_default = {};
         commission_obj_default.commission = parseFloat(payload["commission_charges_default"]);
-        commission_obj_default.commission_type = window.collections.commission_type.DEFAULT;
+        commission_obj_default.commission_type = collections.commission_type.DEFAULT;
         payload['restaurant_commissions'].push(commission_obj_default);
         var commission_obj_express = {};
         commission_obj_express.commission = parseFloat(payload["commission_charges_express"]);
-        commission_obj_express.commission_type = window.collections.commission_type.EXPRESS;
+        commission_obj_express.commission_type = collections.commission_type.EXPRESS;
         payload['restaurant_commissions'].push(commission_obj_express);
 
         payload["contact_persons"] = [];

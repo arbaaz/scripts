@@ -58,7 +58,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6">
               <select class="form-control col-md-6" id="type" name="promotion_type">
                 <option value="-1" selected> --Select-- </option>                  
-                  <% _.each(window.collections.promotion_type,function(i,promo_type,j){%>
+                  <% _.each(collections.promotion_type,function(i,promo_type,j){%>
                     <option value="<%=i%>" "<% if(promotion) { if (promotion.promotion_type == i) { %>" selected "<% } } %>" ><%=promo_type%></option>
                   <%});%>
               </select>
@@ -71,7 +71,7 @@
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <select class="form-control col-md-6" id="status" name="status">
                   <option value="-1" selected> --Select-- </option>                       
-                    <% _.each(window.collections.status,function(i,stat,j){%>
+                    <% _.each(collections.status,function(i,stat,j){%>
                       <%if(i==2 || i==3){ %>
                         <option value="<%=i%>" "<% if(promotion) { if (promotion.status == i) { %>" selected "<% } } %>" ><%=stat%></option>
                       <% } %>

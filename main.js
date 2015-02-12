@@ -81,7 +81,7 @@ window.dataEntryClient = {
     var user = new dataEntryClient.Models.UserModel();
     window.user = user;
     window.google_api_key = "AIzaSyCwdpZ7nWe_lgiClkq0C0XvCnTrzbeyuUU";
-    window.collections; // = get_collections(); global collections
+    collections; // = get_collections(); global collections
 
     // current view - always put the current view in this variable, this variable is used to clean views on route change
     window.current_view = null;

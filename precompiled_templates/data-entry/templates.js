@@ -37,7 +37,7 @@ __p += '\n<div class="row">\n\n  ' +
 '\n  \n  <!-- form component -->\n  <div class="col-xs-12 col-sm-10 col-lg-10 profile-adjust pull-right">\n\n    <div class="panel">\n      <div class="panel-body">\n      <section id="alerts"></section> \n      <h2 class="to_center">Edit: Account Details</h2>\n      <hr>\n      <div class="row">\n        <form accept-charset="UTF-8" class="form-horizontal" id="account_details_form" method="post" enctype="multipart/form-data">\n          <input type="hidden" value="' +
 ((__t = ( account_details.get('id') )) == null ? '' : __t) +
 '" name="id">  \n       \t  \t\t\t\t\t  \n          \t<div class="form-group">\n\t            <label for="payment_settlement_period" class="col-md-4 control-label">Payment Settlement Period</label>\n\t            <div class="col-md-8">\n\t\t            <select name="payment_settlement_period" class="form-inline-element input-sm" id="payment_settlement_period">\n                  <option value="-1" selected>none</option>\n\t\t\t            ';
- _.each(window.collections.time_period, function(i,period) {;
+ _.each(collections.time_period, function(i,period) {;
 __p += '\n\t\t\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -50,7 +50,7 @@ __p += ' > ' +
 '</option>\n\t\t\t            ';
  }) ;
 __p += '\n\t\t            </select>\n\t            </div>\n\t          </div>\n\t          <div class="form-group">\n\t            <label for="payment_settlement_type" class="col-md-4 control-label">Payment Settlement Type</label>\n\t            <div class="col-md-8">\n\t\t            <select name="payment_settlement_type" class="form-inline-element input-sm" id="payment_settlement_type">\n                <option value="-1" selected>none</option>\n\t\t\t            ';
- _.each(window.collections.payment_settlement_type, function(i,type,mapping) {;
+ _.each(collections.payment_settlement_type, function(i,type,mapping) {;
 __p += '\n\t\t\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -63,7 +63,7 @@ __p += ' > ' +
 '</option>\n\t\t\t            ';
  }) ;
 __p += '\n\t\t            </select>\n\t            </div>\n\t          </div>\n\t          <div class="form-group">\n\t            <label for="payment_settlement_weekday" class="col-md-4 control-label">Payment Settlement Day</label>\n\t            <div class="col-md-8">\n\t            <select name="payment_settlement_weekday" class="form-inline-element input-sm" id="payment_settlement_weekday">\n                <option value="-1" selected>none</option>\n\t            ';
- _.each(window.collections.week_days, function(i,weekday) { ;
+ _.each(collections.week_days, function(i,weekday) { ;
 __p += '\n\t              <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -86,7 +86,7 @@ __p += ' ' +
 ((__t = ("checked")) == null ? '' : __t);
  } ;
 __p += '>                          \n                      </label>\n                  </div>\n              </div>\n            </div> \n\t          <div class="form-group">\n\t            <label for="bank_id" class="col-md-4 control-label">Bank Name</label>\n\t            <div class="col-md-8">\n\t            <select name="bank_id" class="form-inline-element input-sm" id="bank_id">\n                <option value="-1" selected>none</option>\n\t            ';
- _.each(window.collections.bank, function(banks) { ;
+ _.each(collections.bank, function(banks) { ;
 __p += '\n\t              <option value="' +
 ((__t = ( banks[1] )) == null ? '' : __t) +
 '" ';
@@ -467,7 +467,7 @@ __p += '\n\n\n<div class="row">\n\n  ' +
 '" name="id" id="id">\n\n          <input type="hidden" name="delivery_area_count" value="' +
 ((__t = ( deliveryAreas.length )) == null ? '' : __t) +
 '">\n          <div class="form-group">\n            <label for="locality_filter" class="col-md-3 control-label" style="padding-top:2px">Select a locality: </label>\n            <div class="col-md-8">\n        \t\t  <select name="locality_filter" id="locality_filter" class="" >\n                <option value="" selected="selected"></option>\n                ';
- _.each(window.collections.localities, function(locality) { ;
+ _.each(collections.localities, function(locality) { ;
 __p += '\n                  ';
  if(!locality.parent_id){ ;
 __p += '\n                    <option value="' +
@@ -484,7 +484,7 @@ __p += '\n\t\t            ' +
 ((__t = ( partial('partials_deliveryArea', {
 		              i: i,
 		              deliveryArea: deliveryArea,
-		              localities: window.collections.groups
+		              localities: collections.groups
 		            }) )) == null ? '' : __t) +
 '\n\t\t          ';
  }) ;
@@ -922,7 +922,7 @@ __p += ' value="' +
 '</option>\n              ';
  }) ;
 __p += '\n              </select>\n              </div>\n            </div>  \n\n            <div class="form-group">\n\t            <label for="cuisine_ids" class="col-md-4 control-label">Cuisines</label>\n\t            <div class="col-md-8">\n\t            <select multiple name="cuisine_ids" id="cuisine_ids">\n\t            ';
- _.each(window.collections.cuisines, function(cuisine) { ;
+ _.each(collections.cuisines, function(cuisine) { ;
 __p += '\n\t              <option ';
 if (check_element_exists(miscellaneous.get("cuisine_ids"), cuisine[1])) { ;
 __p += 'selected="selected"';
@@ -1058,7 +1058,7 @@ __p += '\n<div class="row">\n\n  ' +
             required: false
           }) )) == null ? '' : __t) +
 '\n\n          <div class="form-group">\n            <label for="locality_id" class="col-md-4 control-label">Area</label>\n            <div class="col-md-8">\n            <select name="locality_id" id="locality_id">\n            <option disabled selected></option>\n            ';
- _.each(window.collections.localities, function(locality) { ;
+ _.each(collections.localities, function(locality) { ;
 __p += '\n              <option ';
  if (locality.id == office_document.get("locality_id")) { ;
 __p += 'selected="selected"';
@@ -1113,14 +1113,14 @@ __p += '\n            ' +
                 markup_to_delete: "phone_numbers_" + i + "_delete",
                 i: i,
                 number: phone_number.number,
-                contact_number_types: window.collections.contact_number_types,
+                contact_number_types: collections.contact_number_types,
                 number_type: phone_number.number_type
               })
             )) == null ? '' : __t) +
 '\n          ';
  }) ;
 __p += '\n\n          <button type="button" class="btn btn-info btn-sm add_new_number">Add new Phone Number</button>\n\n          <hr>\n          <div class="form-group">\n            <label for="next_menu_update" class="col-md-4 control-label">Next Menu Update</label>\n            <div class="col-md-8">\n              <select name="next_menu_update" class="form-inline-element input-sm" id="next_menu_update">\n                  <option disabled selected>none</option>\n                ';
- _.each(window.collections.months, function(i,month) {;
+ _.each(collections.months, function(i,month) {;
 __p += '\n                  <option value="' +
 ((__t = ( i )) == null ? '' : __t) +
 '" ';
@@ -1140,7 +1140,7 @@ __p += '\n              </select>\n            </div>\n          </div>\n       
             name: "veg_type",
             value: office_document.get("veg_type"),
             required: false,
-            collection: window.collections.dish_types
+            collection: collections.dish_types
           }) )) == null ? '' : __t) +
 '\n\n          <div class="form-group">\n            <label class="col-sm-4 control-label col-lg-4" for="automatically_confirm_after_place">Automatically confirm order after placing</label>\n            <div class="col-lg-6">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" name="automatically_confirm_after_place" ';
  if(office_document.get("automatically_confirm_after_place")){;
@@ -1173,7 +1173,7 @@ __p += ' >                        \n                    </label>\n              
             name: "jain_food_available",
             value: office_document.get("jain_food_available"),
             required: false,
-            collection: window.collections.boolean
+            collection: collections.boolean
           }) )) == null ? '' : __t) +
 '\n          <hr/>\n\n          <!-- Phone numbers for phone_numbers -->\n                             \n           \n          \n          <div class="submit_div">\n            <input type="submit" class="btn btn-primary" value="Save Changes" id="save_changes_office">\n          </div>\n\n        </form>\n      </div>\n      </div>\n    </div><!-- end well -->\n  </div>\n\n</div><!-- end row -->';
 
@@ -1403,19 +1403,19 @@ __p += '\n<div class="row">\n  ' +
 ((__t = ( partial('partials_manager', {
             whois: "manager",
             options: restaurant.get('manager'),
-            contact_number_types: window.collections.contact_number_types
+            contact_number_types: collections.contact_number_types
           }) )) == null ? '' : __t) +
 '\n\n          <hr>\n\n          <!-- manager edit partial -->\n          ' +
 ((__t = ( partial('partials_manager', {
             whois: "owner",
             options: restaurant.get('owner'),
-            contact_number_types: window.collections.contact_number_types
+            contact_number_types: collections.contact_number_types
           }) )) == null ? '' : __t) +
 '\n\n          <hr>\n\n          <!-- manager edit partial -->\n          ' +
 ((__t = ( partial('partials_manager', {
             whois: "general_manager",
             options: restaurant.get('general_manager'),
-            contact_number_types: window.collections.contact_number_types
+            contact_number_types: collections.contact_number_types
           }) )) == null ? '' : __t) +
 '\n\n          <hr>\n\n          <!-- Phone numbers for sms -->\n          <h4 class="to_center">Mobile  number  for order forwarding by  SMS</h4>\n\n          <input type="hidden" name="phone_numbers_for_sms_contact_numbers_count" value="' +
 ((__t = ( restaurant.get('phone_numbers_for_sms').length )) == null ? '' : __t) +
@@ -1432,7 +1432,7 @@ __p += '\n            ' +
                 markup_to_delete: "phone_numbers_for_sms_contact_numbers_" + i + "_delete",
                 i: i,
                 number: phone_number.number,
-                contact_number_types: window.collections.contact_number_types,
+                contact_number_types: collections.contact_number_types,
                 number_type: phone_number.number_type
               })
             )) == null ? '' : __t) +
@@ -1443,7 +1443,7 @@ __p += '\n\n          <button type="button" class="btn btn-info btn-sm add_new_n
 '" autocomplete="off"> \n            </div>\n          </div>\n          <div class="form-group">\n            <label for="orders_per_day" class="col-md-4 control-label">No. Of  Orders  Per day (Average)</label>\n            <div class="col-md-6">\n              <input type="number" class="form-control input-sm" name="orders_per_day" id="orders_per_day" placeholder="Orders per day" value="' +
 ((__t = (restaurant.get('orders_per_day'))) == null ? '' : __t) +
 '" autocomplete="off"> \n            </div>\n          </div>\n\n          <hr>\n\n          <!-- custom markup: since Jquery plugin breaks the partial -->\n          <div class="form-group">\n            <label for="closed_timing_ids" class="col-md-4 control-label">Closed Timings</label>\n            <div class="col-md-8">\n            <select multiple name="closed_timing_ids" id="closed_timing_ids">\n            ';
- _.each(window.collections.closed_timings, function(timing) { ;
+ _.each(collections.closed_timings, function(timing) { ;
 __p += '\n              <option ';
  if (check_element_exists(restaurant.get("closed_timing_ids"), timing[1])) { ;
 __p += 'selected="selected"';
@@ -1455,7 +1455,7 @@ __p += ' value="' +
 '</option>\n            ';
  }) ;
 __p += '\n            </select>\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="delivery_boys_vehicle" class="col-md-4 control-label">Delivery  boys vehicle</label>\n            <div class="col-md-2">\n              <select class="form-control input-sm" name="delivery_boys_vehicle" id="delivery_boys_vehicle">\n              ';
- _.each(window.collections.delivery_boys_vehicle, function(i,vehicle) { ;
+ _.each(collections.delivery_boys_vehicle, function(i,vehicle) { ;
 __p += '\n                <option ';
  if (restaurant.get("delivery_boys_vehicle") == i) { ;
 __p += 'selected="selected"';
@@ -1527,7 +1527,7 @@ __p += '<div class="row" id="filters_affix">\n  <div class="col-sm-12">\n    <di
 '">\n              </div>\n          </div>\n          <div class="col-sm-6 col-md-5 col-lg-4">\n              <a class="btn btn-success btn-sm" href="#restaurants/new"><i class="fa fa-plus-square"></i> Add a new Restaurant</a>\n              <a class="btn btn-danger btn-sm" href="#restaurants/deleted"><i class="fa fa-file-text"></i> View Deleted </a>\n              <a class="btn btn-info btn-sm" href="#restaurants/invisible"><i class="fa fa-file-text"></i> View Invisible </a>\n          </div>                                \n        </div>\n        <hr id="filters_rule"/>\n        <div class="row">\n            <!--<div class="col-sm-12" id="filters_heading"><h4>Filter by:</h4></div>-->                \n            <div class="col-sm-2 ">\n                <!--<div class="input-group input-group-sm m-bot15">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-location-arrow"></i></span>-->\n                    <input type="text" class="form-control input-sm typeahead" id="locality" placeholder="locality" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Locality" value="' +
 ((__t = (get_url_parameter("locality_id")?get_locality(get_url_parameter("locality_id")):'')) == null ? '' : __t) +
 '">\n                <!--</div>-->\n            </div>\n            <div class="col-sm-2">                                    \n                <div class="input-group input-group-sm">\n                    <span class="input-group-addon btn-primary"><i class="fa fa-exclamation-circle"></i> Status</span>\n                    <select class="form-control" id="status_filter">\n                        <option value="-1" selected> All </option>                            \n                        ';
- _.each(window.collections.status,function(i,stat,j){;
+ _.each(collections.status,function(i,stat,j){;
 __p += '\n                          ';
 if(i<4 || i==11){;
 __p += '\n                            <option value="' +

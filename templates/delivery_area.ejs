@@ -23,7 +23,7 @@
             <div class="col-md-8">
               <select name="locality_filter" id="locality_filter" class="" >
                 <option value="" selected="selected"></option>
-                <% _.each(window.collections.localities, function(locality) { %>
+                <% _.each(collections.localities, function(locality) { %>
                   <% if(!locality.parent_id){ %>
                     <option value="<%= locality.id %>"><%= locality.name %></option>
                   <% } %>
@@ -37,7 +37,7 @@
             <div>
               <label class="col-md-3 control-label" style="padding-top:2px">Selected localities: </label>
               <div id="locality_tags" class="col-md-8">
-                <% _.each(window.collections.localities, function(locality, i) { %>
+                <% _.each(collections.localities, function(locality, i) { %>
                   <% if (tags[locality.id] != undefined) { %>
                     <span class="label label-primary" style="background: #1fb5ad; margin-right: 2px;" id="selected_locality_<%= locality.id %>"><%= locality.name %>: <span class="badge" id="selected_badge_<%= locality.id %>" style="background: #1fb5ad; padding-top: 2px; margin-left: 2px;"><%= tags[locality.id] %></span></span>
                     <% total += 1 %>
@@ -67,7 +67,7 @@
             <%= partial('partials_deliveryArea', {
               i: i,
               deliveryArea: deliveryArea,
-              localities: window.collections.groups,
+              localities: collections.groups,
               group_map: group_map
             }) %>
           <% }) %>
